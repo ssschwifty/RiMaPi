@@ -1,0 +1,12 @@
+{
+  "name": "library",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "angular": "^1.5.5",
+    "jquery": "^2.2.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
