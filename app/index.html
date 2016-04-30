@@ -8,6 +8,7 @@
 		<meta http-equiv="Content-Security-Policy" content="img-src * data:; default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
 
 		<link href="styles/main.css" rel="stylesheet">
+		<link href="../node_modules/angular/angular-csp.css" rel="stylesheet">
 	</head>
 	<body ng-app="riot">
 
@@ -20,15 +21,15 @@
 			</div>
 		</noscript>
 		
-		<div id="appContent" ng-controller="MainController">
+		<div id="appContent" ng-controller="MainController" ng-cloak>
 			<div id="header">
 				<button type="button" ng-click="openGradeView()">{{btnGrade}}</button>
 				<button type="button" ng-click="openLootView()">{{btnLoot}}</button>
 				<button type="button" ng-click="openScoreView()">{{btnScore}}</button>
 			</div>
-			<ui-view></ui-view>
+			<ui-view [onload="home"] ng-cloak></ui-view>
 
-			<div id="footer">
+			<div id="footer" ng-cloak>
 				<button type="button" ng-click="openDocuView()"> {{btnDocu}} </button>
 			</div>
 		</div>

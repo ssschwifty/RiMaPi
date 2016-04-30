@@ -6,7 +6,6 @@ angular.module('riot.controller')
 		$scope.btnLoot = stringConstants.btnLoot;
 		$scope.btnScore = stringConstants.btnScore;
 		$scope.btnDocu = stringConstants.btnDocu;
-		$state.go('home');
 	}
 	
 	initiate();
