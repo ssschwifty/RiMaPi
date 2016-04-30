@@ -20,7 +20,10 @@
 			</div>
 		</noscript>
 		
-		<div id="appContent" ng-controller="MainController" ui-view> </div>
+		<div id="appContent" ng-controller="MainController">
+			<ui-view></ui-view>
+
+		</div>
 
 		<!-- node_modules -->	
 		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
@@ -29,8 +32,11 @@
 
 		<!-- app scripts -->
 		<script type="text/javascript" src="scripts/app.js"></script>
+		<script type="text/javascript" src="scripts/constants.js"></script>
 		<script type="text/javascript" src="scripts/configuration/modules.js"></script>
 		<script type="text/javascript" src="scripts/configuration/routing.js"></script>
 		<script type="text/javascript" src="scripts/controller/mainController.js"></script>
+		<script type="text/javascript" src="scripts/services/requestService.js"></script>
+		<script type="text/javascript" src="scripts/services/sharedProperties.js"></script>
 	</body>
 </html>
