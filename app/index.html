@@ -22,14 +22,14 @@
 		
 		<div id="appContent" ng-controller="MainController">
 			<div id="header">
-				<button type="button" ng-click="openView(grade)">{{btnGrade}}</button>
-				<button type="button" ng-click="openView(loot)">{{btnLoot}}</button>
-				<button type="button" ng-click="openView(source)">{{btnScore}}</button>
+				<button type="button" ng-click="openGradeView()">{{btnGrade}}</button>
+				<button type="button" ng-click="openLootView()">{{btnLoot}}</button>
+				<button type="button" ng-click="openScoreView()">{{btnScore}}</button>
 			</div>
 			<ui-view></ui-view>
 
 			<div id="footer">
-				<button type="button" ng-click="openView(docu)"> {{btnDocu}} </button>
+				<button type="button" ng-click="openDocuView()"> {{btnDocu}} </button>
 			</div>
 		</div>
 
