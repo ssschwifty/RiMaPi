@@ -22,4 +22,7 @@ angular.module('riot.controller')
 	$scope.openDocuView = function() {
 		$state.go('docu');
 	}
+	$scope.openWelcomeView = function() {
+		$state.go('home');
+	}
 }]);

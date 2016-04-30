@@ -23,9 +23,14 @@
 		
 		<div id="appContent" ng-controller="MainController" ng-cloak>
 			<div id="header">
-				<button type="button" ng-click="openGradeView()">{{btnGrade}}</button>
-				<button type="button" ng-click="openLootView()">{{btnLoot}}</button>
-				<button type="button" ng-click="openScoreView()">{{btnScore}}</button>
+				<div class="headerIcon">
+					<button type="button" ng-click="openWelcomeView()"> pageIcon </button>
+				</div>
+				<div class="headerButtons">
+					<button type="button" ng-click="openGradeView()">{{btnGrade}}</button>
+					<button type="button" ng-click="openLootView()">{{btnLoot}}</button>
+					<button type="button" ng-click="openScoreView()">{{btnScore}}</button>
+				</div>
 			</div>
 			<ui-view [onload="home"] ng-cloak></ui-view>
 
