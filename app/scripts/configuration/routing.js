@@ -3,7 +3,7 @@ angular.module('riot')
 	$stateProvider
 		.state('home', {
 			url: '/home',
-			templateUrl: 'index.html'
+			templateUrl: 'views/homeView.html'
 		})
 		.state('grade', {
 			url:'/grade',
@@ -25,5 +25,5 @@ angular.module('riot')
 			templateUrl: 'views/docuView.html'
 		});
 
-	$urlRouterProvider.otherwise('/');
+	$urlRouterProvider.otherwise('/home');
 });
