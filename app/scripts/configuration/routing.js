@@ -19,6 +19,10 @@ angular.module('riot')
 			url:'/loot',
 			templateUrl: 'views/lootView.html',
 			controller: 'LootController'
+		})
+		.state('docu', {
+			url: '/docu',
+			templateUrl: 'views/docuView.html'
 		});
 
 	$urlRouterProvider.otherwise('/');
