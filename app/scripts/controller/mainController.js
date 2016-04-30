@@ -3,6 +3,10 @@ angular.module('riot.controller')
 
 	function initiate() {
 		$state.go('home');
+		$scope.btnGrade = stringConstants.btnGrade;
+		$scope.btnLoot = stringConstants.btnLoot;
+		$scope.btnScore = stringConstants.btnScore;
+		$scope.btnDocu = stringConstants.btnDocu;
 	}
 	initiate();
 	$scope.openView= function(view) {
