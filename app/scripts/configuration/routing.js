@@ -2,25 +2,23 @@ angular.module('riot')
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
 		.state('home', {
-			abstract: true,
-			url: '/',
+			url: '/home',
 			templateUrl: 'index.html'
 		})
-
-		.state('content.grade', {
+		.state('grade', {
 			url:'/grade',
 			templateUrl: 'views/gradeView.html',
-			controller: 'MapController'
+			controller: 'GradeController'
 		})
-
-		.state('content.score', {
+		.state('score', {
 			url:'/score',
-			templateUrl: 'views/scroeView.html'
+			templateUrl: 'views/scoreView.html',
+			controller: 'ScoreController'
 		})
-
-		.state('content.loot', {
+		.state('loot', {
 			url:'/loot',
-			templateUrl: 'views/lootView.html'
+			templateUrl: 'views/lootView.html',
+			controller: 'LootController'
 		});
 
 	$urlRouterProvider.otherwise('/');
