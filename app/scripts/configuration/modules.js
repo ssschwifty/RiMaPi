@@ -1,2 +1,2 @@
 angular.module('riot.controller', []);
-angular.module('riot.service', []);
+angular.module('riot.services', []);

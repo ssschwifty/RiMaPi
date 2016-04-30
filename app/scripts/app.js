@@ -1,1 +1,1 @@
-angular.module('riot', ['riot.controller', 'riot.service', 'ui.router']);
+angular.module('riot', ['riot.controller', 'riot.services', 'ui.router']);
