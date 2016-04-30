@@ -1,5 +1,48 @@
-$testColor: orange;
+$defaultFont: Verdana;
+$headerTextColor: #fff;
+$buttonShadow: #f0f0f0;
+$transparentShadow: rgba(133, 121, 121, 0.5);
+$backgroundImage: url('../../sources/image/background.jpg');
 
 html {
-	background-color: $testColor;
+	background-image: $backgroundImage;
+	background-color: transparent;
+}
+html * {
+	font-family: $defaultFont;
+}
+
+#header {
+	margin: 25px;
+	border-bottom: 1px solid $buttonShadow;
+}
+#header .headerIcon {
+	width: 15%;
+}
+#header .headerButtons {
+	width: 69%;
+}
+#header .regions {
+	width: 15%;
+}
+#header .headerIcon,
+#header .headerButtons {
+	display: inline-block;
+}
+#header .headerButtons button {
+	background-color: transparent;
+	color: $headerTextColor;
+	border: none;
+	min-width: 60px;
+	width: 32%;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	height: 30px;
+}
+
+#header .headerButtons button:hover {
+	background:linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
+	border-radius: 4px;
 }
