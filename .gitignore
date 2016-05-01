@@ -1,6 +1,10 @@
 # Folders  #
 /node_modules
 
+# Files #
+
+/Webservice/apiKey.json
+
 # Compiled source #
 ###################
 *.com
@@ -9,7 +13,7 @@
 *.exe
 *.o
 *.so
- 
+
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
@@ -22,11 +26,11 @@
 *.rar
 *.tar
 *.zip
- 
+
 # Logs #
 ######################
 *.log
- 
+
 # OS generated files #
 ######################
 .DS_Store
@@ -42,7 +46,7 @@ Thumbs.db
 # Media files
 *.mp3
 
- 
+
 # generated files #
 ######################
 *.swp
