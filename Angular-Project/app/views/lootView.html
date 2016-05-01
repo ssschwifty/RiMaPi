@@ -1,3 +1,15 @@
 <div id="content">
-
+	<button type="button" ng-click="getData()"> loot</button>
+	<p>
+		Chests granted: {{grantedChests}}
+	</p>
+	<p>
+		Chests still waiting to be granted: {{notGranted}}
+	</p>
+	<p>
+		potential </br>
+		<ul>
+			<li ng-repeat="champion in potential"> {{champion.championId}}</li>
+		</ul>
+	</p>
 </div>
