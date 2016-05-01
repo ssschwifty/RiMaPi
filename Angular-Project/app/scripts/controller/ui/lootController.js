@@ -13,10 +13,11 @@ angular.module('riot.controller.ui')
 			var notGranted = 0;
 			var potential = [];
 			for (var i = 0; i < testresult.length; i++) {
+				testresult[i].championName = SharedProperties.getChampionById(testresult[i].championId);
 				if(testresult[i].chestGranted) {
 					granted++;
 				} else {
-					potential.push(SharedProperties.getChampionById(testresult[i].championId));
+					potential.push(testresult[i]);
 					notGranted++;
 				}
 			}
