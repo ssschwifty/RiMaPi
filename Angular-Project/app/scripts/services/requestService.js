@@ -1,4 +1,4 @@
 angular.module('riot.services')
-.service('requestService', function($http) {
+.factory('RequestService', function($http) {
 
 });

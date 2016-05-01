@@ -1,4 +1,4 @@
 angular.module('riot.services')
-.service('sharedProperties', function() {
+.factory('SharedProperties', function(RequestService, Mapping) {
 	
 });

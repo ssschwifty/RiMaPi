@@ -1,11 +1,11 @@
 angular.module('riot.controller')
-.controller('MainController', ['$scope', '$state', 'stringConstants', function($scope, $state, stringConstants) {
+.controller('MainController', function($scope, $state, StringConstants) {
 
 	function initiate() {
-		$scope.btnGrade = stringConstants.btnGrade;
-		$scope.btnLoot = stringConstants.btnLoot;
-		$scope.btnScore = stringConstants.btnScore;
-		$scope.btnDocu = stringConstants.btnDocu;
+		$scope.btnGrade = StringConstants.btnGrade;
+		$scope.btnLoot = StringConstants.btnLoot;
+		$scope.btnScore = StringConstants.btnScore;
+		$scope.btnDocu = StringConstants.btnDocu;
 	}
 	
 	initiate();
@@ -25,4 +25,9 @@ angular.module('riot.controller')
 	$scope.openWelcomeView = function() {
 		$state.go('home');
 	}
-}]);
+
+	// fixes bootstraps dropdown problem
+	$(document).ready(function() {
+		$(".dropdown-toggle").dropdown();
+	});
+});
