@@ -1,20 +1,50 @@
-$defaultFont: Verdana;
-$headerTextColor: #fff;
+$defaultFont: 'Roboto Condensed', sans-serif;
+$textColor: #fff;
 $buttonShadow: #f0f0f0;
 $transparentShadow: rgba(133, 121, 121, 0.5);
 $backgroundImage: url('../../sources/image/background.jpg');
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 
 html {
 	background-image: $backgroundImage;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
 	background-color: transparent;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 100% ;
 }
-html * {
+body {
+	margin: 0;
+	background-color: transparent !important;
+}
+* {
 	font-family: $defaultFont;
+	color: $textColor;
 }
 
 #header {
-	margin: 25px;
-	border-bottom: 1px solid $buttonShadow;
+	border-bottom: 1px solid $transparentShadow;
+	background-image: $backgroundImage;
+	position: fixed;
+    padding-top: 25px;
+    z-index: 10;
+    height: 55px;
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    margin-right: 25px;
+}
+#header button {
+	background-color: transparent;
+	color: $textColor;
+	border: none;
+	min-width: 60px;
+	width: 32%;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	height: 30px;
 }
 #header .headerIcon {
 	width: 15%;
@@ -26,23 +56,56 @@ html * {
 	width: 15%;
 }
 #header .headerIcon,
-#header .headerButtons {
+#header .headerButtons,
+#header .regions {
 	display: inline-block;
 }
-#header .headerButtons button {
+#header .regions button {
+	width: 100%;
+}
+#header .headerButtons button:hover {
+	background:linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
+	border-radius: 4px;
+}
+
+.dropdown-menu {
 	background-color: transparent;
-	color: $headerTextColor;
+	border: 1px solid $transparentShadow;
+}
+.dropdown-menu a {
+	color: white !important;
+}
+#content {
+	box-sizing: border-box;
+	padding-top: 80px;
+	margin-bottom: 80px;
+	margin-left: 25px;
+	margin-right: 25px;
+	z-index: 5;
+	height: 500px;
+}
+
+
+#footer {
+	position: fixed;
+    height: 55px;
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    margin-right: 25px;
+    bottom: 0px;
+    padding-bottom: 25px;
+}
+#footer button {
+	background-color: transparent;
+	color: $textColor;
 	border: none;
 	min-width: 60px;
-	width: 32%;
 	margin-left: auto;
 	margin-right: auto;
 	left: 0;
 	right: 0;
 	height: 30px;
 }
-
-#header .headerButtons button:hover {
-	background:linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
-	border-radius: 4px;
+#footer button {
+	float: right;
 }

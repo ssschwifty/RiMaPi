@@ -6,22 +6,23 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta http-equiv="Content-Security-Policy" content="img-src * data:; default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
-
-		<link href="styles/css/main.css" rel="stylesheet">
+		
+		<link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../node_modules/angular/angular-csp.css" rel="stylesheet">
+		<link href="styles/css/main.css" rel="stylesheet">
 	</head>
-	<body ng-app="riot">
+	<body ng-app="riot" id="overwriteBootstrap">
 
 		<noscript>
 			<style type="text/css">
-				#appContent {display:none;}
+				#app {display:none;}
 			</style>
 			<div class="noscriptmsg">
 				<img src="sources/image/noJS.jpg" alt="ACTIVATE!">
 			</div>
 		</noscript>
 		
-		<div id="appContent" ng-controller="MainController" ng-cloak>
+		<div id="app" ng-controller="MainController" ng-cloak>
 			<div id="header">
 				<div class="headerIcon">
 					<button type="button" ng-click="openWelcomeView()"> pageIcon </button>
@@ -31,10 +32,16 @@
 					<button type="button" ng-click="openLootView()">{{btnLoot}}</button>
 					<button type="button" ng-click="openScoreView()">{{btnScore}}</button>
 				</div>
-				<div class="regions">
-					
+				<div class="regions" ng-controller="RegionController">
+					<div class="dropdown">
+						<button type="button" class="dropdown-toggle" id="regionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{activeRegion.name}} </button>
+						<ul class="dropdown-menu" aria-labelledby="regionDropdown">
+							<li ng-repeat="region in regions"><a ng-click="regionSelected(region)">{{region.name}}</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
+
 			<ui-view [onload="home"] ng-cloak></ui-view>
 
 			<div id="footer" ng-cloak>
@@ -50,13 +57,19 @@
 
 		<!-- app scripts -->
 		<script type="text/javascript" src="scripts/app.js"></script>
-		<script type="text/javascript" src="scripts/constants.js"></script>
 		<script type="text/javascript" src="scripts/configuration/modules.js"></script>
 		<script type="text/javascript" src="scripts/configuration/routing.js"></script>
+
+		<script type="text/javascript" src="scripts/constants/stringConstants.js"></script>
+		<script type="text/javascript" src="scripts/constants/mapping.js"></script>
+		
 		<script type="text/javascript" src="scripts/controller/mainController.js"></script>
-		<script type="text/javascript" src="scripts/controller/lootController.js"></script>
-		<script type="text/javascript" src="scripts/controller/gradeController.js"></script>
-		<script type="text/javascript" src="scripts/controller/scoreController.js"></script>
+		<script type="text/javascript" src="scripts/controller/regionController.js"></script>
+
+		<script type="text/javascript" src="scripts/controller/ui/lootController.js"></script>
+		<script type="text/javascript" src="scripts/controller/ui/gradeController.js"></script>
+		<script type="text/javascript" src="scripts/controller/ui/scoreController.js"></script>
+		
 		<script type="text/javascript" src="scripts/services/requestService.js"></script>
 		<script type="text/javascript" src="scripts/services/sharedProperties.js"></script>
 	</body>
