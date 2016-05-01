@@ -16,11 +16,10 @@ angular.module('riot.controller.ui')
 				if(testresult[i].chestGranted) {
 					granted++;
 				} else {
-					potential.push(testresult[i]);
+					potential.push(SharedProperties.getChampionById(testresult[i].championId));
 					notGranted++;
 				}
 			}
-			console.log(potential);
 			$scope.grantedChests = granted.toString();
 			$scope.notGranted = notGranted.toString();
 			$scope.potential = potential;

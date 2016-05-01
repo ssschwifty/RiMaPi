@@ -1,4 +1,4 @@
 angular.module('riot.controller.ui')
-.controller('ScoreController', function($scope, sharedProperties) {
+.controller('ScoreController', function($scope, SharedProperties) {
 
 });
