@@ -15,7 +15,7 @@ angular.module('riot.controller.ui')
 	});
 
 	$scope.getData = function() {
-		SharedProperties.getMockupData()
+		SharedProperties.getAllChampionMasteries()
 		.then(function(response) {
 			var testresult = response.data;
 			var granted = 0;
