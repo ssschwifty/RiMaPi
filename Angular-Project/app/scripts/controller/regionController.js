@@ -1,20 +1,29 @@
 angular.module('riot.controller')
 .controller('RegionController', function($scope, SharedProperties) {
-	$scope.regions = [
-						{id:"BR1", name:"Brazil"},
-						{id:"EUN1", name:"EU Nordic & East"},
-						{id:"EUW1", name:"EU West"},
-						{id:"LA1", name:"Latin America North"},
-						{id:"LA2", name:"Latin America South"},
-						{id:"NA1", name:"North America"},
-						{id:"OC1", name:"Oceania"},
-						{id:"RU", name:"Russia"},
-						{id:"TR1", name:"Turkey"},
-						{id:"JP1", name:"Japan"},
-						{id:"KR", name:"Republic of Korea"}
-					];
-	$scope.activeRegion = $scope.regions[0];
-	$scope.regionSelected = function(region) {
-		$scope.activeRegion = region;
+	
+	$scope.$on('$stateChangeSuccess', function() {
+		// needs to be handled differently!
+		defineRegion();
+	});
+
+	$scope.regions = SharedProperties.getRegions();
+
+	function defineRegion() {		
+		var activeRId = SharedProperties.getActiveRegionId();
+		if(activeRId != undefined && activeRId != null) {
+			//debugging
+			//$scope.activeRegionId = 'euw';
+			var gpsRegion = SharedProperties.getContinent();
+			$scope.activeRegionId = $scope.regions[gpsRegion];
+		} else {
+			$scope.activeRegionId = 'euw';
+		}
+		SharedProperties.setActiveRegionId($scope.activeRegionId);
 	}
+
+	$scope.regionSelected = function(_regionId) {
+		$scope.activeRegionId = _regionId;
+		SharedProperties.setActiveRegionId(_regionId);
+	}
+
 });

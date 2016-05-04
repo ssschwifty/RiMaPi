@@ -8,7 +8,7 @@ $backgroundImage: url('../../sources/image/background.jpg');
 html {
 	background-image: $backgroundImage;
 	background-repeat: no-repeat;
-    background-attachment: fixed;
+	background-attachment: fixed;
 	background-color: transparent;
 	margin: 0 !important;
 	padding: 0 !important;
@@ -22,17 +22,20 @@ body {
 	font-family: $defaultFont;
 	color: $textColor;
 }
+button:focus {
+	outline: 0;
+}
 
 #header {
 	border-bottom: 1px solid $transparentShadow;
 	background-image: $backgroundImage;
 	position: fixed;
-    padding-top: 25px;
-    z-index: 10;
-    height: 55px;
-    width: calc(100% - 50px);
-    margin-left: 25px;
-    margin-right: 25px;
+	padding-top: 25px;
+	z-index: 10;
+	height: 55px;
+	width: calc(100% - 50px);
+	margin-left: 25px;
+	margin-right: 25px;
 }
 #header button {
 	background-color: transparent;
@@ -82,18 +85,28 @@ body {
 	margin-left: 25px;
 	margin-right: 25px;
 	z-index: 5;
-	height: 500px;
 }
-
+#content .sortPotential.off {
+	background-color: transparent;
+	color: $textColor;
+	min-width: 60px;
+	border: 1px solid $transparentShadow;
+}
+#content .sortPotential.on {
+	background-color: $transparentShadow;
+	color: $textColor;
+	min-width: 60px;
+	border: 1px solid $transparentShadow;
+}
 
 #footer {
 	position: fixed;
-    height: 55px;
-    width: calc(100% - 50px);
-    margin-left: 25px;
-    margin-right: 25px;
-    bottom: 0px;
-    padding-bottom: 25px;
+	height: 55px;
+	width: calc(100% - 50px);
+	margin-left: 25px;
+	margin-right: 25px;
+	bottom: 0px;
+	padding-bottom: 25px;
 }
 #footer button {
 	background-color: transparent;

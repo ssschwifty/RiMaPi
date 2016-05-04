@@ -1,5 +1,4 @@
 <div id="content">
-	<button type="button" ng-click="getData()"> loot</button>
 	<p>
 		Chests granted: {{grantedChests}}
 	</p>
@@ -7,9 +6,10 @@
 		Chests still waiting to be granted: {{notGranted}}
 	</p>
 	<p>
-		potential </br>
+		<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
 		<ul>
-			<li ng-repeat="champion in potential"> {{champion.championId}}</li>
+			<li ng-repeat="champion in champions"> {{champion.championName}}, {{champion.highestGrade}} {{champion.championPoints}}</li>
 		</ul>
+
 	</p>
 </div>
