@@ -24,7 +24,6 @@ angular.module('riot.services')
 			var results = champions.map(function(a) {
 				[a.championId];
 			});
-			console.log(results);
 			return results;
 		}
 
