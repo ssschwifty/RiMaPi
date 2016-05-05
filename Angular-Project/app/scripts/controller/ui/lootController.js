@@ -9,9 +9,10 @@ angular.module('riot.controller.ui')
 	$scope.champions = [];
 	var unsortedChampions = [];
 	var sortedChampions = [];
-
-	$scope.$on('$stateChangeSuccess', function() {
-		$scope.getData();
+	$('html').on('region:load', function(region) {
+		setTimeout(function() {
+			$scope.getData();
+		}, 20);
 	});
 
 	$scope.getData = function() {

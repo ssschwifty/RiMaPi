@@ -37,6 +37,7 @@ angular.module('riot.services')
 		},
 		setActiveRegionId: function(_regionId) {
 			activeRegionId = _regionId;
+			$('html').trigger('region:load');
 		},
 		getRegions: function() {
 			return regions;
