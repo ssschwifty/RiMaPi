@@ -1,13 +1,13 @@
 angular.module('riot.controller')
 .controller('RegionController', function($scope, SharedProperties) {
 
-	defineRegion();
+	$scope.activeRegionId = 'na';
+	var header = $('#regionDropdown');
+	header.load(defineRegion());
 
 	$scope.regions = SharedProperties.getRegions();
 	function getGeolocationSuccess(response) {
 		return SharedProperties.getContinent(response.coords.latitude, response.coords.longitude);
-		//.then(function(resolve){console.log(resolve.data);});
-		
 	}
 
 	function getContinent() {
@@ -21,14 +21,12 @@ angular.module('riot.controller')
 	}
 
 	function defineRegion() {
-
 		var activeRId = SharedProperties.getActiveRegionId();
 		if(activeRId == undefined || activeRId == null) {
 			getContinent().then(function(response){
 				var platform = angular.lowercase(response);
 				if(platform != null) {
 					$scope.activeRegionId = platform;
-					console.log($scope.activeRegionId);
 					SharedProperties.setActiveRegionId($scope.activeRegionId);
 					$scope.$apply();
 				} else {
@@ -36,6 +34,8 @@ angular.module('riot.controller')
 					SharedProperties.setActiveRegionId($scope.activeRegionId);
 					$scope.$apply();
 				}
+			}, function() {
+				SharedProperties.setActiveRegionId($scope.activeRegionId);
 			});
 		} else {
 			$scope.activeRegionId = activeRId;
