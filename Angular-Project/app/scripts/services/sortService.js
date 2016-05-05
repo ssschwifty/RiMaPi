@@ -7,7 +7,7 @@ angular.module('riot.services')
 		"B+", "B", "B-",
 		"C+", "C", "C-",
 		"D+", "D", "D-",
-		undefined
+		"N\\A"
 	];
 
 	sortFunction = function(a, b) {
