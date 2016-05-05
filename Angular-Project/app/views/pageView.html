@@ -1,0 +1,21 @@
+<div id="app"  ng-cloak>
+	<div id="header">
+		<div class="headerIcon">
+			<a ui-sref=".home"><button type="button"> pageIcon </button></a>
+		</div>
+		<div class="headerButtons">
+			<a ui-sref=".grade"><button type="button">{{btnGrade}}</button></a>
+			<a ui-sref=".loot"><button type="button">{{btnLoot}}</button></a>
+			<a ui-sref=".score"><button type="button">{{btnScore}}</button></a>
+		</div>
+		<div class="regions">
+			<region-directive/>
+		</div>
+	</div>
+
+	<ui-view [onload=".home"] ng-cloak></ui-view>
+
+	<div id="footer" ng-cloak>
+		<a ui-sref="docu"><button type="button"> {{btnDocu}} </button></a>
+	</div>
+</div>

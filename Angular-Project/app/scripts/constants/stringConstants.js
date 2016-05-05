@@ -4,6 +4,7 @@ angular.module('riot')
 	"btnGrade": 'Grade',
 	"btnLoot": 'Loot',
 	"btnScore": 'Score',
-	"btnDocu": 'Documentation'
+	"btnDocu": 'Documentation',
+	"btnProceedAnyway": "Proceed and enter information later"
 	
 });

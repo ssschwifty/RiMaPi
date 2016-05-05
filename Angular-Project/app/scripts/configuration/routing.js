@@ -1,29 +1,39 @@
 angular.module('riot')
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
-		.state('home', {
-			url: '/home',
-			templateUrl: 'views/homeView.html'
+		.state('splashScreen', {
+			url: '/entry',
+			templateUrl: 'views/splashScreen.html'
 		})
-		.state('grade', {
-			url:'/grade',
-			templateUrl: 'views/gradeView.html',
-			controller: 'GradeController'
+
+		.state('page', {
+			abstract: true,
+			templateUrl: 'views/pageView.html'
 		})
-		.state('score', {
-			url:'/score',
-			templateUrl: 'views/scoreView.html',
-			controller: 'ScoreController'
-		})
-		.state('loot', {
-			url:'/loot',
-			templateUrl: 'views/lootView.html',
-			controller: 'LootController'
-		})
+			.state('page.home', {
+				url: '/home',
+				templateUrl: 'views/homeView.html'
+			})
+			.state('page.grade', {
+				url:'/grade',
+				templateUrl: 'views/gradeView.html',
+				controller: 'GradeController'
+			})
+			.state('page.score', {
+				url:'/score',
+				templateUrl: 'views/scoreView.html',
+				controller: 'ScoreController'
+			})
+			.state('page.loot', {
+				url:'/loot',
+				templateUrl: 'views/lootView.html',
+				controller: 'LootController'
+			})
+
 		.state('docu', {
 			url: '/docu',
 			templateUrl: 'views/docuView.html'
 		});
 
-	$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/entry');
 });

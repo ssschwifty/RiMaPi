@@ -11,7 +11,7 @@
 		<link href="../node_modules/angular/angular-csp.css" rel="stylesheet">
 		<link href="styles/css/main.css" rel="stylesheet">
 	</head>
-	<body ng-app="riot" id="overwriteBootstrap">
+	<body ng-app="riot" ng-controller="MainController">
 
 		<noscript>
 			<style type="text/css">
@@ -21,33 +21,10 @@
 				<img src="sources/image/noJS.jpg" alt="ACTIVATE!">
 			</div>
 		</noscript>
+
+		<ui-view [onload="splashScreen"]></div>
 		
-		<div id="app" ng-controller="MainController" ng-cloak>
-			<div id="header">
-				<div class="headerIcon">
-					<button type="button" ng-click="openWelcomeView()"> pageIcon </button>
-				</div>
-				<div class="headerButtons">
-					<button type="button" ng-click="openGradeView()">{{btnGrade}}</button>
-					<button type="button" ng-click="openLootView()">{{btnLoot}}</button>
-					<button type="button" ng-click="openScoreView()">{{btnScore}}</button>
-				</div>
-				<div class="regions" ng-controller="RegionController">
-					<div class="dropdown">
-						<button type="button" class="dropdown-toggle" id="regionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {{regions[activeRegionId]}} </button>
-						<ul class="dropdown-menu" aria-labelledby="regionDropdown">
-							<li ng-repeat="(id, region) in regions"><a ng-click="regionSelected(id)">{{region}}</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<ui-view [onload="home"] ng-cloak></ui-view>
-
-			<div id="footer" ng-cloak>
-				<button type="button" ng-click="openDocuView()"> {{btnDocu}} </button>
-			</div>
-		</div>
+		
 
 		<!-- node_modules -->	
 		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
@@ -65,13 +42,17 @@
 		
 		<script type="text/javascript" src="scripts/controller/mainController.js"></script>
 		<script type="text/javascript" src="scripts/controller/regionController.js"></script>
-
+		<script type="text/javascript" src="scripts/controller/summonerController.js"></script>
+		<script type="text/javascript" src="scripts/controller/splashScreenController.js"></script>
+		
 		<script type="text/javascript" src="scripts/controller/ui/lootController.js"></script>
 		<script type="text/javascript" src="scripts/controller/ui/gradeController.js"></script>
 		<script type="text/javascript" src="scripts/controller/ui/scoreController.js"></script>
-		
+
 		<script type="text/javascript" src="scripts/services/requestService.js"></script>
 		<script type="text/javascript" src="scripts/services/sharedProperties.js"></script>
 		<script type="text/javascript" src="scripts/services/sortService.js"></script>
+
+		<script type="text/javascript" src="scripts/directives/regionDirective.js"></script>
 	</body>
 </html>
