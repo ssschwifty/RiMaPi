@@ -9,9 +9,9 @@
 	<div id="championsWrapper">
 		<div class="championContainer" ng-repeat="champion in champions">
 			<div id="gradient"></div>
-			<img src = ./sources/image/champions/{{champion.championName}}_0.jpg>
+			<img src = ./sources/image/champions/{{champion.nameId}}_0.jpg>
 			<div class="championText">
-				<div> {{champion.championName}}</div>
+				<div> {{champion.displayName}}</div>
 				<div> Highest Grade: {{champion.highestGrade}} </div>
 			</div>
 		</div>

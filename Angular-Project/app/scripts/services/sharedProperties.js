@@ -20,8 +20,11 @@ angular.module('riot.services')
 			RequestService.getGeolocation(success);
 		},
 
-		getChampionById: function(id) {
-			return champions[id];
+		getChampionNameIdById: function(id) {
+			return champions[id].id;
+		},
+		getChampionDisplayNameById: function(id) {
+			return champions[id].displayName;
 		},
 		getChampions: function() {
 			return champions;
