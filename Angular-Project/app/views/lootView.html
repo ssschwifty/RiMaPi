@@ -1,17 +1,17 @@
 <div id="content">
-	<p>
+	<div>
 		Chests granted: {{grantedChests}}
-	</p>
-	<p>
+	</div>
+	<div>
 		Chests still waiting to be granted: {{notGranted}}
-	</p>
-	<p>
-		<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
-			<div class="championContainer" ng-repeat="champion in champions">
-					<img src = ./sources/image/champions/{{champion.championName}}_0.jpg>
-						<h2>
-							{{champion.championName}}, <br> HGtS: {{champion.highestGrade}}
-						</h2>
-			</div>
-	</p>
+	</div>
+	<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
+	<div id="test">
+		<div class="championContainer" ng-repeat="champion in champions">
+			<img src = ./sources/image/champions/{{champion.championName}}_1.jpg>
+				<h2>
+					{{champion.championName}}, <br> HGtS: {{champion.highestGrade}}
+				</h2>
+		</div>
+	</div>
 </div>

@@ -80,10 +80,11 @@ button:focus {
 }
 #content {
 	box-sizing: border-box;
+	width: 100%;
 	padding-top: 80px;
 	margin-bottom: 80px;
-	margin-left: 150px;
-	margin-right: 150px;
+	padding-left: 150px;
+	padding-right: 150px;
 	z-index: 5;
 }
 #content .sortPotential.off {
@@ -99,20 +100,25 @@ button:focus {
 	border: 1px solid $transparentShadow;
 }
 
-#content > .championContainer {
+#content  .championContainer {
 	margin: 5px;
-	float : left;
+	display: inline-block;
 	width: 150px;
 	position: relative;
 }
 
-#content .championContainer > img {
+#test {
+	width: auto;
+}
+
+
+#content .championContainer  img {
 	position: relative;
 	max-width:100% !important;
 	max-height:100% !important;
 }
 
-#content .championContainer > h2 {
+#content .championContainer  h2 {
    position: absolute;
    bottom: 10px;
    left: 10px;
