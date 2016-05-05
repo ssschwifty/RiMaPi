@@ -36,6 +36,9 @@ angular.module('riot.controller')
 					SharedProperties.setActiveRegionId($scope.activeRegionId);
 					$scope.$apply();
 				}
+			}, function() {
+				$scope.activeRegionId = 'na';
+				SharedProperties.setActiveRegionId($scope.activeRegionId);
 			});
 		} else {
 			$scope.activeRegionId = activeRId;
