@@ -4,7 +4,9 @@
 
 # Files #
 
-/Webservice/apiKey.json
+/Webservice/googleApiKey.json
+/Webservice/riotApiKey.json
+/Webservice/dbAccessData.json
 
 # Compiled source #
 ###################
