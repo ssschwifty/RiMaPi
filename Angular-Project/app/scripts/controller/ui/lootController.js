@@ -23,6 +23,9 @@ angular.module('riot.controller.ui')
 			var potential = [];
 			for (var i = 0; i < testresult.length; i++) {
 				testresult[i].championName = SharedProperties.getChampionById(testresult[i].championId);
+				if(testresult[i].highestGrade == undefined){
+					testresult[i].highestGrade = "N\\A";
+				}
 				if(testresult[i].chestGranted) {
 					granted++;
 				} else {
@@ -62,6 +65,3 @@ angular.module('riot.controller.ui')
 		}
 	}
 });
-
-
-

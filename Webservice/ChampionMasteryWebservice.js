@@ -31,7 +31,6 @@ app.listen(3002, function() {
   console.log('Listening on port 3002!');
   riotApiKey = require('./riotApiKey.json').key;
   googleApiKey = require('./googleApiKey.json').key;
-  console.log(riotApiKey);
 });
 
 //------------------------------------------------------
@@ -41,7 +40,7 @@ app.listen(3002, function() {
 //------------------------------------------------------
 function createRiotApiHttpRequest(subrequest){
   var riotApiRequest = {
-    uri:'https://euw.api.pvp.net' +subrequest + '?' + riotApiKey,
+    uri:'https://euw.api.pvp.net' + subrequest + '?' + riotApiKey,
     json: true
   }
   return riotApiRequest;
@@ -49,7 +48,7 @@ function createRiotApiHttpRequest(subrequest){
 
 function createGoogleApiHttpRequest(subrequest){
   var googleAPIRequest = {
-    uri:'https://maps.googleapis.com/' +subrequest + '&' + googleApiKey,
+    uri:'https://maps.googleapis.com/' + subrequest + '&' + googleApiKey,
     json: true
   }
   return googleAPIRequest;
@@ -61,7 +60,7 @@ function createGoogleApiHttpRequest(subrequest){
 //-------------------------------------------clear-----------
 function GetSummonerId(summonerName, platform){
     return new Promise(function(resolve, reject){
-      var requestOptions = createRiotApiHttpRequest('/api/lol/'+ platform +'/v1.4/summoner/by-name/' + summonerName + '&result_type=country');
+      var requestOptions = createRiotApiHttpRequest('/api/lol/'+ platform +'/v1.4/summoner/by-name/' + summonerName);
       rp(requestOptions).then(function(response){
         resolve((response[summonerName.toString()].id));
       }, function(error){
@@ -79,16 +78,14 @@ function GetSummonerId(summonerName, platform){
   app.get('/GetSummonerContinent/la/:latitude/lo/:longitude', function(req,res) {
     var latitude = req.params.latitude;
     var longitude = req.params.longitude;
-    console.log(latitude);
-    console.log(longitude);
+    if(latitude == 'undefined' || longitude == 'undefined'){
+      res.send(null);
+    }
     var googleAPIRequestOptions = createGoogleApiHttpRequest ('maps/api/geocode/json?latlng=' + latitude + ',' + longitude);
-    console.log(googleAPIRequestOptions);
     rp(googleAPIRequestOptions).then(function(response){
       var countryCode = searchByKey(response.results[0].address_components, 'country');
-      console.log(countryCode);
       dbAccess.getLolContinentCodeLocalFromDB(countryCode,
         function (resp){
-          console.log(resp);
           res.send(resp);
         }
       );
@@ -117,6 +114,9 @@ function GetSummonerId(summonerName, platform){
 app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(req,res) {
   var platform = req.params.playerPlatform;
   var summonerName = req.params.summonerName.toLowerCase();
+  if(summonerName == 'undefined' || platform == 'undefined'){
+    res.send(null);
+  }
   GetSummonerId(summonerName, platform).then(function(id){
     var requestOptions = createRiotApiHttpRequest('/championmastery/location/'+ platform +'1/player/' + id + '/champions');
     rp(requestOptions).then(function(response){

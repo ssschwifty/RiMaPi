@@ -82,8 +82,8 @@ button:focus {
 	box-sizing: border-box;
 	padding-top: 80px;
 	margin-bottom: 80px;
-	margin-left: 25px;
-	margin-right: 25px;
+	margin-left: 150px;
+	margin-right: 150px;
 	z-index: 5;
 }
 #content .sortPotential.off {
@@ -97,6 +97,26 @@ button:focus {
 	color: $textColor;
 	min-width: 60px;
 	border: 1px solid $transparentShadow;
+}
+
+#content > .championContainer {
+	margin: 5px;
+	float : left;
+	width: 150px;
+	position: relative;
+}
+
+#content .championContainer > img {
+	position: relative;
+	max-width:100% !important;
+	max-height:100% !important;
+}
+
+#content .championContainer > h2 {
+   position: absolute;
+   bottom: 10px;
+   left: 10px;
+   width: 100%;
 }
 
 #footer {
