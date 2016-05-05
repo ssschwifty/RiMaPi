@@ -2,16 +2,16 @@ angular.module('riot')
 .constant('Mapping', {
 
 	"regions": {
-		"br": "Brazil",
-		"eun": "EU Nordic & East",
-		"euw": "EU West",
-		"la": "Latin America North",
-		"la": "Latin America South",
 		"na": "North America",
-		"oc": "Oceania",
+		"euw": "EU West",
+		"eun": "EU Nordic & East",
+		"lan": "Latin America North",
+		"las": "Latin America South",
+		"br": "Brazil",
+		"jp": "Japan",
 		"ru": "Russia",
 		"tr": "Turkey",
-		"jp": "Japan",
+		"oc": "Oceania",
 		"kr": "Republic of Korea"
 	},
 
