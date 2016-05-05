@@ -12,8 +12,12 @@ angular.module('riot.services')
 			return RequestService.getAllChampionMasteries(activeRegionId, summoner);
 		},
 		// if no region was found via geolocation it returns null, else it returns the region id
-		getContinent: function() {
-			return RequestService.getContinent;
+		getContinent: function(lat, lng) {
+			var test = RequestService.getContinent(lat, lng);
+			return test;
+		},
+		getGeolocation: function(success) {
+			RequestService.getGeolocation(success);
 		},
 
 		getChampionById: function(id) {
