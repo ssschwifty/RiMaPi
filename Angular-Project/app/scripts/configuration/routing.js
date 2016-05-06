@@ -29,6 +29,10 @@ angular.module('riot')
 				templateUrl: 'views/lootView.html',
 				controller: 'LootController'
 			})
+			.state('page.compare', {
+				url:'/compare',
+				templateUrl: 'views/compareView.html'
+			})
 
 		.state('docu', {
 			url: '/docu',

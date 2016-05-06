@@ -61,7 +61,7 @@ function createGoogleApiHttpRequest(subrequest){
 function GetSummonerId(summonerName, platform){
     return new Promise(function(resolve, reject){
       // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
-      var requestOptions = createRiotApiHttpRequest('/api/lol/'+ platform +'/v1.4/summoner/by-name/' + summonerName.replace(" ", "%20"));
+      var requestOptions = createRiotApiHttpRequest('/api/lol/'+ platform +'/v1.4/summoner/by-name/' + summonerName);
       console.log(requestOptions);
       rp(requestOptions).then(function(response){
         console.log(response);
