@@ -1,5 +1,8 @@
-<div id="regionDropdown" class="dropdown" uib-dropdown>
-	<button type="button" class="dropdown-toggle" id="regionDropdown" uib-dropdown-toggle> {{regions[userData.regionId]}} </button>
+<div class="dropdown regionDropdown" uib-dropdown>
+	<button type="button" class="dropdown-toggle" id="regionDropdown" uib-dropdown-toggle>
+	<img class="regionBtnIcon" ng-src="./sources/icons/{{activeIcon.regionIconState}}.gif"/>
+	<div class="regionBtnText">{{regions[userData.regionId]}}</div>
+	</button>
 	<ul class="dropdown-menu" aria-labelledby="regionDropdown">
 		<li ng-repeat="(id, region) in regions"><a ng-click="regionSelected(id)">{{region}}</a></li>
 	</ul>

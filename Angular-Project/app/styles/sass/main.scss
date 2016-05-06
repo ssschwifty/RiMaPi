@@ -1,10 +1,11 @@
 $defaultFont: 'Roboto Condensed', sans-serif;
 $textColor: #fff;
 $buttonShadow: #f0f0f0;
-$transparentShadow: rgba(133, 121, 121, 0.5);
-$transparentBlack: rgba(0, 0, 0, 1);
+$lightBlack: #0C090A;
+$transparentLightBlack: rgba(12, 9, 10, 0.8);
+$transparentShadow: rgba(133, 121, 121, 0.4);
 $backgroundImage: url('../../sources/image/background.jpg');
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 
 html {
 	background-image: $backgroundImage;
@@ -13,20 +14,26 @@ html {
 	background-color: transparent;
 	margin: 0 !important;
 	padding: 0 !important;
-	width: 100%;
 }
 body {
 	margin: 0;
 	background-color: transparent !important;
-		color: $textColor;
+	min-width: 1200px;
 }
 * {
 	font-family: $defaultFont;
 }
-button:focus {
+button:focus,
+input:focus {
 	outline: 0;
 }
-
+@media (max-width: 1200px) {
+	#header {
+		position: absolute !important;
+		background: transparent !important;
+		background-image: none !important;
+	}
+}
 #header {
 	border-bottom: 1px solid $transparentShadow;
 	background-image: $backgroundImage;
@@ -35,8 +42,9 @@ button:focus {
 	z-index: 1000;
 	height: 60px;
 	width: 100%;
+	min-width: 1200px;
 }
-#header button {
+#header .headerButtons button {
 	background-color: transparent;
 	color: $textColor;
 	border: none;
@@ -53,28 +61,74 @@ button:focus {
 #header .headerInput {
 	float: right;
 }
+#header .headerInput .summoner,
+#header .headerInput .region {
+	clear: all;
+	vertical-align: top;
+}
 #header .headerIcon,
 #header .headerButtons,
 #header .headerInput {
 	display: inline-block;
 }
-
 #header .headerButtons button:hover {
 	background: linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
 	border-radius: 4px;
 }
-
-.dropdown-menu {
+.regionDropdown button {
 	background-color: transparent;
+	color: $textColor;
 	border: 1px solid $transparentShadow;
+	width: 150px;
+	height: 30px;
+}
+#header .regionDropdown .regionBtnIcon {
+	position: absolute;
+	left: 5px;
+	top: 6px;
+}
+.regionDropdown.open button,
+.regionDropdown.open ul {
+	border: 1px solid $textColor;
+}
+.summonerInput:focus {
+	border: 1px solid $textColor;
+}
+.summonerInput {
+	border: solid 1px $transparentShadow;
+	color: $textColor;
+	background: transparent;
+}
+#header .summonerInput {
+	height: 30px;
+	padding: 1px 8px;
+}
+.dropdown-menu {
+	border: 1px solid $transparentShadow;
+	background-color: $transparentLightBlack;
+	right: 0;
+	border-radius: 0;
 }
 .dropdown-menu a {
 	color: white !important;
 }
+.dropdown-menu a:hover {
+	color: $lightBlack !important;
+	background-color: $textColor !important;
+	font-weight: bold;
+}
+#header .regionBtnIcon {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+
+}
+
 
 #content {
 	box-sizing: border-box;
 	width: 100%;
+	min-width: 1200px;
 	padding-top: 80px;
 	margin-bottom: 80px;
 	padding-left: 150px;
@@ -105,7 +159,7 @@ button:focus {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: linear-gradient(to bottom, transparent 60%, $transparentBlack 90%);
+	background: linear-gradient(to bottom, transparent 60%, $lightBlack 90%);
 	z-index: 100;
 }
 #championsWrapper {
@@ -218,52 +272,45 @@ button:focus {
 	width: 50%;
 }
 
-#footer {
-	position: fixed;
-	height: 55px;
-	width: calc(100% - 50px);
-	margin-left: 25px;
-	margin-right: 25px;
-	bottom: 0px;
-	padding-bottom: 25px;
-}
-#footer button {
-	background-color: transparent;
-	color: $textColor;
-	border: none;
-	min-width: 60px;
-	margin-left: auto;
-	margin-right: auto;
-	left: 0;
-	right: 0;
-	height: 30px;
-}
-#footer button {
-	float: right;
-}
 
+#splashScreen {
+	text-align: center;
+	font-size: 16px;
+}
 .inputWrapper {
 	width: 100%;
 	height: 100%;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 .regions, .summoner {
 	display: inline-block;
 }
-.regions button {
-	background-color: transparent;
-	color: $textColor;
-	border: 1px solid $transparentShadow;
-	width: 120px;
+#splashScreen .regions button {
+	width: 200px;
 	margin-left: auto;
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	height: 30px;
+	min-height: 50px;
 }
-#header .summoner input,
-#splashscreen .summoner input {
-	padding: 0 5px;
-	color: #000000;
+#splashScreen .summonerInput {
+	padding: 1px 8px;
+	border: 1px solid $transparentShadow;
+	color: $textColor;
+	background: transparent;
+	height: 50px;
+	width: 200px;
+}
+#splashScreen .regionBtnIcon {
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	left: 10px;
+	top: 16px;
+}
+.summonerInput:focus {
+	border: 1px solid $textColor;
 }
 .smolText a {
 	color: $textColor;

@@ -1,13 +1,19 @@
 <div id="content" ng-cloak>
-	<div id="splashscreen">
+	<div id="splashScreen">
+		<div class="welcomeText">
+		{{welcomeText}}
+		</div>
 		<div class="inputWrapper">
-			<div class="regions">
-				<region-directive/>
-			</div>
-
 			<div class="summoner">
 				<summoner-directive/>
 			</div>
+			<div class="regions">
+				<region-directive/>
+			</div>
+		</div>
+		<div class="enter">
+			<button type="button" class="enterButton">{{btnEnter}}</button>
+
 		</div>
 		<div class="smolText">
 			<a ui-sref="page.home">{{btnProceedAnyway}}</a>

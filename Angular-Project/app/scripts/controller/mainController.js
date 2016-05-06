@@ -8,6 +8,8 @@ angular.module('riot.controller')
 		$scope.btnCompare = StringConstants.btnCompare;
 		$scope.btnDocu = StringConstants.btnDocu;
 		$scope.btnProceedAnyway = StringConstants.btnProceedAnyway;
+		$scope.btnEnter = StringConstants.btnEnter;
+		$scope.welcomeText = StringConstants.welcomeText;
 	}
 	
 	initiate();

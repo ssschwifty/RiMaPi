@@ -6,6 +6,8 @@ angular.module('riot')
 	"btnLevel": 'Level Up!',
 	"btnCompare" :"Compare yourself",
 	"btnDocu": 'Documentation',
-	"btnProceedAnyway": "Proceed and enter information later"
+	"btnProceedAnyway": "Proceed and enter information later",
+	"welcomeText": "Welcome, Summoner!",
+	"btnEnter": "Enter"
 	
 });

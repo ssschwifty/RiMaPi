@@ -3,6 +3,7 @@ angular.module('riot.services')
 
 	var regions = Mapping.regions;
 	var champions = Mapping.champions;
+	var regionIconState = 'gps';
 
 	return {
 		getAllChampionMasteries: function(region, summoner) {
@@ -30,6 +31,7 @@ angular.module('riot.services')
 		},
 		getRegions: function() {
 			return regions;
-		}
+		},
+		regionIconState: regionIconState
 	}
 });
