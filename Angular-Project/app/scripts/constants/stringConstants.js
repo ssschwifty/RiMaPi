@@ -4,7 +4,7 @@ angular.module('riot')
 	"btnGrade": 'Grade',
 	"btnMastery": 'Mystery Chests',
 	"btnLevel": 'Level Up!',
-	"btnCompare" :"Compare yourself",
+	"btnCompare" :"Compare Yourself",
 	"btnDocu": 'Documentation',
 	"btnProceedAnyway": "Proceed and enter information later",
 	"welcomeText": "Welcome, Summoner!",
