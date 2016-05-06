@@ -5,11 +5,17 @@
 		</div>
 		<div class="headerButtons">
 			<a ui-sref=".grade"><button type="button">{{btnGrade}}</button></a>
-			<a ui-sref=".loot"><button type="button">{{btnLoot}}</button></a>
-			<a ui-sref=".score"><button type="button">{{btnScore}}</button></a>
+			<a ui-sref=".loot"><button type="button">{{btnMastery}}</button></a>
+			<a ui-sref=".score"><button type="button">{{btnLevel}}</button></a>
+			<a ui-sref=".score"><button type="button">{{btnCompare}}</button></a>
 		</div>
-		<div class="regions">
-			<region-directive/>
+		<div class="headerInput">
+			<div class="summoner">
+				<summoner-directive/>
+			</div>
+			<div class="regions">
+				<region-directive/>
+			</div>
 		</div>
 	</div>
 

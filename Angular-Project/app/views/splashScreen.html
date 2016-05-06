@@ -1,12 +1,14 @@
 <div id="content">
-	<div class="regions">
-		<region-directive/>
-	</div>
-	</br>
-	<div class="summonerName" ng-controller="SummonerController">
-		<input type="text" ng-model="summonerName"></input>
-	</div>
-	</br>
-	<a ui-sref="page.home"><button>{{btnProceedAnyway}}</button></a>
+	<div class="inputWrapper">
+		<div class="regions">
+			<region-directive/>
+		</div>
 
+		<div class="summoner">
+			<summoner-directive/>
+		</div>
+	</div>
+	<div class="smolText">
+		<a ui-sref="page.home">{{btnProceedAnyway}}</a>
+	</div>
 </div>

@@ -1,4 +1,4 @@
 angular.module('riot.controller')
-.controller('SummonerController', function($scope, SharedProperties) {
-	
+.controller('SummonerController', function($scope, UserData) {
+	$scope.summonerName = UserData.summoner;
 });
