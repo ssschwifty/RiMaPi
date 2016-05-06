@@ -21,7 +21,6 @@ angular.module('riot.controller')
 			$scope.headerButtonsArray[i].active = false;
 		}
 		$scope.headerButtonsArray[index].active = true;
-		console.log($scope.headerButtonsArray);
 	}
 
 	// fixes bootstraps dropdown problem

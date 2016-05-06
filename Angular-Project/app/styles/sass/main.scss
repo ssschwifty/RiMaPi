@@ -54,8 +54,7 @@ input:focus {
 	color: $textColor;
 	border: none;
 	width: 120px;
-	margin-left: auto;
-	margin-right: auto;
+	margin-right: 3px;
 	left: 0;
 	right: 0;
 	height: 34px;
@@ -323,9 +322,6 @@ input:focus {
 }
 #splashScreen .summonerInput {
 	padding: 1px 8px;
-	border: 1px solid $transparentShadow;
-	color: $textColor;
-	background: transparent;
 	height: 50px;
 	width: 200px;
 }
@@ -336,9 +332,7 @@ input:focus {
 	left: 10px;
 	top: 16px;
 }
-.summonerInput:focus {
-	border: 1px solid $textColor;
-}
+
 .smolText a {
 	color: $textColor;
 	font-size: 10px;
