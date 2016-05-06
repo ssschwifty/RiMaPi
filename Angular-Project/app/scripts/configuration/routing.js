@@ -22,7 +22,7 @@ angular.module('riot')
 			.state('page.level', {
 				url:'/level',
 				templateUrl: 'views/levelUpView.html',
-				controller: 'ScoreController'
+				controller: 'LevelController'
 			})
 			.state('page.loot', {
 				url:'/loot',
