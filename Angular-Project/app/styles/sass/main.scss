@@ -2,6 +2,7 @@ $defaultFont: 'Roboto Condensed', sans-serif;
 $textColor: #fff;
 $buttonShadow: #f0f0f0;
 $lightBlack: #0C090A;
+$evenLighterBlack: #262626;
 $transparentLightBlack: rgba(12, 9, 10, 0.8);
 $transparentShadow: rgba(133, 121, 121, 0.4);
 $backgroundImage: url('../../sources/image/background.jpg');
@@ -45,6 +46,9 @@ input:focus {
 	width: 100%;
 	min-width: 1200px;
 }
+#header .headerButtons {
+	margin-left: 20px;
+}
 #header .headerButtons button {
 	background-color: transparent;
 	color: $textColor;
@@ -80,13 +84,18 @@ input:focus {
 	background-color: transparent;
 	color: $textColor;
 	border: 1px solid $transparentShadow;
-	width: 150px;
+	width: 180px;
 	height: 30px;
 }
 #header .regionDropdown .regionBtnIcon {
 	position: absolute;
-	left: 5px;
+	left: 8px;
 	top: 6px;
+}
+#header .regionDropdown .regionBtnText {
+	position: absolute;
+	left: 35px;
+	top: 7px;
 }
 .regionDropdown.open button,
 .regionDropdown.open ul {
@@ -136,20 +145,30 @@ input:focus {
 	padding-right: 150px;
 	z-index: 5;
 }
-#content .sortPotential.off {
-	background-color: transparent;
-	color: $textColor;
-	min-width: 60px;
+#content .sortPotential {
+	position: relative;
+	width: 140px;
+	height: 30px;
 	border: 1px solid $transparentShadow;
+	background-color: transparent;
 }
 #content .sortPotential.on {
-	background-color: $transparentShadow;
-	color: $textColor;
-	min-width: 60px;
-	border: 1px solid $transparentShadow;
+	border: 1px solid $textColor;
+}
+#content .sortPotential img {
+	position: absolute;
+	left: 8px;
+	top: 6px;
+	width: 15px;
+	height: 15px;
+}
+#content .sortPotential .sortBtnText {
+	position: absolute;
+	left: 41px;
+	top: 4px;
 }
 #content  .championContainer {
-	margin: 5px;
+	margin: 5px 10px 5px 0;
 	display: inline-block;
 	width: 150px;
 	position: relative;
@@ -160,7 +179,7 @@ input:focus {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background: linear-gradient(to bottom, transparent 60%, $lightBlack 90%);
+	background: linear-gradient(to bottom, transparent 60%, black 90%);
 	z-index: 100;
 }
 #championsWrapper {

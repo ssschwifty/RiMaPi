@@ -9,8 +9,12 @@
 		<div>
 			Chests still waiting to be granted: {{notGranted}}
 		</div>
-		<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
 	</div>
+	<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> 
+		<img src="./sources/icons/check.png" ng-show="sorted">
+		<img src="./sources/icons/cross.png" ng-hide="sorted">
+		<div class="sortBtnText">Sort by Grade</div>
+	</button>
 	<div id="championsWrapper">
 		<div class="championContainer" ng-repeat="champion in champions">
 			<div id="gradient"></div>
