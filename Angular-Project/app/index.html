@@ -6,10 +6,11 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 		<meta http-equiv="Content-Security-Policy" content="img-src * data:; default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
-		
+
 		<link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 		<link href="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css" rel="stylesheet">
 		<link href="../node_modules/angular/angular-csp.css" rel="stylesheet">
+		<link href="../node_modules/c3/c3.css" rel="stylesheet">
 		<link href="styles/css/main.css" rel="stylesheet">
 	</head>
 	<body ng-app="riot" ng-controller="MainController">
@@ -23,16 +24,18 @@
 			</div>
 		</noscript>
 
-		<ui-view [onload="splashScreen"]></div>
-		
-		
+		<ui-view [onload="splashScreen.html"]></ui-view>
 
-		<!-- node_modules -->	
+
+
+		<!-- node_modules -->
 		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
 		<script type="text/javascript" src="../node_modules/angular/angular.js"></script>
 		<script type="text/javascript" src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+		<script type="text/javascript" src="../node_modules/c3/c3.js"></script>
+		<script type="text/javascript" src="../node_modules/c3/node_modules/d3/d3.js" charset="utf-8"></script>
 
 		<!-- app scripts -->
 		<script type="text/javascript" src="scripts/app.js"></script>
@@ -41,15 +44,16 @@
 
 		<script type="text/javascript" src="scripts/constants/stringConstants.js"></script>
 		<script type="text/javascript" src="scripts/constants/mapping.js"></script>
-		
+
 		<script type="text/javascript" src="scripts/controller/mainController.js"></script>
 		<script type="text/javascript" src="scripts/controller/regionController.js"></script>
 		<script type="text/javascript" src="scripts/controller/summonerController.js"></script>
 		<script type="text/javascript" src="scripts/controller/splashScreenController.js"></script>
-		
+
 		<script type="text/javascript" src="scripts/controller/ui/lootController.js"></script>
 		<script type="text/javascript" src="scripts/controller/ui/gradeController.js"></script>
 		<script type="text/javascript" src="scripts/controller/ui/scoreController.js"></script>
+		<script type="text/javascript" src="scripts/controller/ui/CompareController.js"></script>
 
 		<script type="text/javascript" src="scripts/services/requestService.js"></script>
 		<script type="text/javascript" src="scripts/services/sharedProperties.js"></script>

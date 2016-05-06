@@ -18,10 +18,10 @@ html {
 body {
 	margin: 0;
 	background-color: transparent !important;
+		color: $textColor;
 }
 * {
 	font-family: $defaultFont;
-	color: $textColor;
 }
 button:focus {
 	outline: 0;
@@ -129,33 +129,93 @@ button:focus {
 }
 
 #content .commonDescription{
+	min-width: 450px;
 	width: 100%;
 	min-height: 100px;
 	margin-bottom: 10px;
-	background-color: red;
+}
+
+#content .compare{
+	max-width: 1200px;
 }
 
 #content .playerCompareCell{
+	padding: 10px;
+	min-height: 525px;
+	border-color: black;
+	border-width: 2px;
+	border-radius: 10px;
+	background-color: rgba(63, 63, 63, 0.7);;
+	min-width: 450px;
+	width: 47.5%;
 	display: inline-block;
+	vertical-align: top;
+	text-align: left;
 	margin-left: 0px;
 	margin-right: 0px;
-	width: 47%;
+}
+
+#content .playerHead {
+	display: inline-block;
+	margin: 10px;
+}
+
+#content .strSummonerName{
+	margin: 10px;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+#content .piechart{
+	color: $textColor;
+	text-align: center;
+	width: 250px;
 	height: 300px;
-	background-color: orange;
+}
+#content .c3-legend-item text {
+ 	fill: white;
+}
+
+#content #PlayerHeadRight {
+	position: absolute;
+	right: 10px;
+}
+
+#content #rightPieChart{
+	position: absolute;
+	right: 10px;
+	bottom: 50px;
+	margin-right: 10px;
+}
+
+#content #pieChart2{
+	color: black;
+}
+
+#content .summonerLevel{
+	margin: 10px;
+	font-size: 18px;
+}
+
+#content .playerInfoContainer{
+	display: inline-block;
+}
+
+#content .playerHead > img{
+	margin: 10px;
+	height: 128px;
+	width: 128px;
 }
 
 #content #playerCompareCell2 {
-	margin-left: 5%;
-	margin-right: 0px;
-	background-color: green;
+	float:right;
+	position: relative;
 }
 
 #content .inContentFooter{
 	height: 100px;
-	background-color: blue;
+	margin-left: 25%;
 	width: 50%;
-	margin-left: 24%;
-	margin-right: 24%;
 }
 
 #footer {

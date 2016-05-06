@@ -8,6 +8,9 @@ angular.module('riot.services')
 		getAllChampionMasteries: function(region, summoner) {
 			return RequestService.getAllChampionMasteries(region, summoner);
 		},
+		getComparisonStatistics: function(region, summoner) {
+			return RequestService.getComparisonStatistics(region, summoner);
+		},
 		// if no region was found via geolocation it returns null, else it returns the region id
 		getContinent: function(lat, lng) {
 			return RequestService.getContinent(lat, lng);
