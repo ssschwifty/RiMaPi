@@ -4,10 +4,10 @@
 			<a ui-sref=".home"><button type="button"> pageIcon </button></a>
 		</div>
 		<div class="headerButtons">
-			<a ui-sref=".grade"><button type="button">{{btnGrade}}</button></a>
-			<a ui-sref=".loot"><button type="button">{{btnMastery}}</button></a>
-			<a ui-sref=".score"><button type="button">{{btnLevel}}</button></a>
-			<a ui-sref=".compare"><button type="button">{{btnCompare}}</button></a>
+			<a ui-sref=".grade" ui-sref-opts="{reload: true}"><button type="button">{{btnGrade}}</button></a>
+			<a ui-sref=".loot" ui-sref-opts="{reload: true}"><button type="button">{{btnMastery}}</button></a>
+			<a ui-sref=".score" ui-sref-opts="{reload: true}"><button type="button">{{btnLevel}}</button></a>
+			<a ui-sref=".score" ui-sref-opts="{reload: true}"><button type="button">{{btnCompare}}</button></a>
 		</div>
 		<div class="headerInput">
 			<div class="summoner">
