@@ -60,9 +60,13 @@ function createGoogleApiHttpRequest(subrequest){
 //-------------------------------------------clear-----------
 function GetSummonerId(summonerName, platform){
     return new Promise(function(resolve, reject){
-      var requestOptions = createRiotApiHttpRequest('/api/lol/'+ platform +'/v1.4/summoner/by-name/' + summonerName);
+      // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
+      var requestOptions = createRiotApiHttpRequest('/api/lol/'+ platform +'/v1.4/summoner/by-name/' + summonerName.replace(" ", "%20"));
+      console.log(requestOptions);
       rp(requestOptions).then(function(response){
-        resolve((response[summonerName.toString()].id));
+        console.log(response);
+        // Spaces need to be replaced with nothing, since the api doesnt put spaces into the summonernames
+        resolve((response[summonerName.toString().replace(" ", "")].id));
       }, function(error){
         console.log('Error: GetSummonerId!!!!');
         console.log(error);
@@ -114,6 +118,7 @@ function GetSummonerId(summonerName, platform){
 app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(req,res) {
   var platform = req.params.playerPlatform;
   var summonerName = req.params.summonerName.toLowerCase();
+  console.log(summonerName);
   if(summonerName == 'undefined' || platform == 'undefined'){
     res.send(null);
   }
