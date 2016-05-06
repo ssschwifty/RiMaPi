@@ -61,7 +61,8 @@ input:focus {
 	height: 34px;
 }
 #header .headerButtons button:hover,
-#header .headerButtons button:active {
+#header .headerButtons button:active,
+#header .headerButtons button.active {
 	border: 1px solid $textColor;
 }
 #header .headerIcon {

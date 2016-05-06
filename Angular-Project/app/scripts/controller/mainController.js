@@ -10,6 +10,20 @@ angular.module('riot.controller')
 	
 	initiate();
 
+	$scope.headerButtonsArray = [
+		{name: 'grade', text: 'Grade'},
+		{name: 'loot', text: 'Mystery Chests'},
+		{name: 'level', text: 'Level Up!'},
+		{name: 'compare', text: 'Compare Yourself'}
+	];
+	$scope.setActivePage = function(index) {
+		for (var i = 0; i < $scope.headerButtonsArray.length; i++) {
+			$scope.headerButtonsArray[i].active = false;
+		}
+		$scope.headerButtonsArray[index].active = true;
+		console.log($scope.headerButtonsArray);
+	}
+
 	// fixes bootstraps dropdown problem
 	$(document).ready(function() {
 		$(".dropdown-toggle").dropdown();
