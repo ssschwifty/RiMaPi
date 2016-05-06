@@ -1,5 +1,5 @@
 angular.module('riot.controller.ui')
-.controller('LootController', function($scope, SharedProperties, Sort) {
+.controller('LootController', function($scope, SharedProperties, Sort, UserData) {
 
 	$scope.grantedChests = "";
 	$scope.notGranted = "";
@@ -10,40 +10,45 @@ angular.module('riot.controller.ui')
 	var unsortedChampions = [];
 	var sortedChampions = [];
 	$('html').on('region:load', function(region) {
+		console.log('listener');
 		setTimeout(function() {
 			$scope.getData();
 		}, 20);
 	});
 
 	$scope.getData = function() {
-		SharedProperties.getAllChampionMasteries()
-		.then(function(response) {
-			var testresult = response.data;
-			var granted = 0;
-			var notGranted = 0;
-			var potential = [];
-			for (var i = 0; i < testresult.length; i++) {
-				testresult[i].championName = SharedProperties.getChampionById(testresult[i].championId);
-				if(testresult[i].highestGrade == undefined){
-					testresult[i].highestGrade = "N\\A";
+		console.log(UserData);
+		if(UserData.region != undefined && UserData.summoner != undefined) {
+			SharedProperties.getAllChampionMasteries(UserData.region, UserData.summoner)
+			.then(function(response) {
+				var testresult = response.data;
+				var granted = 0;
+				var notGranted = 0;
+				var potential = [];
+				for (var i = 0; i < testresult.length; i++) {
+					testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
+					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
+					if(testresult[i].highestGrade == undefined){
+						testresult[i].highestGrade = "N\\A";
+					}
+					if(testresult[i].chestGranted) {
+						granted++;
+					} else {
+						potential.push(testresult[i]);
+						notGranted++;
+					}
 				}
-				if(testresult[i].chestGranted) {
-					granted++;
-				} else {
-					potential.push(testresult[i]);
-					notGranted++;
+				for (var i = 0; i < potential.length; i++) {
+					unsortedChampions.push(potential[i]);
+					sortedChampions.push(potential[i]);
 				}
-			}
-			for (var i = 0; i < potential.length; i++) {
-				unsortedChampions.push(potential[i]);
-				sortedChampions.push(potential[i]);
-			}
-			$scope.champions = unsortedChampions;
-			$scope.grantedChests = granted.toString();
-			$scope.notGranted = notGranted.toString();
+				$scope.champions = unsortedChampions;
+				$scope.grantedChests = granted.toString();
+				$scope.notGranted = notGranted.toString();
 
-			$scope.championsShown = true;
-		});
+				$scope.championsShown = true;
+			});
+		}
 	}
 
 	$scope.sortChampions = function() {
@@ -65,4 +70,7 @@ angular.module('riot.controller.ui')
 			}
 		}
 	}
+	$scope.$on('$stateChangeSuccess', function() {
+		$scope.getData();
+	});
 });

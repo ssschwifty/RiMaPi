@@ -1,9 +1,10 @@
 angular.module('riot.controller')
-.controller('RegionController', function($scope, SharedProperties) {
+.controller('RegionController', function($scope, SharedProperties, UserData) {
 
-	$scope.activeRegionId = 'na';
-	var header = $('#regionDropdown');
-	header.load(defineRegion());
+	$scope.userData = UserData;
+
+	// check for region on load
+	$('#regionDropdown').load(defineRegion());
 
 	$scope.regions = SharedProperties.getRegions();
 	function getGeolocationSuccess(response) {
@@ -21,32 +22,25 @@ angular.module('riot.controller')
 	}
 
 	function defineRegion() {
-		var activeRId = SharedProperties.getActiveRegionId();
-		if(activeRId == undefined || activeRId == null) {
+		console.log($scope.userData);
+		if($scope.userData.region == undefined || $scope.userData.region == null) {
 			getContinent().then(function(response){
 				var platform = angular.lowercase(response);
 				if(platform != null) {
-					$scope.activeRegionId = platform;
-					SharedProperties.setActiveRegionId($scope.activeRegionId);
-					$scope.$apply();
+					$scope.userData.region = platform;
+					console.log($scope.userData);
+					$('html').trigger('region:load');
 				} else {
-					$scope.activeRegionId = 'na';
-					SharedProperties.setActiveRegionId($scope.activeRegionId);
-					$scope.$apply();
+					$scope.userData.region = 'na';
+					console.log($scope.userData);
+					$('html').trigger('region:load');
 				}
 			}, function() {
-				SharedProperties.setActiveRegionId($scope.activeRegionId);
+				$scope.userData.region = 'na';
+				console.log($scope.userData);
+				$('html').trigger('region:load');
 			});
-		} else {
-			$scope.activeRegionId = activeRId;
-			SharedProperties.setActiveRegionId($scope.activeRegionId);
 		}
-		
-	}
-
-	$scope.regionSelected = function(_regionId) {
-		$scope.activeRegionId = _regionId;
-		SharedProperties.setActiveRegionId(_regionId);
 	}
 
 });

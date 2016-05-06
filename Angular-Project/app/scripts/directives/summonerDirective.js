@@ -1,5 +1,5 @@
 angular.module('riot.directives')
-.directive('summoner', function() {
+.directive('summonerDirective', function() {
 	return {
 		restrict: 'E',
 		templateUrl: './scripts/directives/summonerView.html',
