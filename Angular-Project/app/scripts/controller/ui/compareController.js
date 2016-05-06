@@ -7,7 +7,7 @@ angular.module('riot.controller.ui')
   $scope.donutLegend;
   var summonerStatisticData;
 
-  $('html').on('region:load', function(region) {
+  $('html').on('region:change', function(region) {
 		setTimeout(function() {
 			$scope.getData();
 		}, 20);

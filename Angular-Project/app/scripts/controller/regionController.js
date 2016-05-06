@@ -31,18 +31,18 @@ angular.module('riot.controller')
 					$scope.userData.regionId = platform;
 					$scope.activeIcon.regionIconState = "earth";
 					$scope.$apply();
-					$('html').trigger('region:load');
+					$('html').trigger('region:change');
 				} else {
 					$scope.userData.regionId = 'na';
 					$scope.activeIcon.regionIconState = "earth";
 					$scope.$apply();
-					$('html').trigger('region:load');
+					$('html').trigger('region:change');
 				}
 			}, function() {
 				$scope.userData.regionId = 'na';
 				$scope.activeIcon.regionIconState = "earth";
 				$scope.$apply();
-				$('html').trigger('region:load');
+				$('html').trigger('region:change');
 			});
 		}
 	}
