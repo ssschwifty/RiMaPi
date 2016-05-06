@@ -42,4 +42,7 @@ angular.module('riot.controller')
 		}
 	}
 
+	$scope.regionSelected = function(id) {
+		$scope.userData.regionId = id;
+	}
 });
