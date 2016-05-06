@@ -45,6 +45,7 @@ angular.module('riot.controller.ui')
 				}
 				unsortedChampions = [];
 				sortedChampions = [];
+				$scope.sorted = false;
 				for (var i = 0; i < potential.length; i++) {
 					unsortedChampions.push(potential[i]);
 					sortedChampions.push(potential[i]);
