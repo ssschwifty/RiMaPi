@@ -3,6 +3,7 @@ angular.module('riot.controller')
 
 	$scope.userData = UserData;
 	$scope.regions = SharedProperties.getRegions();
+	$scope.activeIcon = SharedProperties;
 
 	// check for region on load
 	$('#regionDropdown').load(defineRegion());
@@ -28,15 +29,18 @@ angular.module('riot.controller')
 				var platform = angular.lowercase(response);
 				if(platform != null) {
 					$scope.userData.regionId = platform;
+					$scope.activeIcon.regionIconState = "earth";
 					$scope.$apply();
 					$('html').trigger('region:load');
 				} else {
 					$scope.userData.regionId = 'na';
+					$scope.activeIcon.regionIconState = "earth";
 					$scope.$apply();
 					$('html').trigger('region:load');
 				}
 			}, function() {
 				$scope.userData.regionId = 'na';
+				$scope.activeIcon.regionIconState = "earth";
 				$scope.$apply();
 				$('html').trigger('region:load');
 			});
