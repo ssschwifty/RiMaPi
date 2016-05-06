@@ -5,7 +5,7 @@ $lightBlack: #0C090A;
 $transparentLightBlack: rgba(12, 9, 10, 0.8);
 $transparentShadow: rgba(133, 121, 121, 0.4);
 $backgroundImage: url('../../sources/image/background.jpg');
-@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
 
 html {
 	background-image: $backgroundImage;
@@ -91,7 +91,11 @@ input:focus {
 .dropdown-menu a {
 	color: white !important;
 }
-
+.dropdown-menu a:hover {
+	color: $lightBlack !important;
+	background-color: $textColor !important;
+	font-weight: bold;
+}
 .regionBtnIcon {
 	width: 18px;
 	height: 18px;
@@ -244,9 +248,12 @@ input:focus {
 	width: 200px;
 }
 #splashScreen .summonerInput:focus {
-	border: 1px solid orange;
+	border: 1px solid $textColor;
 }
-
+#regionDropdown.open button,
+#regionDropdown.open ul {
+	border: 1px solid $textColor;
+}
 #splashScreen .dropdown-menu {
 	background-color: $transparentLightBlack;
 	right: 0;
