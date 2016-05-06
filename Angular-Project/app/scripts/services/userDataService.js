@@ -1,6 +1,6 @@
 angular.module('riot.services')
 .service('UserData', function() {
-	var summoner = "2CupsFlour";
+	var summoner;
 	var regionId;
 	return {
 		summoner: summoner,
