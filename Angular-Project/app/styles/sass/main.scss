@@ -40,7 +40,7 @@ input:focus {
 	border-bottom: 1px solid $transparentShadow;
 	background-image: $backgroundImage;
 	position: fixed;
-	padding: 25px;
+	padding: 20px 25px 5px 25px;
 	z-index: 1000;
 	height: 60px;
 	width: 100%;
@@ -58,7 +58,11 @@ input:focus {
 	margin-right: auto;
 	left: 0;
 	right: 0;
-	height: 30px;
+	height: 34px;
+}
+#header .headerButtons button:hover,
+#header .headerButtons button:active {
+	border: 1px solid $textColor;
 }
 #header .headerIcon {
 	float: left;
@@ -76,10 +80,7 @@ input:focus {
 #header .headerInput {
 	display: inline-block;
 }
-#header .headerButtons button:hover {
-	background: linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
-	border-radius: 4px;
-}
+
 .regionDropdown button {
 	background-color: transparent;
 	color: $textColor;
