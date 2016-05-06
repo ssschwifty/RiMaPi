@@ -14,13 +14,9 @@ angular.module('riot.controller.ui')
 	});
 
 	$scope.getData = function() {
-    console.log(UserData.regionId);
-    console.log(UserData.summoner);
 		if(UserData.regionId != undefined && UserData.summoner != undefined) {
-      console.log('hallo');
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.summoner)
 			.then(function(response) {
-        console.log(response);
         $scope.playerAName = response.data.Name;
         $scope.playerASummonerLevel = 'Summoner Level: ' + response.data.SummonerLevel;
         $scope.playerAImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
@@ -29,8 +25,6 @@ angular.module('riot.controller.ui')
         generatePieChart(chart, response);
         generatePieChart(chart2, response);
         $scope.donutLegend = "Highest grades earned this Season";
-
-        console.log($scope.playerAImage);
       });
     }
   }
