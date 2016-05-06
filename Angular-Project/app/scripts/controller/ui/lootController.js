@@ -61,7 +61,9 @@ angular.module('riot.controller.ui')
 
 	$scope.sortChampions = function() {
 		$scope.sorted = !$scope.sorted;
-		Sort.sortByGradeThenChampionPoints(sortedChampions);
+		if($scope.sorted) {
+			Sort.sortByGradeThenChampionPoints(sortedChampions);
+		}
 		setChampions($scope.sorted);
 	}
 
