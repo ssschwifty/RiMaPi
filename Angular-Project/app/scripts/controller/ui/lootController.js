@@ -23,7 +23,7 @@ angular.module('riot.controller.ui')
 	});
 
 	$scope.getData = function() {
-		if(UserData.regionId != undefined && UserData.summoner != undefined) {
+		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {
 				var testresult = response.data;
