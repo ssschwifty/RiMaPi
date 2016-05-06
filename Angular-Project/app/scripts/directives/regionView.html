@@ -1,5 +1,5 @@
 <div id="regionDropdown" class="dropdown" uib-dropdown>
-	<button type="button" class="dropdown-toggle" id="regionDropdown" uib-dropdown-toggle> {{regions[activeRegionId]}} </button>
+	<button type="button" class="dropdown-toggle" id="regionDropdown" uib-dropdown-toggle> {{regions[userData.regionId]}} </button>
 	<ul class="dropdown-menu" aria-labelledby="regionDropdown">
 		<li ng-repeat="(id, region) in regions"><a ng-click="regionSelected(id)">{{region}}</a></li>
 	</ul>

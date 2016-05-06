@@ -6,12 +6,14 @@
 		Chests still waiting to be granted: {{notGranted}}
 	</div>
 	<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
-	<div id="test">
+	<div id="championsWrapper">
 		<div class="championContainer" ng-repeat="champion in champions">
-			<img src = ./sources/image/champions/{{champion.championName}}_1.jpg>
-				<h2>
-					{{champion.championName}}, <br> HGtS: {{champion.highestGrade}}
-				</h2>
+			<div id="gradient"></div>
+			<img src ="./sources/image/champions/{{champion.nameId}}_0.jpg">
+			<div class="championText">
+				<div> {{champion.displayName}}</div>
+				<div> Highest Grade: {{champion.highestGrade}} </div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -2,6 +2,7 @@ $defaultFont: 'Roboto Condensed', sans-serif;
 $textColor: #fff;
 $buttonShadow: #f0f0f0;
 $transparentShadow: rgba(133, 121, 121, 0.5);
+$transparentBlack: rgba(0, 0, 0, 1);
 $backgroundImage: url('../../sources/image/background.jpg');
 @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 
@@ -12,7 +13,7 @@ html {
 	background-color: transparent;
 	margin: 0 !important;
 	padding: 0 !important;
-	width: 100% ;
+	width: 100%;
 }
 body {
 	margin: 0;
@@ -30,19 +31,16 @@ button:focus {
 	border-bottom: 1px solid $transparentShadow;
 	background-image: $backgroundImage;
 	position: fixed;
-	padding-top: 25px;
-	z-index: 10;
+	padding: 25px;
+	z-index: 1000;
 	height: 55px;
-	width: calc(100% - 50px);
-	margin-left: 25px;
-	margin-right: 25px;
+	width: 100%;
 }
 #header button {
 	background-color: transparent;
 	color: $textColor;
 	border: none;
-	min-width: 60px;
-	width: 32%;
+	width: 120px;
 	margin-left: auto;
 	margin-right: auto;
 	left: 0;
@@ -50,24 +48,22 @@ button:focus {
 	height: 30px;
 }
 #header .headerIcon {
-	width: 15%;
+	float: left;
 }
 #header .headerButtons {
-	width: 69%;
+
 }
-#header .regions {
-	width: 15%;
+#header .headerInput {
+	float: right;
 }
 #header .headerIcon,
 #header .headerButtons,
-#header .regions {
+#header .headerInput {
 	display: inline-block;
 }
-#header .regions button {
-	width: 100%;
-}
+
 #header .headerButtons button:hover {
-	background:linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
+	background: linear-gradient(to bottom, transparent 50%, $transparentShadow 100%);
 	border-radius: 4px;
 }
 
@@ -78,6 +74,7 @@ button:focus {
 .dropdown-menu a {
 	color: white !important;
 }
+
 #content {
 	box-sizing: border-box;
 	width: 100%;
@@ -99,30 +96,39 @@ button:focus {
 	min-width: 60px;
 	border: 1px solid $transparentShadow;
 }
-
 #content  .championContainer {
 	margin: 5px;
 	display: inline-block;
 	width: 150px;
 	position: relative;
 }
-
-#test {
-	width: auto;
+#gradient {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: linear-gradient(to bottom, transparent 10%, $transparentBlack 90%);
+	z-index: 100;
 }
-
-
-#content .championContainer  img {
+#championsWrapper {
+	margin-left: auto;
+	margin-right: auto;
+}
+	
+#content .championContainer img {
 	position: relative;
-	max-width:100% !important;
-	max-height:100% !important;
+	max-width: 100% !important;
+	max-height: 100% !important;
+	z-index: 99;
 }
-
-#content .championContainer  h2 {
-   position: absolute;
-   bottom: 10px;
-   left: 10px;
-   width: 100%;
+#content .championContainer .championText {
+	position: absolute;
+	text-align: right;
+	bottom: 10px;
+	left: 10px;
+	width: 130px;
+	z-index: 101;
 }
 
 #footer {
@@ -147,4 +153,30 @@ button:focus {
 }
 #footer button {
 	float: right;
+}
+
+.inputWrapper {
+	width: 100%;
+	height: 100%;
+}
+.regions, .summoner {
+	display: inline-block;
+}
+.regions button {
+	background-color: transparent;
+	color: $textColor;
+	border: 1px solid $transparentShadow;
+	width: 120px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	height: 30px;
+}
+.regions .summoner {
+	color: #000;
+}
+.smolText a {
+	color: $textColor;
+	font-size: 10px;
 }
