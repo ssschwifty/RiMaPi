@@ -10,19 +10,19 @@ angular.module('riot.controller.ui')
 	var unsortedChampions = [];
 	var sortedChampions = [];
 	
-	$('html').on('region:load', function(region) {
+	$('html').on('region:change', function(region) {
 		setTimeout(function() {
-			$scope.getData();
+			getData();
 		}, 20);
 	});
 	$('html').on('summoner:change', function() {
-		$scope.getData();
+		getData();
 	});
 	$scope.$on('$stateChangeSuccess', function() {
-		$scope.getData();
+		getData();
 	});
 
-	$scope.getData = function() {
+	function getData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {
