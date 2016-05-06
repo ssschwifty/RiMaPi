@@ -18,8 +18,11 @@ html {
 body {
 	margin: 0;
 	background-color: transparent !important;
+<<<<<<< HEAD
+		color: $textColor;
+=======
 	min-width: 1200px;
-	color: $textColor;
+>>>>>>> master
 }
 * {
 	font-family: $defaultFont;
@@ -195,7 +198,6 @@ input:focus {
 }
 
 #content .playerCompareCell{
-	position: relative;
 	padding: 10px;
 	min-height: 525px;
 	border-color: black;
@@ -225,8 +227,8 @@ input:focus {
 #content .piechart{
 	color: $textColor;
 	text-align: center;
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 300px;
 }
 #content .c3-legend-item text {
  	fill: white;
@@ -237,16 +239,11 @@ input:focus {
 	right: 10px;
 }
 
-#content #leftPieChart{
-	position: absolute;
-	left: 10px;
-	bottom: 150px;
-}
-
 #content #rightPieChart{
 	position: absolute;
 	right: 10px;
-	bottom: 150px;
+	bottom: 50px;
+	margin-right: 10px;
 }
 
 #content #pieChart2{
@@ -270,6 +267,7 @@ input:focus {
 
 #content #playerCompareCell2 {
 	float:right;
+	position: relative;
 }
 
 #content .inContentFooter{

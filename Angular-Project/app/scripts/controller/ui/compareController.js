@@ -4,6 +4,7 @@ angular.module('riot.controller.ui')
   $scope.playerAImage;
   $scope.playerASummonerLevel;
   $scope.playerAName;
+  $scope.donutLegend;
   var summonerStatisticData;
 
   $('html').on('region:load', function(region) {
@@ -27,7 +28,7 @@ angular.module('riot.controller.ui')
         var chart2 = 'pieChart2';
         generatePieChart(chart, response);
         generatePieChart(chart2, response);
-
+        $scope.donutLegend = "Highest grades earned this Season";
 
         console.log($scope.playerAImage);
       });
