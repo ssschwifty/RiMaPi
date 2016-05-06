@@ -4,8 +4,11 @@
 			<a ui-sref=".home"><button type="button"> pageIcon </button></a>
 		</div>
 		<div class="headerButtons" id="headerButtons">
-			<a ng-repeat="button in headerButtonsArray" ng-click="setActivePage($index)" ui-sref=".{{button.name}}" ui-sref-opts="{reload: true}"><button ng-class="button.active ? 'active' : 'inactive'"  type="button">{{button.text}}</button></a>
-
+			<a ng-repeat="button in headerButtonsArray" ng-click="setActivePage($index)" ui-sref=".{{button.name}}" ui-sref-opts="{reload: true}">
+				<button ng-class="button.active ? 'active' : 'inactive'"  type="button">
+					{{button.text}}
+				</button>
+			</a>
 			<a ui-sref="docu"><button type="button" class="docuBtn"> {{btnDocu}} </button></a>
 		</div>
 		<div class="headerInput">
