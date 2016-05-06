@@ -1,15 +1,20 @@
 <div id="content">
-	<div>
-		Chests granted: {{grantedChests}}
+  <div class="commonDescription">
+    <h2> Gotta collect them all! </h2>
+    You think its annoying that you have to hover every single champion in your champion screen to find out, with what champion you havent earned a mistery chest yet?
+    No problem just have a look at the hazzle free champions list with champions whose chest you havent earned yet.
+		<div>
+			Chests granted: {{grantedChests}}
+		</div>
+		<div>
+			Chests still waiting to be granted: {{notGranted}}
+		</div>
+		<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
 	</div>
-	<div>
-		Chests still waiting to be granted: {{notGranted}}
-	</div>
-	<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> sort </button>
 	<div id="championsWrapper">
 		<div class="championContainer" ng-repeat="champion in champions">
 			<div id="gradient"></div>
-			<img src ="./sources/image/champions/{{champion.nameId}}_0.jpg">
+			<img ng-src ="./sources/image/champions/{{champion.nameId}}_0.jpg">
 			<div class="championText">
 				<div> {{champion.displayName}}</div>
 				<div> Highest Grade: {{champion.highestGrade}} </div>
