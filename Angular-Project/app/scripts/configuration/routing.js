@@ -31,7 +31,8 @@ angular.module('riot')
 			})
 			.state('page.compare', {
 				url:'/compare',
-				templateUrl: 'views/compareView.html'
+				templateUrl: 'views/compareView.html',
+				controller: 'CompareController'
 			})
 
 		.state('docu', {

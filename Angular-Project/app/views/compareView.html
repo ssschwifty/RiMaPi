@@ -1,19 +1,51 @@
 <div id="content">
-  <div class="commonDescription">
-      <h2> Be proud of your skills! </h2>
-      You're darn good with some champions and think other people should also know about it?
-      Compare youreself to a friend and send them an Email with youre skills! Challenge
-      them, because they have more mastery levels or brag about your clear superiority.
-  </div>
-  <div>
-    <div class="playerCompareCell">
-      Spieler A
+  <div class="compare">
+    <div class="commonDescription">
+        <h2> Be proud of your skills! </h2>
+        You're darn good with some champions and think other people should also know about it?
+        Compare youreself to a friend and send them an Email with youre skills! Challenge
+        them, because they have more mastery levels or brag about your clear superiority.
+        <br>
+        <input ng-model="playerToCompareWithName">
+        <button> Compare! </button>
     </div>
-    <div class="playerCompareCell" id="playerCompareCell2">
-      Spieler B
+    <div>
+      <div class="playerCompareCell">
+        <div class="playerHead">
+          <div class="playerInfoContainer">
+            <img ng-src="{{playerAImage}}"></img>
+          </div>
+          <div class="playerInfoContainer">
+            <div class="strSummonerName">{{playerAName}}</div>
+            <div class="summonerLevel">{{playerASummonerLevel}} </div>
+          </div>
+        </div>
+        <div class="piechart" id="leftPieChart">
+          <div id="pieChart1"></div>
+          <div> {{donutLegend}} </div>
+        </div>
+      </div>
+
+      <div class="playerCompareCell" id="playerCompareCell2">
+          <div class="playerHead" id="PlayerHeadRight">
+            <div class="playerInfoContainer">
+              <div class="strSummonerName">{{playerAName}}</div>
+              <div class="summonerLevel">{{playerASummonerLevel}} </div>
+            </div>
+            <div class="playerInfoContainer">
+              <img ng-src="{{playerAImage}}"></img>
+            </div>
+          </div>
+        <div class="piechart" id="rightPieChart">
+          <div id="pieChart2"></div>
+          <div> {{donutLegend}} </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="inContentFooter">
-    Email sende Dingsi
+    <div class="inContentFooter">
+      <input ng-model="playerToCompareWithName">
+      <button> Compare! </button>
+      Email sende Dingsi {{playerToCompareWithName}}
+    </div>
   </div>
 </div>
