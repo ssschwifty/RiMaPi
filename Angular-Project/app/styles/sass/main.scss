@@ -33,7 +33,7 @@ button:focus {
 	position: fixed;
 	padding: 25px;
 	z-index: 1000;
-	height: 55px;
+	height: 60px;
 	width: 100%;
 }
 #header button {
@@ -49,9 +49,6 @@ button:focus {
 }
 #header .headerIcon {
 	float: left;
-}
-#header .headerButtons {
-
 }
 #header .headerInput {
 	float: right;
@@ -173,8 +170,10 @@ button:focus {
 	right: 0;
 	height: 30px;
 }
-.regions .summoner {
-	color: #000;
+#header .summoner input,
+#splashscreen .summoner input {
+	padding: 0 5px;
+	color: #000000;
 }
 .smolText a {
 	color: $textColor;
