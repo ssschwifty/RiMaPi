@@ -23,6 +23,7 @@ angular.module('riot.controller')
 
 	function defineRegion() {
 		if($scope.userData.regionId == undefined || $scope.userData.regionId == null) {
+			$scope.userData.regionId = 'na';
 			getContinent().then(function(response){
 				var platform = angular.lowercase(response);
 				if(platform != null) {
