@@ -5,14 +5,21 @@ angular.module('riot.controller.ui')
 	$scope.notGranted = "";
 	$scope.championsShown = false;
 	$scope.shownPotential;
-	$scope.sorted;
+	$scope.sorted = false;;
 	$scope.champions = [];
 	var unsortedChampions = [];
 	var sortedChampions = [];
+	
 	$('html').on('region:load', function(region) {
 		setTimeout(function() {
 			$scope.getData();
 		}, 20);
+	});
+	$('html').on('summoner:change', function() {
+		$scope.getData();
+	});
+	$scope.$on('$stateChangeSuccess', function() {
+		$scope.getData();
 	});
 
 	$scope.getData = function() {
@@ -36,6 +43,8 @@ angular.module('riot.controller.ui')
 						notGranted++;
 					}
 				}
+				unsortedChampions = [];
+				sortedChampions = [];
 				for (var i = 0; i < potential.length; i++) {
 					unsortedChampions.push(potential[i]);
 					sortedChampions.push(potential[i]);
@@ -68,7 +77,4 @@ angular.module('riot.controller.ui')
 			}
 		}
 	}
-	$scope.$on('$stateChangeSuccess', function() {
-		$scope.getData();
-	});
 });
