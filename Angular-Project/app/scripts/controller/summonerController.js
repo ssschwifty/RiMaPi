@@ -3,7 +3,7 @@ angular.module('riot.controller')
 	$scope.userData = UserData;
 	$('#summonerInput').on('keypress', function(e) {
 		if(e.keyCode == 13) {
-			console.log('trigger enter');
+			$('#summonerInput').blur();
 			$('html').trigger('summoner:change');
 		}
 	})
