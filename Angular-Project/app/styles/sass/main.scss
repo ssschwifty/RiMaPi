@@ -28,6 +28,9 @@ body {
 .commonDescription:hover {
 	cursor: default;
 }
+.commonDescription a:hover {
+	cursor: pointer;
+}
 button:focus,
 input:focus {
 	outline: 0;
