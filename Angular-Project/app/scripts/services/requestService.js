@@ -16,9 +16,11 @@ angular.module('riot.services')
 		getGeolocation: function(success) {
 			navigator.geolocation.getCurrentPosition(success);
 		},
-
 		getComparisonStatistics: function(region, summoner){
 			return $http.get(baseUrl + 'GetComparissonStatistic/p/' + region + '/u/' + summoner);
+		},
+		sendEmail: function(address) {
+			return $http.get(baseUrl + '');
 		}
 	}
 

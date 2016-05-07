@@ -6,8 +6,15 @@
 			Compare yourself to friends and send them Emails about your skills! Challenge
 			them, because they have a higher mastery level or brag about your clear superiority.
 			<br>
-			<input type="text" novalidate id="compareSummonerInput" placeholder="Compare with" ng-model="userData.compareSummoner">
-			<button ng-click="getBData()"> Compare! </button>
+			<div>
+				<input type="text" novalidate id="compareSummonerInput" placeholder="Compare with" ng-model="userData.compareSummoner">
+				<button ng-click="getBData()"> Compare! </button>
+			</div>
+			<div class="email">
+				<input ng-model="email">
+				<button ng-click="sendEmail(email)"> Send an Email! </button>
+				Email sende Dingsi {{playerBName}}
+			</div>
 		</div>
 		<div class="summoners">
 			<div class="playerCompareCell">
@@ -16,14 +23,14 @@
 						<img ng-src="{{playerAImage}}"></img>
 						<div>
 							<div class="strSummonerName">{{playerAName}}</div>
-							<div class="summonerLevel"> Summoner Level {{playerASummonerLevel}} </div>
+							<div class="summonerLevel">{{playerASummonerLevel}} </div>
 						</div>
 					</div>
 				</div>
 				<div class="charts">
 					<div class="piechart" id="leftPieChart">
 						<div id="pieChart1"></div>
-						<div class="donutLegend"> {{donutLegend}} </div>
+						<div class="donutLegend"> {{donutALegend}} </div>
 					</div>
 					<div class="barChart" id="leftBarChart">
 						<div id="lbarChart1"> </div>
@@ -52,14 +59,14 @@
 					<div class="playerInfoContainer">
 						<div>
 							<div class="strSummonerName">{{playerBName}}</div>
-							<div class="summonerLevel"> Summoner Level {{playerBSummonerLevel}} </div>
+							<div class="summonerLevel">{{playerBSummonerLevel}} </div>
 						</div>
 						<img ng-src="{{playerBImage}}"></img>
 					</div>
 				</div>
 				<div class="piechart" id="rightPieChart">
 					<div id="pieChart2"></div>
-					<div class="donutLegend"> {{donutLegend}} </div>
+					<div class="donutLegend"> {{donutBLegend}} </div>
 				</div>
 				<div class="barChart" id="rightBarChart">
 					<div id="rbarChart2"> </div>
@@ -81,11 +88,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="inContentFooter">
-			<input ng-model="playerToCompareWithName">
-			<button> Compare! </button>
-			Email sende Dingsi {{playerToCompareWithName}}
 		</div>
 	</div>
 </div>
