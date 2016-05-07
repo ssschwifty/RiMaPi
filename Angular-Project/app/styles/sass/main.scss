@@ -108,9 +108,6 @@ input:focus {
 .regionDropdown.open ul {
 	border: 1px solid $textColor;
 }
-.summonerInput:focus {
-	border: 1px solid $textColor;
-}
 .summonerInput {
 	border: solid 1px $transparentShadow;
 	color: $textColor;
@@ -139,7 +136,6 @@ input:focus {
 	width: 18px;
 	height: 18px;
 	position: absolute;
-
 }
 
 
@@ -209,25 +205,26 @@ input:focus {
 	width: 130px;
 	z-index: 101;
 }
-#content .commonDescription{
+#content .commonDescription {
 	width: 100%;
 	min-height: 100px;
 	margin-bottom: 10px;
 }
-#content .compare{
-	max-width: 1200px;
+#content .compare .summoners {
 	min-width: 1030px;
+	width: 100%;
+	text-align: center;
 }
-#content .playerCompareCell{
+#content .playerCompareCell {
 	box-sizing: border-box;
 	position: relative;
 	padding: 10px;
-	min-height: 750px;
-	border: 1px solid $transparentShadow;
+	height: 830px;
+	border: 1px solid $textColor;
 	background-color: $transparentLightBlack;
 	min-width: 510px;
 	max-width: 650px;
-	width: 49%;
+
 	display: inline-block;
 	vertical-align: top;
 	text-align: left;
@@ -249,21 +246,28 @@ input:focus {
 	position: absolute;
 	right: 10px;
 }
-#content .piechart{
+#content .piechart {
 	color: $lightBlack;
 	text-align: center;
 	width: 200px;
 	height: 200px;
 }
-#content .c3-legend-item text, .c3 .c3-axis-x text, .c3 .c3-axis-y text {
+.piechart .donutLegend {
+	color: $textColor;
+}
+#content .c3-legend-item text, 
+.c3 .c3-axis-y text {
  	fill: white;
 }
-#content #leftPieChart{
+.c3 .c3-axis-x text {
+	display: none;
+}
+#content #leftPieChart {
 	position: absolute;
 	left: 10px;
 	top: 150px;
 }
-#content #rightPieChart{
+#content #rightPieChart {
 	position: absolute;
 	right: 10px;
 	top: 150px;
@@ -289,46 +293,48 @@ input:focus {
 	width: 120px;
 	margin: 10px;
 }
-#content #rightBarChart{
+#content #rightBarChart {
 	position: relative;
 	position: absolute;
 	left: 10px;
 	top: 167px;
 }
-#content #leftBarChart{
+#content #leftBarChart {
 	position: relative;
 	position: absolute;
 	right: 10px;
 	top: 167px;
 }
-#content .topChampions{
+#content .topChampions {
 	position: absolute;
 	left: 10px;
-	bottom: 220px;
+	bottom: 5px;
 }
-#content .compareSeperator{
+#content .compareSeperator {
 	width: 100%;
 	height: 1px;
 	background-color: $textColor;
 	position: absolute;
-	bottom: 247.5px;
+	bottom: 320px;
+	left: 0;
 }
-#content .summonerLevel{
+#content .summonerLevel {
 	margin: 10px;
 	font-size: 18px;
 }
-#content .playerInfoContainer > div{
+#content .playerInfoContainer > div {
 	display: inline-block;
 }
-#content .playerHead > img{
+#playerCompareCell2 > div {
+	text-align: right;
+}
+#content .playerHead > img {
 	margin: 10px;
 	height: 128px;
 	width: 128px;
 }
-#content #playerCompareCell2 {
-	float:right;
-}
-#content .inContentFooter{
+
+#content .inContentFooter {
 	height: 100px;
 	margin-left: 25%;
 	width: 50%;
@@ -363,13 +369,13 @@ input:focus {
 	height: 40px;
 	background: transparent;
 }
-#splashScreen .enterButton:active,
-#splashScreen .enterButton:hover,
-.inputWrapper button:hover,
-.inputWrapper input:hover,
-.headerInput button:hover,
-.headerInput input:hover {
-	border: 1px solid $textColor;
+#compareSummonerInput {
+	border: solid 1px $transparentShadow;
+	color: $textColor;
+	background: transparent;
+	padding: 1px 8px;
+	height: 30px;
+	width: 150px;
 }
 .inputWrapper {
 	width: 100%;
@@ -411,4 +417,27 @@ input:focus {
 }
 #splashScreen .enter a:hover {
 	text-decoration: none;
+}
+
+#splashScreen .inputWrapper button:hover,
+#splashScreen .inputWrapper button:active,
+#splashScreen .inputWrapper input:hover,
+#splashScreen .inputWrapper input:focus,
+#header .headerInput button:hover,
+#header .headerInput button:active,
+#header .headerInput input:hover,
+#header .headerInput input:focus,
+#content .commonDescription button:hover,
+#content .commonDescription button:active,
+#content .commonDescription input:hover,
+#content .commonDescription input:focus {
+	border: 1px solid $textColor;
+}
+.compare .visible {
+	position: static;
+}
+.compare .hidden {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
 }
