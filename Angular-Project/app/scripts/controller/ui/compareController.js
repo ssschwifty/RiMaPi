@@ -94,10 +94,10 @@ angular.module('riot.controller.ui')
 	function populateLeftChart(response) {
 		if(summonerBResponse != undefined) {
 			highestScore = Math.max(response.data.TotalScore, summonerBResponse.data.TotalScore);
-			highestLevel = Math.max(response.data.TotalLevel, summonerBResponse.data.TotalLevel);
+			highestLevel = Math.max(response.data.TotalLevels, summonerBResponse.data.TotalLevels);
 		} else {
 			highestScore = response.data.TotalScore;
-			highestLevel = response.data.TotalLevel;
+			highestLevel = response.data.TotalLevels;
 		}
 		
 		var scoreDescription = "Total Mastery Score";
@@ -113,12 +113,12 @@ angular.module('riot.controller.ui')
 	}
 
 	function populateRightChart(response) {
-		if(summonerAResponse != undefined) {
+		if(summonerAResponse != undefined) {	
 			highestScore = Math.max(summonerAResponse.data.TotalScore, response.data.TotalScore);
-			highestLevel = Math.max(summonerAResponse.data.TotalLevel, response.data.TotalLevel);
+			highestLevel = Math.max(summonerAResponse.data.TotalLevels, response.data.TotalLevels);
 		} else {
 			highestScore = response.data.TotalScore;
-			highestLevel = response.data.TotalLevel;
+			highestLevel = response.data.TotalLevels;
 		}
 
 		var scoreDescription = "Total Mastery Score";

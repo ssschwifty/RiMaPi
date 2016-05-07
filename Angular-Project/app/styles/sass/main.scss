@@ -210,6 +210,12 @@ input:focus {
 	min-height: 100px;
 	margin-bottom: 10px;
 }
+#content .commonDescription button {
+	background-color: $transparentLightBlack;
+	border: 1px solid $transparentShadow;
+	height: 30px;
+	width: 80px;
+}
 #content .compare .summoners {
 	min-width: 1030px;
 	width: 100%;
@@ -423,6 +429,8 @@ input:focus {
 #splashScreen .inputWrapper button:active,
 #splashScreen .inputWrapper input:hover,
 #splashScreen .inputWrapper input:focus,
+#slpashScreen .enter button:focus,
+#splashScreen .enter button:hover,
 #header .headerInput button:hover,
 #header .headerInput button:active,
 #header .headerInput input:hover,
