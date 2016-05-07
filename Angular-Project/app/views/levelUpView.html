@@ -8,18 +8,20 @@
 	</div>
 
   	<div id="championsWrapper">
-		<div class="championContainer" ng-repeat="champion in champions">
-			<div id="gradient"></div>
-			<img ng-src="./sources/image/champions/{{champion.nameId}}_0.jpg">
-			<div class="championText">
-				<div> {{champion.displayName}}</div>
-				<div> Current level: {{champion.championLevel}} </div>
-				<div> Until next level: {{champion.championPointsUntilNextLevel}} </div>
+	  	<div ng-repeat="champion in champions" class="test">
+			<div class="championContainer">
+				<div id="gradient"></div>
+				<img ng-src="./sources/image/champions/{{champion.nameId}}_0.jpg">
+				<div class="championText">
+					<div> {{champion.displayName}}</div>
+					<div> Currently on level {{champion.championLevel}} </div>
+					<uib-progressbar animate="false" value="(champion.championPoints * 100)/levelCap[champion.championLevel].cap" type="success">
+						<p> {{champion.championPoints}} / {{levelCap[champion.championLevel].cap}} </p>
+					</uib-progressbar>
+				</div>
 			</div>
-			<!-- <uib-progressbar max="{{levelCap[champion.championLevel]}}" value="champion.championPoints"><span>{{champion.championPoints}} / {{levelCap[champion.championLevel]}}</span></uib-progressbar> -->
-			{{champion.championPoints}} / {{levelCap[champion.championLevel].cap}}
+
 		</div>
-
-
 	</div>
 </div>
+

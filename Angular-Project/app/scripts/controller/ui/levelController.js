@@ -32,7 +32,6 @@ angular.module('riot.controller.ui')
 					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
 					if(testresult[i].championPointsUntilNextLevel > 0) {
 						$scope.champions.push(testresult[i]);
-						console.log(testresult[i]);
 					}
 				}
 				Sort.sortByPointsUntilNextLevel($scope.champions);

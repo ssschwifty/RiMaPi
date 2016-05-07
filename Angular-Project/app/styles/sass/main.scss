@@ -298,6 +298,24 @@ input:focus {
 	width: 50%;
 }
 
+#content .progress {
+	margin-bottom: 0;
+	border-radius: 0;
+	background-color: white;
+	position: relative;
+}
+#content .progress-bar {
+	border-radius: 0;
+	background-color: $transparentLightBlack;
+}
+#content .progress-bar p {
+	position: absolute;
+	left: 5px;
+	color: $lightBlack;
+}
+.test {
+	display: inline-block;
+}
 
 #splashScreen {
 	text-align: center;
