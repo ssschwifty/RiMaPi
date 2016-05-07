@@ -6,5 +6,5 @@ angular.module('riot.controller')
 			$('#summonerInput').blur();
 			$('html').trigger('summoner:change');
 		}
-	})
+	});
 });

@@ -7,10 +7,11 @@ angular.module('riot.controller.ui')
 	$scope.playerAName;
 	$scope.donutLegend;
 	$scope.comparable = false;
-	var summonerAScore;
-	var summonerBScore;
-	var summonerALevel;
-	var summonerBLevel;
+
+	var summonerAResponse;
+	var summonerBResponse;
+	var highestScore;
+	var highestLevel;
 
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
@@ -24,78 +25,113 @@ angular.module('riot.controller.ui')
 		$scope.getAData();
 	});
 	$('html').on('compareSummoner:change', function() {
-		$scope.getAData();
+		$scope.getBData();
 	});
+
 	$('#compareSummonerInput').on('keypress', function(e) {
 		if(e.keyCode == 13) {
-			$('#compareSummonerInput').blur();
+			$('#summonerInput').blur();
 			$('html').trigger('compareSummoner:change');
 		}
 	});
 
+	function isDefined(data) {
+		if(data != undefined && data != "") {
+			return true;
+		} else {
+			return false;
+		}
+	}
 	$scope.getAData = function() {
-		if (UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "" && UserData.compareSummoner != undefined && UserData.compareSummoner != "") {
+		if (UserData.regionId != undefined && isDefined(UserData.summoner)) {
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.summoner)
 			.then(function(response) {
 				$scope.comparable = false;
 				$scope.playerAName = response.data.Name;
 				$scope.playerASummonerLevel = response.data.SummonerLevel;
 				$scope.playerAImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
-				summonerAScore = response.data.TotalScore;
-				summonerALevel = response.data.TotalLevels;
 				var playerATopChampions = response.data.TopChamps;
 				for (var i = 0; i < playerATopChampions.length; i++) {
 					playerATopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerATopChampions[i].championId);
 					playerATopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerATopChampions[i].championId);
 				}
 				$scope.playerATopChamps = playerATopChampions;
-				getBData(response);
+				summonerAResponse = response;
+				if(isDefined(summonerBResponse)){
+					populateLeftChart(response);
+					populateRightChart(summonerBResponse);
+				} else {
+					populateLeftChart(response);
+				}
+				
 			});
 		}
 	}
-	function getBData(_responseA) {
-		if (UserData.regionId != undefined && UserData.compareSummoner != undefined && UserData.compareSummoner != "") {
+	$scope.getBData = function() {
+		if (UserData.regionId != undefined && isDefined(UserData.compareSummoner)) {
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.compareSummoner)
 			.then(function(response) {
 				$scope.playerBName = response.data.Name;
 				$scope.playerBSummonerLevel = response.data.SummonerLevel;
 				$scope.playerBImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
-				summonerBScore = response.data.TotalScore;
-				summonerBLevel = response.data.TotalLevels;
 				var playerBTopChampions = response.data.TopChamps;
 				for (var i = 0; i < playerBTopChampions.length; i++) {
 					playerBTopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerBTopChampions[i].championId);
 					playerBTopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerBTopChampions[i].championId);
 				}
 				$scope.playerBTopChamps = playerBTopChampions;
-				populateCharts(response, _responseA);
+				summonerBResponse = response;
+				if(isDefined(summonerAResponse)){
+					populateRightChart(response);
+					populateLeftChart(summonerAResponse);
+				} else {
+					populateRightChart(response);
+				}
 			});
 		}
 	}
 
-	function populateCharts(b, a) {
-		var highestScore = Math.max(a.data.TotalScore, b.data.TotalScore);
-		var highestLevel = Math.max(a.data.TotalLevels, b.data.TotalLevels);
-
+	function populateLeftChart(response) {
+		if(summonerBResponse != undefined) {
+			highestScore = Math.max(response.data.TotalScore, summonerBResponse.data.TotalScore);
+			highestLevel = Math.max(response.data.TotalLevel, summonerBResponse.data.TotalLevel);
+		} else {
+			highestScore = response.data.TotalScore;
+			highestLevel = response.data.TotalLevel;
+		}
+		
 		var scoreDescription = "Total Mastery Score";
 		var levelDescription = "Total Mastery Levels";
 		$scope.donutLegend = "Highest grades earned this Season";
 
 		var chart = 'pieChart1';
-		var chart2 = 'pieChart2';	
 		var barChart = 'lbarChart1';
 		var barChart2 = 'lbarChart2';			
+		generatePieChart(chart, response);
+		generateBarChart(barChart, response.data.TotalScore, scoreDescription, highestScore, "#1F77B4");
+		generateBarChart(barChart2, response.data.TotalLevels, levelDescription, highestLevel, "#FF7F0E");
+	}
+
+	function populateRightChart(response) {
+		if(summonerAResponse != undefined) {
+			highestScore = Math.max(summonerAResponse.data.TotalScore, response.data.TotalScore);
+			highestLevel = Math.max(summonerAResponse.data.TotalLevel, response.data.TotalLevel);
+		} else {
+			highestScore = response.data.TotalScore;
+			highestLevel = response.data.TotalLevel;
+		}
+
+		var scoreDescription = "Total Mastery Score";
+		var levelDescription = "Total Mastery Levels";
+		$scope.donutLegend = "Highest grades earned this Season";
+
+		var chart2 = 'pieChart2';			
 		var barChart3 = 'rbarChart1';
 		var barChart4 = 'rbarChart2';
-
-		generatePieChart(chart, a);
-		generatePieChart(chart2, b);
-
-		generateBarChart(barChart, a.data.TotalScore, scoreDescription, highestScore, "#1F77B4");
-		generateBarChart(barChart2, a.data.TotalLevels, levelDescription, highestLevel, "#FF7F0E");
-		generateBarChart(barChart3, b.data.TotalScore, scoreDescription, highestScore, "#1F77B4");
-		generateBarChart(barChart4, b.data.TotalLevels, levelDescription, highestLevel, "#FF7F0E");
-		$scope.comparable = true;
+		
+		generatePieChart(chart2, response);
+		generateBarChart(barChart3, response.data.TotalScore, scoreDescription, highestScore, "#1F77B4");
+		generateBarChart(barChart4, response.data.TotalLevels, levelDescription, highestLevel, "#FF7F0E");
 	}
 
 	function generateBarChart(chart, response, description, max, color) {
@@ -137,4 +173,7 @@ angular.module('riot.controller.ui')
 			}
 		});
 	}
+
+
+	$scope.getAData();
 });

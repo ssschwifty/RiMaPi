@@ -7,7 +7,7 @@
 			them, because they have a higher mastery level or brag about your clear superiority.
 			<br>
 			<input type="text" novalidate id="compareSummonerInput" placeholder="Compare with" ng-model="userData.compareSummoner">
-			<button ng-click="getAData()"> Compare! </button>
+			<button ng-click="getBData()"> Compare! </button>
 		</div>
 		<div class="summoners">
 			<div class="playerCompareCell">
@@ -82,7 +82,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="inContentFooter" ng-show="comparable">
+		<div class="inContentFooter">
 			<input ng-model="playerToCompareWithName">
 			<button> Compare! </button>
 			Email sende Dingsi {{playerToCompareWithName}}
