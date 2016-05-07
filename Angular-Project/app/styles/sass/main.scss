@@ -210,11 +210,18 @@ input:focus {
 	min-height: 100px;
 	margin-bottom: 10px;
 }
+.commonDescription .input,
+.commonDescription .email {
+	display: inline-block;
+}
+.commonDescription .email {
+	float: right;
+}
 #content .commonDescription button {
 	background-color: $transparentLightBlack;
 	border: 1px solid $transparentShadow;
 	height: 30px;
-	width: 80px;
+	width: 100px;
 }
 #content .compare .summoners {
 	min-width: 1030px;
@@ -387,7 +394,8 @@ input:focus {
 	height: 40px;
 	background: transparent;
 }
-#compareSummonerInput {
+#compareSummonerInput,
+.commonDescription input {
 	border: solid 1px $transparentShadow;
 	color: $textColor;
 	background: transparent;

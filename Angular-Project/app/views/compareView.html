@@ -6,14 +6,13 @@
 			Compare yourself to friends and send them Emails about your skills! Challenge
 			them, because they have a higher mastery level or brag about your clear superiority.
 			<br>
-			<div>
+			<div class="input">
 				<input type="text" novalidate id="compareSummonerInput" placeholder="Compare with" ng-model="userData.compareSummoner">
 				<button ng-click="getBData()"> Compare! </button>
 			</div>
 			<div class="email">
-				<input ng-model="email">
 				<button ng-click="sendEmail(email)"> Send an Email! </button>
-				Email sende Dingsi {{playerBName}}
+				<input ng-model="email" placeholder="n00b@bg.op">
 			</div>
 		</div>
 		<div class="summoners">
