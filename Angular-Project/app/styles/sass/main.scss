@@ -212,17 +212,20 @@ input:focus {
 
 #content .compare{
 	max-width: 1200px;
+	min-width: 1030px;
 }
 
 #content .playerCompareCell{
+	box-sizing: border-box;
 	position: relative;
 	padding: 10px;
-	min-height: 525px;
+	min-height: 750px;
 	border-color: black;
 	border-width: 2px;
 	border-radius: 10px;
 	background-color: rgba(63, 63, 63, 0.7);;
-	min-width: 450px;
+	min-width: 510px;
+	max-width: 650px;
 	width: 47.5%;
 	display: inline-block;
 	vertical-align: top;
@@ -233,6 +236,7 @@ input:focus {
 
 #content .playerHead {
 	display: inline-block;
+	position: relative;
 	margin: 10px;
 }
 
@@ -242,36 +246,88 @@ input:focus {
 	font-size: 30px;
 }
 
+#content #PlayerHeadRight {
+	position: relative;
+	position: absolute;
+	right: 10px;
+}
+
 #content .piechart{
 	color: $textColor;
 	text-align: center;
 	width: 200px;
 	height: 200px;
 }
-#content .c3-legend-item text {
+#content .c3-legend-item text, .c3 .c3-axis-x text, .c3 .c3-axis-y text {
  	fill: white;
-}
-
-#content #PlayerHeadRight {
-	position: absolute;
-	right: 10px;
 }
 
 #content #leftPieChart{
 	position: absolute;
 	left: 10px;
-	bottom: 150px;
+	top: 150px;
 }
 
 #content #rightPieChart{
 	position: absolute;
 	right: 10px;
-	bottom: 150px;
+	top: 150px;
 }
 
-#content #pieChart2{
-	color: black;
+
+.c3 .c3-axis-x path, .c3 .c3-axis-x line {
+    stroke: $textColor;
 }
+.c3 .c3-axis-y path, .c3 .c3-axis-y line {
+    stroke: $textColor;
+}
+
+#content .barChart{
+	color: $textColor;
+	text-align: center;
+	width: 300px;
+	height: 200px;
+}
+
+#content #barChart2, #barChart1, #lbarChart1, #lbarChart2, #rbarChart1, #rbarChart2 {
+	color: black;
+	display: inline-block;
+}
+
+#content #lbarChart1, #lbarChart2, #rbarChart1, #rbarChart2 {
+	width: 120px;
+	margin: 10px;
+}
+
+#content #rightBarChart{
+	position: relative;
+	position: absolute;
+	left: 10px;
+	top: 167px;
+}
+
+#content #leftBarChart{
+	position: relative;
+	position: absolute;
+	right: 10px;
+	top: 167px;
+}
+
+#content .topChampions{
+	position: absolute;
+	left: 10px;
+	bottom: 220px;
+}
+
+#content .compareSeperator{
+	width: 100%;
+	height: 1px;
+	background-color: $textColor;
+	position: absolute;
+	bottom: 247.5px;
+}
+
+
 
 #content .summonerLevel{
 	margin: 10px;

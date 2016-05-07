@@ -58,16 +58,13 @@ function createGoogleApiHttpRequest(subrequest) {
 function GetSummonerData(summonerName, platform) {
     return new Promise(function(resolve, reject) {
         // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
-        console.log(platform);
         dbAccess.getLolApiContinentCodeOldFromDB(platform, function(actualPlatform) {
-            console.log(actualPlatform);
             var requestOptions = createRiotApiHttpRequest('/api/lol/' + actualPlatform + '/v1.4/summoner/by-name/' + summonerName);
-            console.log(requestOptions);
             rp(requestOptions).then(function(response) {
                 resolve(helper.getRiotApiReponseBody(response, summonerName));
             }, function(error) {
                 console.log('Error: GetSummonerData!!!!');
-                //console.log(error);
+                console.log(error.href);
             });
         });
     });
@@ -79,12 +76,11 @@ function GetSummonerMasteryScore(platform, summonerId, summonerName) {
         // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
         dbAccess.getLolApiContinentCodeNewFromDB(platform, function(actualPlatform) {
             var requestOptions = createRiotApiHttpRequest('/championmastery/location/' + actualPlatform + '/player/' + summonerId + '/score');
-            console.log(requestOptions);
             rp(requestOptions).then(function(response) {
                 resolve(response);
             }, function(error) {
                 console.log('Error: GetSummonerData!!!!');
-                console.log(error);
+                console.log(error.href);
             });
         });
     });
@@ -95,12 +91,11 @@ function GetSummonerTopChampions(platform, summonerId, summonerName) {
         // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
         dbAccess.getLolApiContinentCodeNewFromDB(platform, function(actualPlatform) {
             var requestOptions = createRiotApiHttpRequest('/championmastery/location/' + actualPlatform + '/player/' + summonerId + '/topchampions');
-            console.log(requestOptions);
             rp(requestOptions).then(function(response) {
                 resolve(helper.getRiotApiReponseBody(response, summonerName));
             }, function(error) {
                 console.log('Error: GetSummonerData!!!!');
-                console.log(error);
+                console.log(error.href);
             });
         });
     });
@@ -127,7 +122,7 @@ app.get('/GetSummonerContinent/la/:latitude/lo/:longitude', function(req, res) {
         );
     }, function(error) {
         console.log('Error: GetSummonerContinent!!!!');
-        console.log(error);
+        console.log(error.href);
     });
 
 });
@@ -150,7 +145,6 @@ function searchByKey(array, key) {
 app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(req, res) {
     var platform = req.params.playerPlatform;
     var summonerName = req.params.summonerName.toLowerCase();
-    console.log(summonerName);
     if (summonerName == 'undefined' || platform == 'undefined') {
         res.send(null);
     }
