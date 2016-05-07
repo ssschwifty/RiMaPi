@@ -1,69 +1,71 @@
 <div id="content">
-  <div class="compare">
-    <div class="commonDescription">
-        <h2> Be proud of your skills! </h2>
-        You're darn good with some champions and think other people should also know about it?
-        Compare yourself to friends and send them Emails about your skills! Challenge
-        them, because they have a higher mastery levels or brag about your clear superiority.
-        <br>
-        <input ng-model="playerToCompareWithName">
-        <button> Compare! </button>
-    </div>
-    <div>
-      <div class="playerCompareCell">
-        <div class="playerHead">
-          <div class="playerInfoContainer">
-            <img ng-src="{{playerAImage}}"></img>
-          </div>
-          <div class="playerInfoContainer">
-            <div class="strSummonerName">{{playerAName}}</div>
-            <div class="summonerLevel">{{playerASummonerLevel}} </div>
-          </div>
-        </div>
-        <div class="piechart" id="leftPieChart">
-          <div id="pieChart1"></div>
-          <div> {{donutLegend}} </div>
-        </div>
-        <div class="barChart" id="leftBarChart">
-          <div id="lbarChart1"> </div>
-          <div id="lbarChart2"> </div>
-        </div>
-        <div class="compareSeperator"> </div>
-        <div class="topChampions">
-          <div class="topChampionsHeader"> Most played Champions: </div>
-          <div class=""> </div>
-        </div>
-      </div>
+	<div class="compare">
+		<div class="commonDescription">
+			<h2> Be proud of your skills! </h2>
+			You're darn good with some champions and think other people should also know about it?
+			Compare yourself to friends and send them Emails about your skills! Challenge
+			them, because they have a higher mastery levels or brag about your clear superiority.
+			<br>
+			<input ng-model="playerToCompareWithName">
+			<button> Compare! </button>
+		</div>
+		<div>
+			<div class="playerCompareCell">
+				<div class="playerHead">
+					<div class="playerInfoContainer">
+						<img ng-src="{{playerAImage}}"></img>
+						<div>
+							<div class="strSummonerName">{{playerAName}}</div>
+							<div class="summonerLevel">{{playerASummonerLevel}} </div>
+						</div>
+					</div>
+				</div>
+				<div class="charts">
+					<div class="piechart" id="leftPieChart">
+						<div id="pieChart1"></div>
+						<div> {{donutLegend}} </div>
+					</div>
+					<div class="barChart" id="leftBarChart">
+						<div id="lbarChart1"> </div>
+						<div id="lbarChart2"> </div>
+					</div>
+				</div>
+				<div class="compareSeperator"> </div>
+				<div class="topChampions">
+					<div class="topChampionsHeader"> Most played Champions </div>
+					<div class=""> </div>
+				</div>
+			</div>
 
-      <div class="playerCompareCell" id="playerCompareCell2">
-          <div class="playerHead" id="PlayerHeadRight">
-            <div class="playerInfoContainer">
-              <div class="strSummonerName">{{playerAName}}</div>
-              <div class="summonerLevel">{{playerASummonerLevel}} </div>
-            </div>
-            <div class="playerInfoContainer">
-              <img ng-src="{{playerAImage}}"></img>
-            </div>
-          </div>
-        <div class="piechart" id="rightPieChart">
-          <div id="pieChart2"></div>
-          <div> {{donutLegend}} </div>
-        </div>
-        <div class="barChart" id="rightBarChart">
-          <div id="rbarChart2"> </div>
-          <div id="rbarChart1"> </div>
-        </div>
-        <div class="compareSeperator"> </div>
-        <div class="topChampions">
-          <div class="topChampionsHeader"> Most played Champions: </div>
-          <div class=""> </div>
-        </div>
-      </div>
-    </div>
-    <div class="inContentFooter">
-      <input ng-model="playerToCompareWithName">
-      <button> Compare! </button>
-      Email sende Dingsi {{playerToCompareWithName}}
-    </div>
-  </div>
+			<div class="playerCompareCell" id="playerCompareCell2">
+				<div class="playerHead" id="PlayerHeadRight">
+					<div class="playerInfoContainer">
+						<div>
+							<div class="strSummonerName">{{playerAName}}</div>
+							<div class="summonerLevel">{{playerASummonerLevel}} </div>
+						</div>
+						<img ng-src="{{playerAImage}}"></img>
+					</div>
+				</div>
+				<div class="piechart" id="rightPieChart">
+					<div id="pieChart2"></div>
+					<div> {{donutLegend}} </div>
+				</div>
+				<div class="barChart" id="rightBarChart">
+					<div id="rbarChart2"> </div>
+					<div id="rbarChart1"> </div>
+				</div>
+				<div class="compareSeperator"> </div>
+				<div class="topChampions">
+					<div class="topChampionsHeader"> Most played Champions </div>
+					<div class=""> </div>
+				</div>
+			</div>
+		</div>
+		<div class="inContentFooter">
+			<input ng-model="playerToCompareWithName">
+			<button> Compare! </button>
+			Email sende Dingsi {{playerToCompareWithName}}
+		</div>
+	</div>
 </div>
