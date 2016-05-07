@@ -364,6 +364,17 @@ input:focus {
 	display: inline-block;
 }
 
+#swain, #xinzhao {
+	position: absolute;
+	bottom: 0;
+	width: 900px;
+}
+#swain {
+	right: 0;
+}
+#xinzhao {
+	left: 0;
+}
 #splashScreen {
 	text-align: center;
 	font-size: 16px;
