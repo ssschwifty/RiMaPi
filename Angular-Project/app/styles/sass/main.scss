@@ -320,12 +320,27 @@ input:focus {
 #splashScreen {
 	text-align: center;
 	font-size: 16px;
+	margin-top: 50px;
+}
+#splashScreen .enterButton {
+	width: 130px;
+	border: 1px solid $transparentShadow;
+	height: 40px;
+	background: transparent;
+}
+#splashScreen .enterButton:active,
+#splashScreen .enterButton:hover,
+.inputWrapper button:hover,
+.inputWrapper input:hover,
+.headerInput button:hover,
+.headerInput input:hover {
+	border: 1px solid $textColor;
 }
 .inputWrapper {
 	width: 100%;
 	height: 100%;
-	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-top: 80px;
+	margin-bottom: 80px;
 }
 .regions, .summoner {
 	display: inline-block;
