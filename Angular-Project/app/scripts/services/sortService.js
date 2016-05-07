@@ -7,7 +7,7 @@ angular.module('riot.services')
 		"B+", "B", "B-",
 		"C+", "C", "C-",
 		"D+", "D", "D-",
-		"N\\A"
+		"N/A"
 	];
 
 	sortFunctionGradeChampionPoints = function(a, b) {

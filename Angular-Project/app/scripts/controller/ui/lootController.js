@@ -34,7 +34,7 @@ angular.module('riot.controller.ui')
 					testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
 					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
 					if(testresult[i].highestGrade == undefined){
-						testresult[i].highestGrade = "N\\A";
+						testresult[i].highestGrade = "N/A";
 					}
 					if(testresult[i].chestGranted) {
 						granted++;
