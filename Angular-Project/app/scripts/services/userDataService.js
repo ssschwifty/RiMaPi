@@ -1,9 +1,11 @@
 angular.module('riot.services')
 .service('UserData', function() {
-	var summoner = "Narmor";
+	var summoner;
+	var compareSummoner;
 	var regionId;
 	return {
 		summoner: summoner,
+		compareSummoner: compareSummoner,
 		regionId: regionId
 	}
 });
