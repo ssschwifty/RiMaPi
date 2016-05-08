@@ -166,6 +166,11 @@ angular.module('riot.controller.ui')
 			axis: {
 				y: {
 					max: max
+				},
+				x: {
+					tick: {
+						format: function(x) {return '';}
+					}
 				}
 			}
 		});

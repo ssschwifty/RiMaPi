@@ -277,10 +277,7 @@ input:focus {
 }
 #content .c3-legend-item text, 
 .c3 .c3-axis-y text {
- 	fill: white;
-}
-.c3 .c3-axis-x text {
-	display: none;
+ 	fill: $textColor;
 }
 #content #leftPieChart {
 	position: absolute;
