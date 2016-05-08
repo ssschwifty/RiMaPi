@@ -30,8 +30,8 @@ angular.module('riot')
 				controller: 'LootController'
 			})
 			.state('page.compare', {
-				url:'/compare',
-				templateUrl: 'views/compareView.html',
+				url:'/compare/?a&b',
+ 				templateUrl: 'views/compareView.html',
 				controller: 'CompareController'
 			})
 

@@ -1,5 +1,5 @@
 angular.module('riot.controller')
-.controller('MainController', function($scope, $uibModal) {
+.controller('MainController', function($scope, $uibModal, $location, $state) {
 
 	function initiate() {
 		$scope.btnDocu = "Documentation";
@@ -10,6 +10,12 @@ angular.module('riot.controller')
 		$scope.summonerNotFound = "Oops! The name you entered could not be resolved to a summoner in the selected region.";
 		$scope.enterSummonerNames = "Whoa... slow down, my friend! You should enter the names of two summoners instead of sending empty Emails.";
 		$scope.enterEmail = "Please enter a Email address";
+		var hash = $location.search();
+		if(hash != undefined) {
+			$state.go('page.compare', {a: hash["a"], b: hash["b"]});
+		} else {
+			$state.go('splashScreen');
+		}
 	}
 	
 	initiate();

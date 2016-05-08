@@ -1,17 +1,22 @@
 angular.module('riot.controller.ui')
-.controller('CompareController', function($scope, SharedProperties, UserData) {
+.controller('CompareController', function($scope, SharedProperties, UserData, $location) {
 
 	$scope.userData = UserData;
 	$scope.donutLegend;
 	$scope.comparable = false;
-
 	$scope.email;
-
 	var summonerAResponse;
 	var summonerBResponse;
 	var highestScore;
 	var highestLevel;
 
+	if(UserData.summoner == undefined) {
+		UserData.summoner = $location.search()["a"];
+	}
+	if(UserData.compareSummoner == undefined) {
+		UserData.compareSummoner = $location.search()["b"];
+	}
+	
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
 			$scope.getAData();	
