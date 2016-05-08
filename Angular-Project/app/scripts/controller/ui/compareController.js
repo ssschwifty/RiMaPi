@@ -66,7 +66,7 @@ angular.module('riot.controller.ui')
 					} else {
 						populateLeftChart(response);
 					}
-				} else if(response.status = "429"){
+				} else if(response.status == "429"){
 					$scope.openPopup($scope.requestsExceededMessage);
 				} else {
 					$scope.openPopup($scope.summonerNotFound);
@@ -98,7 +98,7 @@ angular.module('riot.controller.ui')
 					} else {
 						populateRightChart(response);
 					}
-				}else if(response.status = "429"){
+				} else if(response.status == "429"){
 					$scope.openPopup($scope.requestsExceededMessage);
 				} else {
 					$scope.openPopup($scope.summonerNotFound);

@@ -56,7 +56,7 @@ angular.module('riot.controller.ui')
 					$scope.notGranted = notGranted.toString();
 
 					$scope.championsShown = true;
-				} else if(response.status = "429"){
+				} else if(response.status == "429"){
 					$scope.openPopup($scope.requestsExceededMessage);
 				} else {
 					$scope.openPopup($scope.summonerNotFound);
