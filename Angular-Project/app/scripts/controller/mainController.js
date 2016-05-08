@@ -9,6 +9,7 @@ angular.module('riot.controller')
 		$scope.requestsExceededMessage = "request limit";
 		$scope.summonerNotFound = "Oops! The name you entered could not be resolved to a summoner in the selected region.";
 		$scope.enterSummonerNames = "Whoa... slow down, my friend! You should enter the names of two summoners instead of sending empty Emails.";
+		$scope.enterEmail = "Please enter a Email address";
 	}
 	
 	initiate();

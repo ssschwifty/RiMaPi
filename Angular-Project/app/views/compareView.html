@@ -11,8 +11,10 @@
 				<button ng-click="getBData()"> Compare! </button>
 			</div>
 			<div class="email">
-				<button ng-click="sendEmail(email)"> Send an Email! </button>
-				<input ng-model="email" placeholder="Enter Email address">
+				<form name="emailForm">
+					<button ng-click="sendEmail(email)" ng-show="emailForm.input.$valid && !emailForm.input.$error.required"> Send an Email! </button>
+					<input type="email" name="input" ng-model="email" placeholder="Enter Email address" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+				</form>
 			</div>
 		</div>
 		<div class="summoners">
