@@ -36,14 +36,12 @@ angular.module('riot.controller.ui')
 						}
 					}
 					Sort.sortByPointsUntilNextLevel($scope.champions);
-				} else if(response.status = "429"){
-					//popup exceeded requestlimit
+				} else if(response.status == "429"){
+					$scope.openPopup($scope.requestsExceededMessage);
 				} else {
-				//popup summoner not found
-				}	
-				
+					$scope.openPopup($scope.summonerNotFound);
+				}				
 			});
 		}
 	}
-
 });

@@ -277,10 +277,7 @@ input:focus {
 }
 #content .c3-legend-item text,
 .c3 .c3-axis-y text {
- 	fill: white;
-}
-.c3 .c3-axis-x text {
-	display: none;
+ 	fill: $textColor;
 }
 #content #leftPieChart {
 	position: absolute;
@@ -366,15 +363,12 @@ input:focus {
 }
 #content .progress-bar {
 	border-radius: 0;
-	background-color: $transparentLightBlack;
+	background-color: rgb(44, 160, 44);
 }
 #content .progress-bar p {
 	position: absolute;
 	left: 5px;
 	color: $lightBlack;
-}
-.test {
-	display: inline-block;
 }
 
 #swain, #xinzhao {
@@ -464,7 +458,8 @@ input:focus {
 #content .commonDescription button:active,
 #content .commonDescription input:hover,
 #content .commonDescription input:focus,
-#content .sortChampions.type:hover {
+#content .sortChampions.type:hover,
+.popup .button:hover {
 	border: 1px solid $textColor;
 }
 .compare .visible {
@@ -474,6 +469,37 @@ input:focus {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
+}
+.modal-content {
+	position: relative;
+	border: 1px solid $textColor;
+	border-radius: 0;
+	background: $lightBlack;
+	padding: 10px;
+}
+.popup .header {
+	position: absolute;
+	left: 230px;
+	font-size: 18px;
+}
+.popup .message {
+	position: absolute;
+	top: 40px;
+	left: 230px;
+	right: 10px;
+}
+.popup .button {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background-color: $transparentLightBlack;
+	border: 1px solid $transparentShadow;
+	height: 30px;
+	width: 100px;
+}
+.popup .image img {
+	width: 200px;
+	height: 200px;
 }
 
 .inlineBlock {
