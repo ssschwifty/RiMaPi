@@ -8,9 +8,10 @@ This will send an email with attachment/s from your SendinBlue account.
 */
 (function() {
     var nodemailer = require('nodemailer');
+    var username = require('./emailData.JSON').accountName;
+    var password = require('./emailData.JSON').password;
 
-
-    var transporter = nodemailer.createTransport('smtps://lol.rimapi%40gmail.com:Toqshurm1!@smtp.gmail.com');
+    var transporter = nodemailer.createTransport('smtps://'+ username +'%40gmail.com:' + password +'@smtp.gmail.com');
 
     function prepareData(mailTo, sender, recipient, base64Image) {
         var linkToWebsite = "<a href=\"http://v22016053572334167.supersrv.de/RiMaPi/app/#/compare/?a=" + sender + "&b=" + recipient + "\">";

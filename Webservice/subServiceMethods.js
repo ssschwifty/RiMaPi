@@ -53,7 +53,11 @@
                 rp(requestOptions).then(function(response) {
                     resolve(helper.getRiotApiReponseBody(response, summonerName));
                 }, function(error) {
-                    resolve(noDataErrorResp);
+                    if(error.statusCode == 429){
+                        resolve("429");
+                    } else{
+                        resolve(noDataErrorResp);
+                    }
                     dbAccess.logServiceError('GetSummonerData',error);
                 });
             });
@@ -69,7 +73,11 @@
                 rp(requestOptions).then(function(response) {
                     resolve(response);
                 }, function(error) {
-                    resolve(noDataErrorResp);
+                    if(error.statusCode == 429){
+                        resolve("429");
+                    } else{
+                        resolve(noDataErrorResp);
+                    }
                     dbAccess.logServiceError('GetSummonerMasteryScore',error);
                 });
             });
@@ -84,7 +92,11 @@
                 rp(requestOptions).then(function(response) {
                     resolve(response);
                 }, function(error) {
-                    resolve(noDataErrorResp);
+                    if(error.statusCode == 429){
+                        resolve("429");
+                    } else{
+                        resolve(noDataErrorResp);
+                    }
                     dbAccess.logServiceError('GetSummonerTopChampions',error);
                 });
             });
