@@ -11,7 +11,7 @@
 		<div class="sortBtnText grade" ng-show="sorted">Sorted by Grade</div>
 		<div class="sortBtnText point" ng-hide="sorted">Sorted by Champion Points </div>
 	</button>
-	<button type="button" class="sortChampions order" ng-show="championsShown && !sorted" ng-click="descChampions()" ng-class="desc ? 'on' : 'off'"> Descanding </button>
+	<button type="button" class="sortChampions order" ng-show="championsShown && !sorted" ng-click="descChampions()" ng-class="desc ? 'on' : 'off'"> Descending </button>
 	<div id="championsWrapper">
 		<div class="championContainer" ng-repeat="champion in champions">
 			<div id="gradient"></div>

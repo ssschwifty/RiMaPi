@@ -1,8 +1,5 @@
 <div id="app"  ng-cloak>
 	<div id="header">
-		<div class="headerIcon">
-			<a ui-sref=".home"><button type="button"> pageIcon </button></a>
-		</div>
 		<div class="headerButtons" id="headerButtons">
 			<a ng-repeat="button in headerButtonsArray" ng-click="setActivePage($index)" ui-sref=".{{button.name}}" ui-sref-opts="{reload: true}">
 				<button ng-class="button.active ? 'active' : 'inactive'"  type="button">
