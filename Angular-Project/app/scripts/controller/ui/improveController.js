@@ -1,5 +1,5 @@
 angular.module('riot.controller.ui')
-.controller('GradeController', function($scope, SharedProperties, UserData, Sort) {
+.controller('ImproveController', function($scope, SharedProperties, UserData, Sort) {
 
 	$scope.champions = [];
 	$scope.sorted = false;

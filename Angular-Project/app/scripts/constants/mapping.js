@@ -1,3 +1,6 @@
+/*
+* provides object to map region ids tp their names and champion id to their names
+*/
 angular.module('riot')
 .constant('Mapping', {
 

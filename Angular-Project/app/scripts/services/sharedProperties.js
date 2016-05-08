@@ -1,14 +1,24 @@
+/*
+* provides a service for handling porperties between controllers and defines an interface for external requests
+*/
 angular.module('riot.services')
 .factory('SharedProperties', function(RequestService, Mapping) {
 
+	// @see Mapping.js:regions
 	var regions = Mapping.regions;
+	// @see Mapping.js:champions
 	var champions = Mapping.champions;
+	// holds the global imagename for the icon inside of the regions dropdown button
+	// can either be 'gps' or 'earth'
 	var regionIconState = 'gps';
 
+	// define public functions and attributes
 	return {
+		// @see requestService.js:getAllChampionMasteries
 		getAllChampionMasteries: function(region, summoner) {
 			return RequestService.getAllChampionMasteries(region, summoner);
 		},
+		// @see requestService.js:getComparisonStatistics
 		getComparisonStatistics: function(region, summoner) {
 			return RequestService.getComparisonStatistics(region, summoner);
 		},
@@ -19,6 +29,7 @@ angular.module('riot.services')
 		getGeolocation: function(success) {
 			RequestService.getGeolocation(success);
 		},
+		// @see requestService.js:sendCompareEmail
 		sendCompareEmail: function(mailTo, sender, recipient, base64Image) {
 			return RequestService.sendCompareEmail(mailTo, sender, recipient, base64Image);
 		},
