@@ -1,3 +1,6 @@
+/*
+* provides a controller for loot view
+*/
 angular.module('riot.controller.ui')
 .controller('LootController', function($scope, SharedProperties, Sort, UserData) {
 

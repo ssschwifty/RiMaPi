@@ -1,3 +1,6 @@
+/*
+* provides a controller for improveView
+*/
 angular.module('riot.controller.ui')
 .controller('ImproveController', function($scope, SharedProperties, UserData, Sort) {
 
@@ -49,12 +52,13 @@ angular.module('riot.controller.ui')
 			});
 		}
 	}
+	// shows champions by champion points descending
 	$scope.descChampions = function() {
 		$scope.desc = !$scope.desc;
 		pointSortedChampions.reverse();
 		setChampions($scope.sorted);
 	}
-
+	// sorts champions by grade
 	$scope.sortChampions = function() {
 		$scope.sorted = !$scope.sorted;
 		if($scope.sorted) {

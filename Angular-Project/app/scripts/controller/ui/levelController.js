@@ -1,3 +1,6 @@
+/*
+* provides a controller for level up view
+*/
 angular.module('riot.controller.ui')
 .controller('LevelController', function($scope, SharedProperties, UserData, Sort) {
 

@@ -26,6 +26,7 @@ angular.module('riot.services')
 		getContinent: function(lat, lng) {
 			return RequestService.getContinent(lat, lng);
 		},
+		// @see requestService.js:getGeolocation
 		getGeolocation: function(success) {
 			RequestService.getGeolocation(success);
 		},
@@ -33,13 +34,16 @@ angular.module('riot.services')
 		sendCompareEmail: function(mailTo, sender, recipient, base64Image) {
 			return RequestService.sendCompareEmail(mailTo, sender, recipient, base64Image);
 		},
-
+		
+		// uses the mapping service to determine names by id
 		getChampionNameIdById: function(id) {
 			return champions[id].id;
 		},
 		getChampionDisplayNameById: function(id) {
 			return champions[id].displayName;
 		},
+
+		// returns their respective objects
 		getChampions: function() {
 			return champions;
 		},
