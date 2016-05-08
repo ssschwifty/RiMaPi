@@ -12,3 +12,4 @@ welcome to the documentation of "RiMaPi", our Submission for the "Riot Api Chall
 * **[Used Technologies](./Documentation/UsedTechnologies.md)**
 * **[Conception and draft](./Documentation/ConceptAndDraft.md)**
 * **[Technical Documentation](./Documentation/TechnicalDocumentation.md)**
+* **[About the Authors of this Project](./Documentation/authors.md)**
