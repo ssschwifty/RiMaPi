@@ -14,7 +14,7 @@ angular.module('riot.controller.ui')
 
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
-			$scope.getAData();	
+			$scope.getAData();
 		}, 20);
 	});
 	$scope.$on('$stateChangeSuccess', function() {
@@ -70,9 +70,9 @@ angular.module('riot.controller.ui')
 					//popup exceeded requestlimit
 				} else {
 					//popup summoner not found
-				}	
-				
-				
+				}
+
+
 			});
 		}
 	}
@@ -104,7 +104,7 @@ angular.module('riot.controller.ui')
 					//popup exceeded requestlimit
 				} else {
 					//popup summoner not found
-				}	
+				}
 			});
 		}
 	}
@@ -117,21 +117,21 @@ angular.module('riot.controller.ui')
 			highestScore = response.data.TotalScore;
 			highestLevel = response.data.TotalLevels;
 		}
-		
+
 		var scoreADescription = "Total Mastery Score";
 		var levelADescription = "Total Mastery Levels";
 		$scope.donutALegend = "Highest grades earned this Season";
 
 		var chart = 'pieChart1';
 		var barChart = 'lbarChart1';
-		var barChart2 = 'lbarChart2';			
+		var barChart2 = 'lbarChart2';
 		generatePieChart(chart, response);
 		generateBarChart(barChart, response.data.TotalScore, scoreADescription, highestScore, "#1F77B4");
 		generateBarChart(barChart2, response.data.TotalLevels, levelADescription, highestLevel, "#FF7F0E");
 	}
 
 	function populateRightChart(response) {
-		if(summonerAResponse != undefined) {	
+		if(summonerAResponse != undefined) {
 			highestScore = Math.max(summonerAResponse.data.TotalScore, response.data.TotalScore);
 			highestLevel = Math.max(summonerAResponse.data.TotalLevels, response.data.TotalLevels);
 		} else {
@@ -143,10 +143,10 @@ angular.module('riot.controller.ui')
 		var levelBDescription = "Total Mastery Levels";
 		$scope.donutBLegend = "Highest grades earned this Season";
 
-		var chart2 = 'pieChart2';			
+		var chart2 = 'pieChart2';
 		var barChart3 = 'rbarChart1';
 		var barChart4 = 'rbarChart2';
-		
+
 		generatePieChart(chart2, response);
 		generateBarChart(barChart3, response.data.TotalScore, scoreBDescription, highestScore, "#1F77B4");
 		generateBarChart(barChart4, response.data.TotalLevels, levelBDescription, highestLevel, "#FF7F0E");
@@ -192,6 +192,15 @@ angular.module('riot.controller.ui')
 		});
 	}
 	$scope.sendEmail = function(address) {
+		html2canvas($(".summoners")[0], {
+			onrendered: function(canvas) {
+				// canvas is the final rendered <canvas> element
+				console.log(canvas);
+				var myImage = canvas.toDataURL("image/png");
+				console.log(myImage);
+				window.open(myImage);
+			}
+		});
 		SharedProperties.sendEmailTo(address)
 		.then(
 			function(response) {

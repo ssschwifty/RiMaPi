@@ -12,6 +12,7 @@ var jsonQuery = require('json-query');
 var dbAccess = require('./MariaDBService.js');
 var helper = require('./helper.js');
 var subService = require('./subServiceMethods.js');
+var mailer = require('./MailingService.js')
 
 var riotApiKey;
 var googleApiKey;
@@ -150,5 +151,15 @@ app.get('/GetComparissonStatistic/p/:playerPlatform/u/:summonerName', function(r
     } catch (e) {
       res.send(noDataErrorResp);
       dbAccess.logServiceError('GetComparissonStatistic',e);
+    }
+});
+
+
+app.get('/sendComparison/r/:recipient/s/:senderSummonerName/i/:base64Image', function(req, res) {
+    try {
+        mailer.sendEmail(req.params.recipient, req.params.senderSummonerName , req.params.base64Image);
+        res.send('Success')
+    } catch (e) {
+        dbAccess.logServiceError('sendComparison',e);
     }
 });
