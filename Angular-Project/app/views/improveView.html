@@ -1,13 +1,13 @@
 <div id="content">
     <div class="commonDescription">
-        <h2> Find new Champions to train! </h2>
+        <h1> Find new Champions to train! </h1>
         Sometimes you're good with a champion and you don't even know it! We utilized the
         information about the average mastery-grade to show you with
         which champions you rock the house and with which you do not.
         Maybe it will give you an idea of what to play
         and maybe even who to choose as a new main.
     </div>
-    <button type="button" class="sortChampions type" ng-show="championsShown" ng-click="sortChampions(false)"> 
+    <button type="button" class="sortChampions type" ng-show="championsShown" ng-click="sortChampions(false)">
 		<div class="sortBtnText grade" ng-show="sorted">Sorted by Grade</div>
 		<div class="sortBtnText point" ng-hide="sorted">Sorted by Champion Points </div>
 	</button>
@@ -22,5 +22,5 @@
 				<div ng-show="sorted"> Highest Grade: {{champion.highestGrade}} </div>
 			</div>
 		</div>
-	</div>    
+	</div>
 </div>
