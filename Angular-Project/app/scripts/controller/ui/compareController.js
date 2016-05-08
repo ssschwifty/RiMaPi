@@ -169,7 +169,9 @@ angular.module('riot.controller.ui')
 				},
 				x: {
 					tick: {
-						format: function(x) {return '';}
+						format: function(x) {
+							return '';
+						}
 					}
 				}
 			}
@@ -195,20 +197,22 @@ angular.module('riot.controller.ui')
 		});
 	}
 	$scope.sendEmail = function(address) {
-		if(summonerAResponse != undefined && summonerBResponse != undefined) {
-			if($scope.email != undefined) {
-				SharedProperties.sendEmailTo(address)
-				.then(
-					function(response) {
-						//popup: alles ok
-					},
-					function(respnse) {
-						//popup nochmla versuchen
-					}
-				);
-			} else {
-				$scope.openPopup($scope.enterEmail);
-			}
+		if (summonerAResponse != undefined && summonerBResponse != undefined) {
+			html2canvas($(".summoners")[0], {
+				onrendered: function(canvas) {
+					// canvas is the final rendered <canvas> element
+					var myImage = canvas.toDataURL();
+					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
+					.then(
+						function(response) {
+							//popup: alles ok
+						},
+						function(respnse) {
+							//popup nochmla versuchen
+						}
+					);
+				}
+			});
 		} else {
 			$scope.openPopup($scope.enterSummonerNames);
 		}

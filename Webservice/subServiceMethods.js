@@ -13,6 +13,7 @@
 
     var riotApiKey = require('./riotApiKey.json').key;
     var googleApiKey = require('./googleApiKey.json').key;
+    var noDataErrorResp = 'NoDataFound';
 
 
 
@@ -52,7 +53,7 @@
                 rp(requestOptions).then(function(response) {
                     resolve(helper.getRiotApiReponseBody(response, summonerName));
                 }, function(error) {
-                    reject(noDataErrorResp);
+                    resolve(noDataErrorResp);
                     dbAccess.logServiceError('GetSummonerData',error);
                 });
             });
@@ -68,7 +69,7 @@
                 rp(requestOptions).then(function(response) {
                     resolve(response);
                 }, function(error) {
-                    reject(noDataErrorResp);
+                    resolve(noDataErrorResp);
                     dbAccess.logServiceError('GetSummonerMasteryScore',error);
                 });
             });
@@ -83,7 +84,7 @@
                 rp(requestOptions).then(function(response) {
                     resolve(response);
                 }, function(error) {
-                    reject(noDataErrorResp);
+                    resolve(noDataErrorResp);
                     dbAccess.logServiceError('GetSummonerTopChampions',error);
                 });
             });

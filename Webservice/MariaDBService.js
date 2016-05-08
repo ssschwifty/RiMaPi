@@ -95,6 +95,19 @@
     }
 
 
+    function logServiceInfo(throwingMethod, info) {
+        try {
+            c.query('insert into RiotApiServiceNormalLog (Method, Status) VALUES (:lvsMethodOccurred, :lvsErrorOccurred)', {
+                lvsMethodOccurred: throwingMethod,
+                lvsErrorOccurred: info
+            }, function(err, rows) {
+            });
+        } catch (e) {
+            logServiceError('logServiceInfo', e);
+        }
+    }
+
+
 
     function closeDBConnection() {
         c.end();
@@ -109,6 +122,10 @@
 
     module.exports.logServiceError = function(throwingMethod, stackTrace) {
         logServiceError(throwingMethod, stackTrace);
+    }
+
+    module.exports.logServiceInfo = function(throwingMethod, info) {
+        logServiceInfo(throwingMethod, info);
     }
 
     module.exports.getLolContinentCodeLocalFromDB = function(countryCode, callback) {
