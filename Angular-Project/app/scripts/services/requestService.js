@@ -19,8 +19,8 @@ angular.module('riot.services')
 		getComparisonStatistics: function(region, summoner){
 			return $http.get(baseUrl + 'GetComparissonStatistic/p/' + region + '/u/' + summoner);
 		},
-		sendCompareEmail: function(mailTo, sender, base64Image) {
-			return $http.post(baseUrl + 'sendComparison/r/' + mailTo + '/s/' + sender, '{"data":"' + base64Image + '"}');
+		sendCompareEmail: function(mailTo, sender, recipient,  base64Image) {
+			return $http.post(baseUrl + 'sendComparison/r/' + mailTo + '/s/' + sender + "/rs/" + recipient, '{"data":"' + base64Image + '"}');
 		}
 	}
 

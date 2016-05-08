@@ -12,13 +12,15 @@ This will send an email with attachment/s from your SendinBlue account.
 
     var transporter = nodemailer.createTransport('smtps://lol.rimapi%40gmail.com:Toqshurm1!@smtp.gmail.com');
 
-    function prepareData(mailTo, sender, base64Image) {
+    function prepareData(mailTo, sender, recipient, base64Image) {
+        var linkToWebsite = "<a href=\"http://localhost/riot/Angular-Project/app/#/compare/?a=" + sender + "&b=" + recipient + "\">";
         // setup e-mail data with unicode symbols
+        console.log(mailTo);
         var mailOptions = {
-            from: '"Rimapi" <noreply@RiMaPi.com>', // sender address
-            to: 'f.birke@yahoo.de', // list of receivers
-            subject: 'Hello', // Subject line
-            text: 'Hello world', // plaintext body
+            from: '"RiMaPi" <noreply@RiMaPi.com>', // sender address
+            to: mailTo, // list of receivers
+            subject: 'Summoner ' + sender + ' thinks you, ' + recipient + ', should see this!', // Subject line
+            text: 'This is an HTML-Email, please view it with HTML enabled to see its proper content.', // plaintext body
             html: "<!DOCTYPE html>" +
             "<html>" +
             "<head>" +
@@ -33,11 +35,12 @@ This will send an email with attachment/s from your SendinBlue account.
             "        the diagrams and click the image to be forwarded to our website and check it out yourself!</h3>" +
             "        <br>" +
             "        <br>" +
-            "        If the image isnt displayed correctly, please click it to view a proper version online." +
+                    linkToWebsite  + "If the image isnt displayed correctly, please click this sentence to view a proper version online. </a>" +
             "    </div>" +
-            "     <a href=\"http://localhost/riot/Angular-Project/app/#/compare\">" +
+                    linkToWebsite +
             "         <img src=\"cid:embeddedImage1\"/>" +
             "     </a>" +
+            "This is an automatically generated E-Mail, answering is pointless!" +
             "</body>" +
             "</html>",
             attachments: [
@@ -52,13 +55,11 @@ This will send an email with attachment/s from your SendinBlue account.
         return mailOptions;
     }
 
-    function sendEmail(mailTo, sender, base64Image) {
+    function sendEmail(mailTo, sender, recipient, base64Image) {
         console.log('prepare Data for email!');
-        mailOptions = prepareData(mailTo, sender, base64Image);
+        mailOptions = prepareData(mailTo, sender, recipient, base64Image);
         // send mail with defined transport object
         console.log('sending Data for email!');
-
-
         transporter.sendMail(mailOptions, function(error, info) {
             console.log('sent Data for email!');
             if (error) {
@@ -73,7 +74,7 @@ This will send an email with attachment/s from your SendinBlue account.
     //-----------Module Export of all "public" functions
 
 
-    module.exports.sendEmail = function(mailTo, sender, base64Image) {
-        sendEmail(mailTo, sender, base64Image);
+    module.exports.sendEmail = function(mailTo, sender, recipient, base64Image) {
+        sendEmail(mailTo, sender, recipient, base64Image);
     }
 }());

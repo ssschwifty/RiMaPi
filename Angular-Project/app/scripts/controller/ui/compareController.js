@@ -205,7 +205,8 @@ angular.module('riot.controller.ui')
                     onrendered: function(canvas) {
                         // canvas is the final rendered <canvas> element
                         var myImage = canvas.toDataURL();
-                        SharedProperties.sendCompareEmail(address, $scope.userData.summoner, myImage)
+                        console.log($scope.userData.compareSummoner);
+                        SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
                             .then(
                                 function(response) {
                                     //popup: alles ok
