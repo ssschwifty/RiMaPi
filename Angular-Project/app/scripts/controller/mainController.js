@@ -7,7 +7,7 @@ angular.module('riot.controller')
 		$scope.btnEnter = "Enter";
 		$scope.welcomeText = "Welcome, Summoner!";
 		$scope.requestsExceededMessage = "request limit";
-		$scope.summonerNotFound = "The name you entered could not be resolved to a summoner in the selected region.";
+		$scope.summonerNotFound = "Oops! The name you entered could not be resolved to a summoner in the selected region.";
 	}
 	
 	initiate();
