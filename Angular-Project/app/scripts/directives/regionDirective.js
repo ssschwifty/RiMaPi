@@ -1,3 +1,6 @@
+/*
+* directive for multiple use of the region dropdown
+*/
 angular.module('riot.directives')
 .directive('regionDirective', function() {
 	return {

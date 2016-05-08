@@ -1,3 +1,6 @@
+/*
+* directive for multiple use of the summoner name input
+*/
 angular.module('riot.directives')
 .directive('summonerDirective', function() {
 	return {

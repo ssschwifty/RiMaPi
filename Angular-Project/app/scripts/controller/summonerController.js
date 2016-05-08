@@ -1,3 +1,6 @@
+/*
+* provides a controller for the summoner name input directive
+*/
 angular.module('riot.controller')
 .controller('SummonerController', function($scope, UserData) {
 	$scope.userData = UserData;

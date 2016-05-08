@@ -1,3 +1,6 @@
+/*
+* provides a controller for the region dropdwon directive
+*/
 angular.module('riot.controller')
 .controller('RegionController', function($scope, SharedProperties, UserData) {
 
@@ -21,7 +24,8 @@ angular.module('riot.controller')
 			});
 		}) 
 	}
-
+	// if the position of the user can be evaluated via geolocation, the active region is set to their position
+	// default is North America
 	function defineRegion() {
 		if($scope.userData.regionId == undefined || $scope.userData.regionId == null) {
 			$scope.userData.regionId = 'na';
