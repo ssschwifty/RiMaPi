@@ -121,7 +121,7 @@ app.get('/GetComparissonStatistic/p/:playerPlatform/u/:summonerName', function(r
             "TopChamps": ""
         }
         var summonerName = req.params.summonerName.toLowerCase();
-        console.log(summonerName);
+        //dbAccess.logServiceInfo('GetComparissonStatistic', 'SummonerName: ' + summonerName); // Used for debugging
         if (summonerName == 'undefined' || localPlatform == 'undefined') {
             res.send(noDataErrorResp);
         }
