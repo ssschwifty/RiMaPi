@@ -1,3 +1,6 @@
+/*
+* configures routing between pages
+*/
 angular.module('riot')
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
@@ -33,12 +36,7 @@ angular.module('riot')
 				url:'/compare/?a&b',
  				templateUrl: 'views/compareView.html',
 				controller: 'CompareController'
-			})
-
-		.state('docu', {
-			url: '/docu',
-			templateUrl: 'views/docuView.html'
-		});
+			});
 
 	$urlRouterProvider.otherwise('/entry');
 });
