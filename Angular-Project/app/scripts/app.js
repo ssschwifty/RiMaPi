@@ -1,3 +1,6 @@
+/*
+* Defines the angular application and its dependencies
+*/
 angular.module('riot', [
 	'riot.controller',
 	'riot.controller.ui',

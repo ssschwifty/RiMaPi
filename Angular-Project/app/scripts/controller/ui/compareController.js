@@ -1,6 +1,12 @@
+/*
+* porvides functions and attributes for the compareView
+* depends on SharedProperties, UserData, $location
+*/
+
 angular.module('riot.controller.ui')
 .controller('CompareController', function($scope, SharedProperties, UserData, $location) {
 
+	// initially declare variables
 	$scope.userData = UserData;
 	$scope.donutLegend;
 	$scope.comparable = false;
@@ -10,6 +16,7 @@ angular.module('riot.controller.ui')
 	var highestScore;
 	var highestLevel;
 
+	// get summoner names from url if they are undefined until now
 	if(UserData.summoner == undefined) {
 		UserData.summoner = $location.search()["a"];
 	}
@@ -17,35 +24,47 @@ angular.module('riot.controller.ui')
 		UserData.compareSummoner = $location.search()["b"];
 	}
 	
+	// listen for changes regarding the region
+	// if the region changes getAData() is called to update the data
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
 			$scope.getAData();	
 		}, 20);
 	});
+	// listen for the event that gets triggered when the route state changes
+	// if the state changes getAData() is called to update the data
 	$scope.$on('$stateChangeSuccess', function() {
 		$scope.getAData();
 	});
+	// listen for changes regarding summoner
+	// if the region changes getAData() is called to update the data
 	$('html').on('summoner:change', function() {
 		$scope.getAData();
 	});
+	// listen for changes regarding the summoner to compare to
+	// if the region changes getAData() is called to update the data
 	$('html').on('compareSummoner:change', function() {
 		$scope.getBData();
 	});
-
+	// trigger event, that compareSummoner changed when the enter key is hit
 	$('#compareSummonerInput').on('keypress', function(e) {
 		if(e.keyCode == 13) {
 			$('#summonerInput').blur();
 			$('html').trigger('compareSummoner:change');
 		}
 	});
-
+	// Helper function to determine if <data> is defined or an empty string
 	function isDefined(data) {
-		if(data != undefined && data != "") {
+		if(data != undefined && data != "" && data != null) {
 			return true;
 		} else {
 			return false;
 		}
 	}
+	// retrieves comparissonStatistics for summoner A
+	// if request limit is hit or no data was found, an error popup opens
+	// if no error occurs the data is displayed in charts
+	// if summoner B's is already defined, update those charts, too
 	$scope.getAData = function() {
 		if (UserData.regionId != undefined && isDefined(UserData.summoner)) {
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.summoner)
@@ -81,6 +100,10 @@ angular.module('riot.controller.ui')
 			});
 		}
 	}
+	// retrieves comparissonStatistics for summoner B
+	// if request limit is hit or no data was found, an error popup opens
+	// if no error occurs the data is displayed in charts
+	// if summoner A's is already defined, update those charts, too
 	$scope.getBData = function() {
 		if (UserData.regionId != undefined && isDefined(UserData.compareSummoner)) {
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.compareSummoner)
@@ -115,7 +138,8 @@ angular.module('riot.controller.ui')
 			});
 		}
 	}
-
+	// populates charts with the response from getAData
+	// @param response: ComparissonStatistic from getAData
 	function populateLeftChart(response) {
 		if(summonerBResponse != undefined) {
 			highestScore = Math.max(response.data.TotalScore, summonerBResponse.data.TotalScore);
@@ -133,10 +157,11 @@ angular.module('riot.controller.ui')
 		var barChart = 'lbarChart1';
 		var barChart2 = 'lbarChart2';			
 		generatePieChart(chart, response);
-		generateBarChart(barChart, response.data.TotalScore, scoreADescription, highestScore, "#1F77B4");
-		generateBarChart(barChart2, response.data.TotalLevels, levelADescription, highestLevel, "#FF7F0E");
+		generateBarChart(barChart, response.data.TotalScore, scoreADescription, highestScore);
+		generateBarChart(barChart2, response.data.TotalLevels, levelADescription, highestLevel);
 	}
-
+	// populates charts with the response from getBData
+	// @param response: ComparissonStatistic from getBData
 	function populateRightChart(response) {
 		if(summonerAResponse != undefined) {	
 			highestScore = Math.max(summonerAResponse.data.TotalScore, response.data.TotalScore);
@@ -155,11 +180,15 @@ angular.module('riot.controller.ui')
 		var barChart4 = 'rbarChart2';
 		
 		generatePieChart(chart2, response);
-		generateBarChart(barChart3, response.data.TotalScore, scoreBDescription, highestScore, "#1F77B4");
-		generateBarChart(barChart4, response.data.TotalLevels, levelBDescription, highestLevel, "#FF7F0E");
+		generateBarChart(barChart3, response.data.TotalScore, scoreBDescription, highestScore);
+		generateBarChart(barChart4, response.data.TotalLevels, levelBDescription, highestLevel);
 	}
-
-	function generateBarChart(chart, response, description, max, color) {
+	// generates bar chart
+	// @param chart:		id of HTML element to bind to
+	// @param response:		int, either TotalScore or TotalLevels
+	// @param description:	string, text to display as a description
+	// @param max:			int, max value of x-axis
+	function generateBarChart(chart, response, description, max) {
 		c3.generate({
 			bindto: '#' + chart,
 			data: {
@@ -186,7 +215,9 @@ angular.module('riot.controller.ui')
 			}
 		});
 	}
-
+	// generates pie chart
+	// @param chart:		id of HTML element to bind to
+	// @param response:		ComparissonStatistic obj
 	function generatePieChart(chart, response) {
 		c3.generate({
 			bindto: '#' + chart,
@@ -214,10 +245,9 @@ angular.module('riot.controller.ui')
 					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
 					.then(
 						function(response) {
-							//popup: alles ok
 						},
 						function(respnse) {
-							//popup nochmla versuchen
+							$scope.openPopup($scope.unknownError);
 						}
 					);
 				}
