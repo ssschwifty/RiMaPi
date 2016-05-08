@@ -12,55 +12,57 @@ angular.module('riot.controller.ui')
 	
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
-			getData();
+			getLootData();
 		}, 20);
 	});
 	$('html').on('summoner:change', function() {
-		getData();
+		getLootData();
 	});
 	$scope.$on('$stateChangeSuccess', function() {
-		getData();
+		getLootData();
 	});
 
-	function getData() {
+	function getLootData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {
-				if(response.data != "NoDataFound") {
-					var testresult = response.data;
-					var granted = 0;
-					var notGranted = 0;
-					var potential = [];
-					for (var i = 0; i < testresult.length; i++) {
-						testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
-						testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
-						if(testresult[i].highestGrade == undefined){
-							testresult[i].highestGrade = "N/A";
-						}
-						if(testresult[i].chestGranted) {
-							granted++;
-						} else {
-							potential.push(testresult[i]);
-							notGranted++;
-						}
-					}
-					unsortedChampions = [];
-					sortedChampions = [];
-					$scope.sorted = false;
-					for (var i = 0; i < potential.length; i++) {
-						unsortedChampions.push(potential[i]);
-						sortedChampions.push(potential[i]);
-					}
-					$scope.champions = unsortedChampions;
-					$scope.grantedChests = granted.toString();
-					$scope.notGranted = notGranted.toString();
-
-					$scope.championsShown = true;
-				} else if(response.status == "429"){
+				if(response.data == "429"){
 					$scope.openPopup($scope.requestsExceededMessage);
-				} else {
-					$scope.openPopup($scope.summonerNotFound);
+					return;
 				}
+				if(response.data == "NoDataFound") {
+					$scope.openPopup($scope.summonerNotFound);
+					return;
+				}
+				var testresult = response.data;
+				var granted = 0;
+				var notGranted = 0;
+				var potential = [];
+				for (var i = 0; i < testresult.length; i++) {
+					testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
+					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
+					if(testresult[i].highestGrade == undefined){
+						testresult[i].highestGrade = "N/A";
+					}
+					if(testresult[i].chestGranted) {
+						granted++;
+					} else {
+						potential.push(testresult[i]);
+						notGranted++;
+					}
+				}
+				unsortedChampions = [];
+				sortedChampions = [];
+				$scope.sorted = false;
+				for (var i = 0; i < potential.length; i++) {
+					unsortedChampions.push(potential[i]);
+					sortedChampions.push(potential[i]);
+				}
+				$scope.champions = unsortedChampions;
+				$scope.grantedChests = granted.toString();
+				$scope.notGranted = notGranted.toString();
+
+				$scope.championsShown = true;
 			});
 		}
 	}

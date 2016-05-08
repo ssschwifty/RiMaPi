@@ -27,13 +27,13 @@ angular.module('riot.controller')
 			$scope.userData.regionId = 'na';
 			getContinent().then(function(response){
 				var platform = angular.lowercase(response);
-				if(platform != null) {
-					$scope.userData.regionId = platform;
+				if(platform == null) {
+					$scope.userData.regionId = 'na';
 					$scope.activeIcon.regionIconState = "earth";
 					$scope.$apply();
 					$('html').trigger('region:change');
 				} else {
-					$scope.userData.regionId = 'na';
+					$scope.userData.regionId = platform;
 					$scope.activeIcon.regionIconState = "earth";
 					$scope.$apply();
 					$('html').trigger('region:change');

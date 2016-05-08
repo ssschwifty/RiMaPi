@@ -1,3 +1,6 @@
+/*
+* configures routing between pages
+*/
 angular.module('riot')
 .config(function($stateProvider, $urlRouterProvider) {
 	$stateProvider
@@ -14,9 +17,9 @@ angular.module('riot')
 				url: '/home',
 				templateUrl: 'views/homeView.html'
 			})
-			.state('page.grade', {
-				url:'/grade',
-				templateUrl: 'views/gradeView.html',
+			.state('page.improve', {
+				url:'/improve',
+				templateUrl: 'views/improveView.html',
 				controller: 'GradeController'
 			})
 			.state('page.level', {
@@ -30,15 +33,10 @@ angular.module('riot')
 				controller: 'LootController'
 			})
 			.state('page.compare', {
-				url:'/compare',
-				templateUrl: 'views/compareView.html',
+				url:'/compare/?a&b',
+ 				templateUrl: 'views/compareView.html',
 				controller: 'CompareController'
-			})
-
-		.state('docu', {
-			url: '/docu',
-			templateUrl: 'views/docuView.html'
-		});
+			});
 
 	$urlRouterProvider.otherwise('/entry');
 });
