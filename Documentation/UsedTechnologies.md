@@ -1,5 +1,8 @@
 # Used Technologies
 
+## Riot-Api
+Obviously we used the riot-api. It wouldnt have made sense to participate otherwise ;)
+
 ## Angular.js
 Sarah has some experience with angular.js already so we decided to use it without
 comparing it to other available frameworks.
