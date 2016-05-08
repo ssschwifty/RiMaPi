@@ -11,36 +11,38 @@ angular.module('riot.controller.ui')
 
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
-			getData();
+			getLevelData();
 		}, 20);
 	});
 	$('html').on('summoner:change', function() {
-		getData();
+		getLevelData();
 	});
 	$scope.$on('$stateChangeSuccess', function() {
-		getData();
+		getLevelData();
 	});
 
-	function getData() {
+	function getLevelData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {
-				if(response.data != "NoDataFound") {
-					$scope.champions = [];
-					var testresult = response.data;
-					for (var i = 0; i < testresult.length; i++) {
-						testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
-						testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
-						if(testresult[i].championPointsUntilNextLevel > 0) {
-							$scope.champions.push(testresult[i]);
-						}
-					}
-					Sort.sortByPointsUntilNextLevel($scope.champions);
-				} else if(response.status == "429"){
+				if(response.data == "429"){
 					$scope.openPopup($scope.requestsExceededMessage);
-				} else {
+					return;
+				}
+				if(response.data == "NoDataFound") {
 					$scope.openPopup($scope.summonerNotFound);
-				}				
+					return;
+				}
+				$scope.champions = [];
+				var testresult = response.data;
+				for (var i = 0; i < testresult.length; i++) {
+					testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
+					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
+					if(testresult[i].championPointsUntilNextLevel > 0) {
+						$scope.champions.push(testresult[i]);
+					}
+				}
+				Sort.sortByPointsUntilNextLevel($scope.champions);			
 			});
 		}
 	}
