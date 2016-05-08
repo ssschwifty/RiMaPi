@@ -10,38 +10,42 @@ angular.module('riot.controller.ui')
 
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
-			getData();
+			getImproveData();
 		}, 20);
 	});
 	$('html').on('summoner:change', function() {
-		getData();
+		getImproveData();
 	});
 	$scope.$on('$stateChangeSuccess', function() {
-		getData();
+		getImproveData();
 	});
 
-	function getData() {
+	function getImproveData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {
-				if(response.data != "NoDataFound") {
-					var testresult = response.data;
-					for (var i = 0; i < testresult.length; i++) {
-						testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
-						testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
-						if(testresult[i].highestGrade == undefined){
-							testresult[i].highestGrade = "N/A";
-						}
-						gradeSortedChampions.push(testresult[i]);
-						pointSortedChampions.push(testresult[i]);
-					}
-					$scope.champions = pointSortedChampions;
-					$scope.championsShown = true;
-				} else if(response.status == "429"){
+				if(response.data == "429"){
 					$scope.openPopup($scope.requestsExceededMessage);
-				} else {
+					return;
+				}
+				if(response.data == "NoDataFound") {
 					$scope.openPopup($scope.summonerNotFound);
-				}			
+					return;
+				}
+				var testresult = response.data;
+				gradeSortedChampions = [];
+				pointSortedChampions = [];
+				for (var i = 0; i < testresult.length; i++) {
+					testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
+					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
+					if(testresult[i].highestGrade == undefined){
+						testresult[i].highestGrade = "N/A";
+					}
+					gradeSortedChampions.push(testresult[i]);
+					pointSortedChampions.push(testresult[i]);
+				}
+				$scope.champions = pointSortedChampions;
+				$scope.championsShown = true;
 			});
 		}
 	}
