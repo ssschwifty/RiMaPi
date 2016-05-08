@@ -38,10 +38,10 @@ angular.module('riot.controller.ui')
 					$scope.champions = pointSortedChampions;
 					$scope.championsShown = true;
 				} else if(response.status = "429"){
-					//popup exceeded requestlimit
+					$scope.openPopup($scope.requestsExceededMessage);
 				} else {
-				//popup summoner not found
-				}				
+					$scope.openPopup($scope.summonerNotFound);
+				}			
 			});
 		}
 	}

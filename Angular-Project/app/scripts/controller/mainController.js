@@ -24,7 +24,15 @@ angular.module('riot.controller')
 		}
 		$scope.headerButtonsArray[index].active = true;
 	}
-
+	$scope.openPopup = function(_message) {
+		var popup = $uibModal.open({
+			templateUrl: './views/popupView.html',
+			controller: 'PopupController',
+			resolve: {
+				message: function() {return _message;}
+			}
+		});
+	}
 	// fixes bootstraps dropdown problem
 	$(document).ready(function() {
 		$(".dropdown-toggle").dropdown();
