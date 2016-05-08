@@ -8,8 +8,8 @@ This will send an email with attachment/s from your SendinBlue account.
 */
 (function() {
     var nodemailer = require('nodemailer');
-    var username = require('./emailData.JSON').accountName;
-    var password = require('./emailData.JSON').password;
+    var username = require('./emailData.json').accountName;
+    var password = require('./emailData.json').password;
 
     var transporter = nodemailer.createTransport('smtps://'+ username +'%40gmail.com:' + password +'@smtp.gmail.com');
 
