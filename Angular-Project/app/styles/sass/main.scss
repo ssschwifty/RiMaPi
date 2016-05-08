@@ -25,12 +25,6 @@ body {
 * {
 	font-family: $defaultFont;
 }
-.commonDescription:hover {
-	cursor: default;
-}
-.commonDescription a:hover {
-	cursor: pointer;
-}
 button:focus,
 input:focus {
 	outline: 0;
@@ -108,6 +102,9 @@ input:focus {
 .regionDropdown.open ul {
 	border: 1px solid $textColor;
 }
+.summonerInput:focus {
+	border: 1px solid $textColor;
+}
 .summonerInput {
 	border: solid 1px $transparentShadow;
 	color: $textColor;
@@ -130,12 +127,12 @@ input:focus {
 	color: $lightBlack !important;
 	background-color: $textColor !important;
 	font-weight: bold;
-	cursor: pointer
 }
 #header .regionBtnIcon {
 	width: 18px;
 	height: 18px;
 	position: absolute;
+
 }
 
 
@@ -205,87 +202,78 @@ input:focus {
 	width: 130px;
 	z-index: 101;
 }
-#content .commonDescription {
+
+#content .commonDescription{
+	min-width: 450px;
 	width: 100%;
 	min-height: 100px;
 	margin-bottom: 10px;
 }
-.commonDescription .input,
-.commonDescription .email {
-	display: inline-block;
-}
-.commonDescription .email {
-	float: right;
-}
-#content .commonDescription button {
-	background-color: $transparentLightBlack;
-	border: 1px solid $transparentShadow;
-	height: 30px;
-	width: 100px;
-}
-#content .compare .summoners {
+
+#content .compare{
+	max-width: 1200px;
 	min-width: 1030px;
-	width: 100%;
-	text-align: center;
-	margin-bottom: 20px;
 }
-#content .playerCompareCell {
+
+#content .playerCompareCell{
 	box-sizing: border-box;
 	position: relative;
 	padding: 10px;
-	height: 830px;
-	border: 1px solid $textColor;
-	background-color: $transparentLightBlack;
+	min-height: 750px;
+	border-color: black;
+	border-width: 2px;
+	border-radius: 10px;
+	background-color: rgba(63, 63, 63, 0.7);;
 	min-width: 510px;
 	max-width: 650px;
-
+	width: 47.5%;
 	display: inline-block;
 	vertical-align: top;
 	text-align: left;
 	margin-left: 0px;
 	margin-right: 0px;
 }
+
 #content .playerHead {
 	display: inline-block;
 	position: relative;
 	margin: 10px;
 }
+
 #content .strSummonerName{
 	margin: 10px;
 	font-weight: bold;
 	font-size: 30px;
 }
+
 #content #PlayerHeadRight {
 	position: relative;
 	position: absolute;
 	right: 10px;
 }
-#content .piechart {
-	color: $lightBlack;
+
+#content .piechart{
+	color: black;
 	text-align: center;
 	width: 200px;
 	height: 200px;
 }
-.piechart .donutLegend {
-	color: $textColor;
-}
-#content .c3-legend-item text, 
-.c3 .c3-axis-y text {
+#content .c3-legend-item text, .c3 .c3-axis-x text, .c3 .c3-axis-y text {
  	fill: white;
 }
-.c3 .c3-axis-x text {
-	display: none;
-}
-#content #leftPieChart {
+
+#content #leftPieChart{
 	position: absolute;
 	left: 10px;
 	top: 150px;
 }
-#content #rightPieChart {
+
+#content #rightPieChart{
 	position: absolute;
 	right: 10px;
 	top: 150px;
 }
+
 
 .c3 .c3-axis-x path, .c3 .c3-axis-x line {
     stroke: $textColor;
@@ -293,121 +281,89 @@ input:focus {
 .c3 .c3-axis-y path, .c3 .c3-axis-y line {
     stroke: $textColor;
 }
+
 #content .barChart{
 	color: $textColor;
 	text-align: center;
 	width: 300px;
 	height: 200px;
 }
+
 #content #barChart2, #barChart1, #lbarChart1, #lbarChart2, #rbarChart1, #rbarChart2 {
 	color: black;
 	display: inline-block;
 }
+
 #content #lbarChart1, #lbarChart2, #rbarChart1, #rbarChart2 {
 	width: 120px;
 	margin: 10px;
 }
-#content #rightBarChart {
+
+#content #rightBarChart{
 	position: relative;
 	position: absolute;
 	left: 10px;
 	top: 167px;
 }
-#content #leftBarChart {
+
+#content #leftBarChart{
 	position: relative;
 	position: absolute;
 	right: 10px;
 	top: 167px;
 }
-#content .topChampions {
+
+#content .topChampions{
 	position: absolute;
 	left: 10px;
-	bottom: 5px;
+	bottom: 220px;
 }
-#content .compareSeperator {
+
+#content .compareSeperator{
 	width: 100%;
 	height: 1px;
 	background-color: $textColor;
 	position: absolute;
-	bottom: 320px;
-	left: 0;
+	bottom: 247.5px;
 }
-#content .summonerLevel {
+
+
+
+#content .summonerLevel{
 	margin: 10px;
 	font-size: 18px;
 }
-#content .playerInfoContainer > div {
+
+#content .playerInfoContainer{
 	display: inline-block;
 }
-#playerCompareCell2 > div {
-	text-align: right;
-}
-#content .playerHead > img {
+
+#content .playerHead > img{
 	margin: 10px;
 	height: 128px;
 	width: 128px;
 }
 
-#content .inContentFooter {
+#content #playerCompareCell2 {
+	float:right;
+}
+
+#content .inContentFooter{
 	height: 100px;
 	margin-left: 25%;
 	width: 50%;
 }
-#content .progress {
-	margin-bottom: 0;
-	border-radius: 0;
-	background-color: white;
-	position: relative;
-}
-#content .progress-bar {
-	border-radius: 0;
-	background-color: $transparentLightBlack;
-}
-#content .progress-bar p {
-	position: absolute;
-	left: 5px;
-	color: $lightBlack;
-}
-.test {
-	display: inline-block;
-}
 
-#swain, #xinzhao {
-	position: absolute;
-	bottom: 0;
-	width: 900px;
-}
-#swain {
-	right: 0;
-}
-#xinzhao {
-	left: 0;
-}
+
 #splashScreen {
 	text-align: center;
 	font-size: 16px;
-	margin-top: 50px;
-}
-#splashScreen .enterButton {
-	width: 130px;
-	border: 1px solid $transparentShadow;
-	height: 40px;
-	background: transparent;
-}
-#compareSummonerInput,
-.commonDescription input {
-	border: solid 1px $transparentShadow;
-	color: $textColor;
-	background: transparent;
-	padding: 1px 8px;
-	height: 30px;
-	width: 150px;
 }
 .inputWrapper {
 	width: 100%;
 	height: 100%;
-	margin-top: 80px;
-	margin-bottom: 80px;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 .regions, .summoner {
 	display: inline-block;
@@ -436,36 +392,4 @@ input:focus {
 .smolText a {
 	color: $textColor;
 	font-size: 10px;
-}
-#splashScreen .enter a,
-.commonDescription a {
-	color: $textColor;
-}
-#splashScreen .enter a:hover {
-	text-decoration: none;
-}
-
-#splashScreen .inputWrapper button:hover,
-#splashScreen .inputWrapper button:active,
-#splashScreen .inputWrapper input:hover,
-#splashScreen .inputWrapper input:focus,
-#slpashScreen .enter button:focus,
-#splashScreen .enter button:hover,
-#header .headerInput button:hover,
-#header .headerInput button:active,
-#header .headerInput input:hover,
-#header .headerInput input:focus,
-#content .commonDescription button:hover,
-#content .commonDescription button:active,
-#content .commonDescription input:hover,
-#content .commonDescription input:focus {
-	border: 1px solid $textColor;
-}
-.compare .visible {
-	position: static;
-}
-.compare .hidden {
-	position: absolute;
-	top: -9999px;
-	left: -9999px;
 }
