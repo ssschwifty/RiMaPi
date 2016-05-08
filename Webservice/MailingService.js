@@ -13,7 +13,7 @@ This will send an email with attachment/s from your SendinBlue account.
     var transporter = nodemailer.createTransport('smtps://lol.rimapi%40gmail.com:Toqshurm1!@smtp.gmail.com');
 
     function prepareData(mailTo, sender, recipient, base64Image) {
-        var linkToWebsite = "<a href=\"http://localhost/riot/Angular-Project/app/#/compare/?a=" + sender + "&b=" + recipient + "\">";
+        var linkToWebsite = "<a href=\"http://v22016053572334167.supersrv.de/RiMaPi/app/#/compare/?a=" + sender + "&b=" + recipient + "\">";
         // setup e-mail data with unicode symbols
         console.log(mailTo);
         var mailOptions = {
@@ -39,7 +39,7 @@ This will send an email with attachment/s from your SendinBlue account.
             "    </div>" +
                     linkToWebsite +
             "         <img src=\"cid:embeddedImage1\"/>" +
-            "     </a>" +
+            "     </a> <br> <br>" +
             "This is an automatically generated E-Mail, answering is pointless!" +
             "</body>" +
             "</html>",

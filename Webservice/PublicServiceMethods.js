@@ -66,8 +66,12 @@ app.get('/GetSummonerContinent/la/:latitude/lo/:longitude', function(req, res) {
             dbAccess.logServiceError('GetSummonerContinent', error);
         });
     } catch (e) {
-        res.send(noDataErrorResp);
-        dbAccess.logServiceError('GetSummonerContinent', e);
+        if(error.statusCode == 429){
+            res.send("429");
+        } else{
+            res.send(noDataErrorResp);
+        }
+        dbAccess.logServiceError('GetSummonerContinent', JSON.stringify(error));
     }
 
 });
@@ -105,8 +109,12 @@ app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(r
             });
         });
     } catch (e) {
-        res.send(noDataErrorResp);
-        dbAccess.logServiceError('GetAllChampionMasteries', e);
+        if(error.statusCode == 429){
+            res.send("429");
+        } else{
+            res.send(noDataErrorResp);
+        }
+        dbAccess.logServiceError('GetAllChampionMasteries', JSON.stringify(error));
     }
 });
 
@@ -152,8 +160,12 @@ app.get('/GetComparissonStatistic/p/:playerPlatform/u/:summonerName', function(r
                     })
                 });
             }, function(error) {
-                res.send(noDataErrorResp);
-                dbAccess.logServiceError('GetComparissonStatistic', error);
+                if(error.statusCode == 429){
+                    res.send("429");
+                } else{
+                    res.send(noDataErrorResp);
+                }
+                dbAccess.logServiceError('GetComparissonStatistic', JSON.stringify(error));
             });
         });
     } catch (e) {
