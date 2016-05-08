@@ -10,17 +10,17 @@ angular.module('riot.controller.ui')
 
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
-			getData();
+			getImproveData();
 		}, 20);
 	});
 	$('html').on('summoner:change', function() {
-		getData();
+		getImproveData();
 	});
 	$scope.$on('$stateChangeSuccess', function() {
-		getData();
+		getImproveData();
 	});
 
-	function getData() {
+	function getImproveData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {

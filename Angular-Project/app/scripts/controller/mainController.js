@@ -21,7 +21,7 @@ angular.module('riot.controller')
 	initiate();
 
 	$scope.headerButtonsArray = [
-		{name: 'grade', text: 'Grade'},
+		{name: 'improve', text: 'Improve yourself!'},
 		{name: 'loot', text: 'Mystery Chests'},
 		{name: 'level', text: 'Level Up!'},
 		{name: 'compare', text: 'Compare Yourself'}

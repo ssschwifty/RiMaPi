@@ -14,9 +14,9 @@ angular.module('riot')
 				url: '/home',
 				templateUrl: 'views/homeView.html'
 			})
-			.state('page.grade', {
-				url:'/grade',
-				templateUrl: 'views/gradeView.html',
+			.state('page.improve', {
+				url:'/improve',
+				templateUrl: 'views/improveView.html',
 				controller: 'GradeController'
 			})
 			.state('page.level', {
