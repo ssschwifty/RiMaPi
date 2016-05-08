@@ -156,7 +156,14 @@ input:focus {
 	border: 1px solid $transparentShadow;
 	background-color: transparent;
 }
-#content .sortPotential.on {
+#content .sortChampions {
+	width: 180px;
+	height: 30px;
+	border: 1px solid $transparentShadow;
+	background-color: transparent;
+}
+#content .sortPotential.on,
+#content .sortChampions.order.on {
 	border: 1px solid $textColor;
 }
 #content .sortPotential img {
@@ -458,7 +465,8 @@ input:focus {
 #content .commonDescription button:hover,
 #content .commonDescription button:active,
 #content .commonDescription input:hover,
-#content .commonDescription input:focus {
+#content .commonDescription input:focus,
+#content .sortChampions.type:hover {
 	border: 1px solid $textColor;
 }
 .compare .visible {
@@ -468,4 +476,8 @@ input:focus {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
+}
+
+.inlineBlock {
+	display: inline-block;
 }
