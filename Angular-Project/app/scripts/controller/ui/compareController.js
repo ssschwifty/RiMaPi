@@ -45,26 +45,33 @@ angular.module('riot.controller.ui')
 		if (UserData.regionId != undefined && isDefined(UserData.summoner)) {
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.summoner)
 			.then(function(response) {
-				$scope.comparable = false;
-				$scope.playerAName = response.data.Name;
-				$scope.playerASummonerLevel = 'Summoner Level ' + response.data.SummonerLevel;
-				$scope.playerAImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
-				var playerATopChampions = response.data.TopChamps;
-				for (var i = 0; i < playerATopChampions.length; i++) {
-					playerATopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerATopChampions[i].championId);
-					playerATopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerATopChampions[i].championId);
-					if(playerATopChampions[i].highestGrade == undefined){
-						playerATopChampions[i].highestGrade = "N/A";
+				if(response.data != "NoDataFound") {
+					$scope.comparable = false;
+					$scope.playerAName = response.data.Name;
+					$scope.playerASummonerLevel = 'Summoner Level ' + response.data.SummonerLevel;
+					$scope.playerAImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
+					var playerATopChampions = response.data.TopChamps;
+					for (var i = 0; i < playerATopChampions.length; i++) {
+						playerATopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerATopChampions[i].championId);
+						playerATopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerATopChampions[i].championId);
+						if(playerATopChampions[i].highestGrade == undefined){
+							playerATopChampions[i].highestGrade = "N/A";
+						}
 					}
-				}
-				$scope.playerATopChamps = playerATopChampions;
-				summonerAResponse = response;
-				if(isDefined(summonerBResponse)){
-					populateLeftChart(response);
-					populateRightChart(summonerBResponse);
+					$scope.playerATopChamps = playerATopChampions;
+					summonerAResponse = response;
+					if(isDefined(summonerBResponse)){
+						populateLeftChart(response);
+						populateRightChart(summonerBResponse);
+					} else {
+						populateLeftChart(response);
+					}
+				} else if(response.status = "429"){
+					//popup exceeded requestlimit
 				} else {
-					populateLeftChart(response);
-				}
+					//popup summoner not found
+				}	
+				
 				
 			});
 		}
@@ -73,25 +80,31 @@ angular.module('riot.controller.ui')
 		if (UserData.regionId != undefined && isDefined(UserData.compareSummoner)) {
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.compareSummoner)
 			.then(function(response) {
-				$scope.playerBName = response.data.Name;
-				$scope.playerBSummonerLevel = 'Summoner Level ' + response.data.SummonerLevel;
-				$scope.playerBImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
-				var playerBTopChampions = response.data.TopChamps;
-				for (var i = 0; i < playerBTopChampions.length; i++) {
-					playerBTopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerBTopChampions[i].championId);
-					playerBTopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerBTopChampions[i].championId);
-					if(playerBTopChampions[i].highestGrade == undefined){
-						playerBTopChampions[i].highestGrade = "N/A";
+				if(response.data != "NoDataFound") {
+					$scope.playerBName = response.data.Name;
+					$scope.playerBSummonerLevel = 'Summoner Level ' + response.data.SummonerLevel;
+					$scope.playerBImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
+					var playerBTopChampions = response.data.TopChamps;
+					for (var i = 0; i < playerBTopChampions.length; i++) {
+						playerBTopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerBTopChampions[i].championId);
+						playerBTopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerBTopChampions[i].championId);
+						if(playerBTopChampions[i].highestGrade == undefined){
+							playerBTopChampions[i].highestGrade = "N/A";
+						}
 					}
-				}
-				$scope.playerBTopChamps = playerBTopChampions;
-				summonerBResponse = response;
-				if(isDefined(summonerAResponse)){
-					populateRightChart(response);
-					populateLeftChart(summonerAResponse);
+					$scope.playerBTopChamps = playerBTopChampions;
+					summonerBResponse = response;
+					if(isDefined(summonerAResponse)){
+						populateRightChart(response);
+						populateLeftChart(summonerAResponse);
+					} else {
+						populateRightChart(response);
+					}
+				} else if(response.status = "429"){
+					//popup exceeded requestlimit
 				} else {
-					populateRightChart(response);
-				}
+					//popup summoner not found
+				}	
 			});
 		}
 	}

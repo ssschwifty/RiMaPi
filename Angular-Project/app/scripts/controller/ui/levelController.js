@@ -25,16 +25,23 @@ angular.module('riot.controller.ui')
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {
 			SharedProperties.getAllChampionMasteries(UserData.regionId, UserData.summoner)
 			.then(function(response) {
-				$scope.champions = [];
-				var testresult = response.data;
-				for (var i = 0; i < testresult.length; i++) {
-					testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
-					testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
-					if(testresult[i].championPointsUntilNextLevel > 0) {
-						$scope.champions.push(testresult[i]);
+				if(response.data != "NoDataFound") {
+					$scope.champions = [];
+					var testresult = response.data;
+					for (var i = 0; i < testresult.length; i++) {
+						testresult[i].nameId = SharedProperties.getChampionNameIdById(testresult[i].championId);
+						testresult[i].displayName = SharedProperties.getChampionDisplayNameById(testresult[i].championId);
+						if(testresult[i].championPointsUntilNextLevel > 0) {
+							$scope.champions.push(testresult[i]);
+						}
 					}
-				}
-				Sort.sortByPointsUntilNextLevel($scope.champions);
+					Sort.sortByPointsUntilNextLevel($scope.champions);
+				} else if(response.status = "429"){
+					//popup exceeded requestlimit
+				} else {
+				//popup summoner not found
+				}	
+				
 			});
 		}
 	}
