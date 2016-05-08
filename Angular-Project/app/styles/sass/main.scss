@@ -461,7 +461,8 @@ input:focus {
 #content .commonDescription button:active,
 #content .commonDescription input:hover,
 #content .commonDescription input:focus,
-#content .sortChampions.type:hover {
+#content .sortChampions.type:hover,
+.popup .button:hover {
 	border: 1px solid $textColor;
 }
 .compare .visible {
@@ -479,17 +480,23 @@ input:focus {
 	background: $lightBlack;
 	padding: 10px;
 }
-.popup .message {
+.popup .header {
 	position: absolute;
 	left: 230px;
 	font-size: 18px;
+}
+.popup .message {
+	position: absolute;
+	top: 40px;
+	left: 230px;
+	right: 10px;
 }
 .popup .button {
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
 	background-color: $transparentLightBlack;
-	border: 1px solid $textColor;
+	border: 1px solid $transparentShadow;
 	height: 30px;
 	width: 100px;
 }

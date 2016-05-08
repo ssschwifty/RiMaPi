@@ -190,17 +190,20 @@ angular.module('riot.controller.ui')
 		});
 	}
 	$scope.sendEmail = function(address) {
-		SharedProperties.sendEmailTo(address)
-		.then(
-			function(response) {
-				//popup: alles ok
-			},
-			function(respnse) {
-				//popup nochmla versuchen
-			}
-		);
+		if(summonerAResponse != undefined && summonerBResponse != undefined) {
+			SharedProperties.sendEmailTo(address)
+			.then(
+				function(response) {
+					//popup: alles ok
+				},
+				function(respnse) {
+					//popup nochmla versuchen
+				}
+			);
+		} else {
+			$scope.openPopup($scope.enterSummonerNames);
+		}
 	}
-
 
 	$scope.getAData();
 });
