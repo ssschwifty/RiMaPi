@@ -484,6 +484,15 @@ input:focus {
 	left: 230px;
 	font-size: 18px;
 }
+.popup .button {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background-color: $transparentLightBlack;
+	border: 1px solid $textColor;
+	height: 30px;
+	width: 100px;
+}
 .popup .image img {
 	width: 200px;
 	height: 200px;
