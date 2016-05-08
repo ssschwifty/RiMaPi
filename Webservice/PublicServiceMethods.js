@@ -41,10 +41,21 @@ app.use(bodyParser.urlencoded({
     extended: true
 })); // for parsing application/x-www-form-urlencoded
 
+
+
+
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+//----------- Public Service Methods of the Service
+
+
+
+
+
 //-----------------------------------------------------
 // getter function "http://domain:3000/GetAllChampionMasteries/p/:platform/u/:userId"
-// req.params:  p(String) platform id.
-//              u(String) player ID
+// req.params:  la(number) Latitude of the users Position.
+//              lo(number) Latitude of the users Position.
 //------------------------------------------------------
 app.get('/GetSummonerContinent/la/:latitude/lo/:longitude', function(req, res) {
     try {
@@ -62,24 +73,27 @@ app.get('/GetSummonerContinent/la/:latitude/lo/:longitude', function(req, res) {
                 }
             );
         }, function(error) {
-            if(error.statusCode == 429){
+            /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
+            /// responds the error if so, responds no data otherwise
+            if(error.statusCode == "429"){
                 res.send("429");
             } else{
                 res.send(noDataErrorResp);
             }
-            dbAccess.logServiceError('GetSummonerContinent', error);
         });
     } catch (e) {
-        if(error.statusCode == 429){
-            res.send("429");
-        } else{
-            res.send(noDataErrorResp);
-        }
-        dbAccess.logServiceError('GetSummonerContinent', JSON.stringify(error));
+        dbAccess.logServiceError('GetSummonerContinent', e);
     }
 
 });
 
+
+/// Sorting FUnction to determine the uesrs country from the google api
+/// it iterates over every element of an array and returns it, if its
+/// name matches the given key
+/// Params:
+/// array(array) : array to be searched
+/// key(string) : key to be matched
 function searchByKey(array, key) {
     for (var i = 0, l = array.length; i < l; i++) {
         if (array[i]['types'][0] === key) {
@@ -108,21 +122,17 @@ app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(r
             rp(requestOptions).then(function(response) {
                 res.send(response);
             }, function(error) {
-                if(error.statusCode == 429){
+                /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
+                /// responds the error if so, responds no data otherwise
+                if(error.statusCode == "429"){
                     res.send("429");
                 } else{
                     res.send(noDataErrorResp);
                 }
-                dbAccess.logServiceError('GetAllChampionMasteries', error);
             });
         });
     } catch (e) {
-        if(error.statusCode == 429){
-            res.send("429");
-        } else{
-            res.send(noDataErrorResp);
-        }
-        dbAccess.logServiceError('GetAllChampionMasteries', JSON.stringify(error));
+        dbAccess.logServiceError('GetAllChampionMasteries', e);
     }
 });
 
@@ -168,20 +178,16 @@ app.get('/GetComparissonStatistic/p/:playerPlatform/u/:summonerName', function(r
                     })
                 });
             }, function(error) {
-                if(error.statusCode == 429){
+                /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
+                /// responds the error if so, responds no data otherwise
+                if(error.statusCode == "429"){
                     res.send("429");
                 } else{
                     res.send(noDataErrorResp);
                 }
-                dbAccess.logServiceError('GetComparissonStatistic', JSON.stringify(error));
             });
         });
     } catch (e) {
-        if(error.statusCode == 429){
-            res.send("429");
-        } else{
-            res.send(noDataErrorResp);
-        }
         dbAccess.logServiceError('GetComparissonStatistic', e);
     }
 });
