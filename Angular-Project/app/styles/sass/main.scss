@@ -28,7 +28,7 @@ body {
 .commonDescription:hover {
 	cursor: default;
 }
-.commonDescription a:hover {
+.compare a:hover {
 	cursor: pointer;
 }
 button:focus,
@@ -160,6 +160,7 @@ input:focus {
 	height: 30px;
 	border: 1px solid $transparentShadow;
 	background-color: transparent;
+	margin-top: 10px;
 }
 #content .sortPotential.on,
 #content .sortChampions.order.on {
@@ -215,18 +216,16 @@ input:focus {
 	font-size: 16px;
 	width: 100%;
 	min-height: 100px;
+}
+.compare .input,
+.compare .email {
+	display: inline-block;
 	margin-bottom: 10px;
 }
-
-
-.commonDescription .input,
-.commonDescription .email {
-	display: inline-block;
-}
-.commonDescription .email {
+.compare .email {
 	float: right;
 }
-#content .commonDescription button {
+#content .compare button {
 	background-color: $transparentLightBlack;
 	border: 1px solid $transparentShadow;
 	height: 30px;
@@ -397,7 +396,7 @@ input:focus {
 	background: transparent;
 }
 #compareSummonerInput,
-.commonDescription input {
+.compare input {
 	border: solid 1px $transparentShadow;
 	color: $textColor;
 	background: transparent;
@@ -440,7 +439,7 @@ input:focus {
 	font-size: 10px;
 }
 #splashScreen .enter a,
-.commonDescription a {
+.compare a {
 	color: $textColor;
 }
 #splashScreen .enter a:hover {
@@ -457,10 +456,10 @@ input:focus {
 #header .headerInput button:active,
 #header .headerInput input:hover,
 #header .headerInput input:focus,
-#content .commonDescription button:hover,
-#content .commonDescription button:active,
-#content .commonDescription input:hover,
-#content .commonDescription input:focus,
+#content .compare button:hover,
+#content .compare button:active,
+#content .compare input:hover,
+#content .compare input:focus,
 #content .sortChampions.type:hover,
 .popup .button:hover {
 	border: 1px solid $textColor;
