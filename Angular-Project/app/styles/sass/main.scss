@@ -373,9 +373,6 @@ input:focus {
 	left: 5px;
 	color: $lightBlack;
 }
-.test {
-	display: inline-block;
-}
 
 #swain, #xinzhao {
 	position: absolute;
@@ -474,6 +471,22 @@ input:focus {
 	position: absolute;
 	top: -9999px;
 	left: -9999px;
+}
+.modal-content {
+	position: relative;
+	border: 1px solid $textColor;
+	border-radius: 0;
+	background: $lightBlack;
+	padding: 10px;
+}
+.popup .message {
+	position: absolute;
+	left: 230px;
+	font-size: 18px;
+}
+.popup .image img {
+	width: 200px;
+	height: 200px;
 }
 
 .inlineBlock {
