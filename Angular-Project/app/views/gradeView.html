@@ -7,4 +7,20 @@
         Maybe it will give you an idea of what to play
         and maybe even who to choose as a new main.
     </div>
+    <button type="button" class="sortChampions type" ng-show="championsShown" ng-click="sortChampions(false)"> 
+		<div class="sortBtnText grade" ng-show="sorted">Sorted by Grade</div>
+		<div class="sortBtnText point" ng-hide="sorted">Sorted by Champion Points </div>
+	</button>
+	<button type="button" class="sortChampions order" ng-show="championsShown && !sorted" ng-click="descChampions()" ng-class="desc ? 'on' : 'off'"> Descanding </button>
+	<div id="championsWrapper">
+		<div class="championContainer" ng-repeat="champion in champions">
+			<div id="gradient"></div>
+			<img ng-src ="./sources/image/champions/{{champion.nameId}}_0.jpg">
+			<div class="championText">
+				<div> {{champion.displayName}}</div>
+				<div ng-hide="sorted"> Champion Points: {{champion.championPoints}} </div>
+				<div ng-show="sorted"> Highest Grade: {{champion.highestGrade}} </div>
+			</div>
+		</div>
+	</div>    
 </div>

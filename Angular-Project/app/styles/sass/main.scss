@@ -153,7 +153,14 @@ input:focus {
 	border: 1px solid $transparentShadow;
 	background-color: transparent;
 }
-#content .sortPotential.on {
+#content .sortChampions {
+	width: 180px;
+	height: 30px;
+	border: 1px solid $transparentShadow;
+	background-color: transparent;
+}
+#content .sortPotential.on,
+#content .sortChampions.order.on {
 	border: 1px solid $textColor;
 }
 #content .sortPotential img {
@@ -392,4 +399,41 @@ input:focus {
 .smolText a {
 	color: $textColor;
 	font-size: 10px;
+}
+#splashScreen .enter a,
+.commonDescription a {
+	color: $textColor;
+}
+#splashScreen .enter a:hover {
+	text-decoration: none;
+}
+
+#splashScreen .inputWrapper button:hover,
+#splashScreen .inputWrapper button:active,
+#splashScreen .inputWrapper input:hover,
+#splashScreen .inputWrapper input:focus,
+#slpashScreen .enter button:focus,
+#splashScreen .enter button:hover,
+#header .headerInput button:hover,
+#header .headerInput button:active,
+#header .headerInput input:hover,
+#header .headerInput input:focus,
+#content .commonDescription button:hover,
+#content .commonDescription button:active,
+#content .commonDescription input:hover,
+#content .commonDescription input:focus,
+#content .sortChampions.type:hover {
+	border: 1px solid $textColor;
+}
+.compare .visible {
+	position: static;
+}
+.compare .hidden {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
+.inlineBlock {
+	display: inline-block;
 }
