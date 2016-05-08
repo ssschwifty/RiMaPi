@@ -47,12 +47,15 @@ angular.module('riot.controller.ui')
 			.then(function(response) {
 				$scope.comparable = false;
 				$scope.playerAName = response.data.Name;
-				$scope.playerASummonerLevel = 'Summoner Level' + response.data.SummonerLevel;
+				$scope.playerASummonerLevel = 'Summoner Level ' + response.data.SummonerLevel;
 				$scope.playerAImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
 				var playerATopChampions = response.data.TopChamps;
 				for (var i = 0; i < playerATopChampions.length; i++) {
 					playerATopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerATopChampions[i].championId);
 					playerATopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerATopChampions[i].championId);
+					if(playerATopChampions[i].highestGrade == undefined){
+						playerATopChampions[i].highestGrade = "N/A";
+					}
 				}
 				$scope.playerATopChamps = playerATopChampions;
 				summonerAResponse = response;
@@ -71,12 +74,15 @@ angular.module('riot.controller.ui')
 			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.compareSummoner)
 			.then(function(response) {
 				$scope.playerBName = response.data.Name;
-				$scope.playerBSummonerLevel = 'Summoner Level' + response.data.SummonerLevel;
+				$scope.playerBSummonerLevel = 'Summoner Level ' + response.data.SummonerLevel;
 				$scope.playerBImage = './sources/image/SummonerIcons/' + response.data.IconID + '.png';
 				var playerBTopChampions = response.data.TopChamps;
 				for (var i = 0; i < playerBTopChampions.length; i++) {
 					playerBTopChampions[i].nameId = SharedProperties.getChampionNameIdById(playerBTopChampions[i].championId);
 					playerBTopChampions[i].displayName = SharedProperties.getChampionDisplayNameById(playerBTopChampions[i].championId);
+					if(playerBTopChampions[i].highestGrade == undefined){
+						playerBTopChampions[i].highestGrade = "N/A";
+					}
 				}
 				$scope.playerBTopChamps = playerBTopChampions;
 				summonerBResponse = response;
