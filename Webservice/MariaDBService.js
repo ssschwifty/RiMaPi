@@ -8,6 +8,7 @@
     dbPassword = require('./dbAccessData.json').password;
     dbName = require('./dbAccessData.json').dbName;
 
+    /// database connection initialisation
     var c = new Client({
         host: '127.0.0.1',
         user: dbUsername,
@@ -15,9 +16,9 @@
         db: dbName
     });
 
-    //---------------------------------------------------------------------------------
-    //---------------------------------------------------------------------------------
-    //-----------Functions
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+//-----------Functions
 
     // Gets the local continent code form the DataBase using the google reversegeocoding apis Conutrycode
     function getLolContinentCodeLocalFromDB(countryCode, callback) {
@@ -40,7 +41,10 @@
     }
 
 
-    // Gets the local continent code form the DataBase using the google reversegeocoding apis Conutrycode
+/// ----------------------------- riot api call continen code functions
+    /// There are two kinds of continent codes for the riot api: old and new.
+    /// Depending on the api call you need a certain one of these
+    // Gets the new continent code using the given local continent code
     function getLolApiContinentCodeNewFromDB(platform, callback) {
         try {
             c.query('select lolContinentNew from continents where UPPER(code) = UPPER(:country)', {
@@ -60,7 +64,7 @@
         }
     }
 
-    // Gets the local continent code form the DataBase using the google reversegeocoding apis Conutrycode
+    // Gets the old continent code using the given local continent code
     function getLolApiContinentCodeOldFromDB(platform, callback) {
         try {
             c.query('select lolContinentOld from continents where UPPER(code) = UPPER(:country)', {
@@ -79,8 +83,11 @@
             logServiceError('getLolApiContinentCodeOldFromDB', e);
         }
     }
+/// -----------------------------
 
 
+/// ----------------------------- Logging functions
+/// logs an error of the service into the database
     function logServiceError(throwingMethod, stackTrace) {
         try {
             c.query('insert into RiotApiServiceErrorLog (MethodOccurred, ErrorOccurred) VALUES (:lvsMethodOccurred, :lvsErrorOccurred)', {
@@ -94,7 +101,7 @@
         }
     }
 
-
+/// creates a normal log and logs it into the database
     function logServiceInfo(throwingMethod, info) {
         try {
             c.query('insert into RiotApiServiceNormalLog (Method, Status) VALUES (:lvsMethodOccurred, :lvsErrorOccurred)', {
@@ -106,9 +113,9 @@
             logServiceError('logServiceInfo', e);
         }
     }
+/// -----------------------------
 
-
-
+/// Function for closing the database connection
     function closeDBConnection() {
         c.end();
     }

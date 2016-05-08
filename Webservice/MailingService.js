@@ -1,18 +1,14 @@
-/*
-To send attachment/s generated on the fly you have to pass your attachment/s filename & its base64 encoded chunk data in key-value pair in attachment input.
-Prepare your attachment input as mentioned below.
-
-var attachment = {"YourFileName1.Extension":"Base64EncodedChunkData1", "YourFileName2.Extension":"Base64EncodedChunkData2"}
-
-This will send an email with attachment/s from your SendinBlue account.
-*/
 (function() {
     var nodemailer = require('nodemailer');
     var username = require('./emailData.json').accountName;
     var password = require('./emailData.json').password;
 
+    /// init smtp
     var transporter = nodemailer.createTransport('smtps://'+ username +'%40gmail.com:' + password +'@smtp.gmail.com');
 
+    /// private method
+    /// builds an object, that contains all necessary data for sending an email.
+    /// and returns it to the calling function
     function prepareData(mailTo, sender, recipient, base64Image) {
         var linkToWebsite = "<a href=\"http://v22016053572334167.supersrv.de/RiMaPi/app/#/compare/?a=" + sender + "&b=" + recipient + "\">";
         // setup e-mail data with unicode symbols
@@ -56,6 +52,8 @@ This will send an email with attachment/s from your SendinBlue account.
         return mailOptions;
     }
 
+    /// Sends the Email by calling prepare data and sending the email
+    /// with the generated options.
     function sendEmail(mailTo, sender, recipient, base64Image) {
         console.log('prepare Data for email!');
         mailOptions = prepareData(mailTo, sender, recipient, base64Image);

@@ -43,7 +43,9 @@
 
 
     //------------------------------------------------------
-    // TODO
+    // Gets all summonerData of a summoner with the help of the riot summoner api v1.4
+    // Params:  summonerName : Name of the summoner
+    //          platform : continentcode old of the summoner
     //-------------------------------------------clear-----------
     function GetSummonerData(summonerName, platform) {
         return new Promise(function(resolve, reject) {
@@ -65,6 +67,11 @@
     }
 
 
+    //------------------------------------------------------
+    // Gets all Masteryscore of a summoner with the help of the riot mastery api
+    // Params:  summonerName : Name of the summoner
+    //          platform : continentcode new of the summoner
+    //-------------------------------------------clear-----------
     function GetSummonerMasteryScore(platform, summonerId, summonerName) {
         return new Promise(function(resolve, reject) {
             // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
@@ -84,6 +91,12 @@
         });
     }
 
+    //------------------------------------------------------
+    // Gets a Summoners top  3 Champions with the help of the riot mastery api
+    // Params:  summonerName : Name of the summoner
+//              summonerId : id of the summonername
+    //          platform : continentcode new of the summoner
+    //-------------------------------------------clear-----------
     function GetSummonerTopChampions(platform, summonerId, summonerName) {
         return new Promise(function(resolve, reject) {
             // For some reason the http Request didnt encode spaces automatically, so here is a manual replace space with %20(which is encoded space)
