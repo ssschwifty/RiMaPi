@@ -12,11 +12,11 @@ This will send an email with attachment/s from your SendinBlue account.
 
     var transporter = nodemailer.createTransport('smtps://lol.rimapi%40gmail.com:Toqshurm1!@smtp.gmail.com');
 
-    function prepareData(mailTo, base64Image) {
+    function prepareData(mailTo, sender, base64Image) {
         // setup e-mail data with unicode symbols
         var mailOptions = {
             from: '"Rimapi" <noreply@RiMaPi.com>', // sender address
-            to: 'f.birke@yahoo.de, f.birke92@gmail.com, f-birke@t-online.de', // list of receivers
+            to: 'f.birke@yahoo.de', // list of receivers
             subject: 'Hello', // Subject line
             text: 'Hello world', // plaintext body
             html: "<!DOCTYPE html>" +
@@ -52,11 +52,13 @@ This will send an email with attachment/s from your SendinBlue account.
         return mailOptions;
     }
 
-    function sendEmail(mailTo, base64Image) {
+    function sendEmail(mailTo, sender, base64Image) {
         console.log('prepare Data for email!');
-        mailOptions = prepareData(mailTo, base64Image);
+        mailOptions = prepareData(mailTo, sender, base64Image);
         // send mail with defined transport object
         console.log('sending Data for email!');
+
+
         transporter.sendMail(mailOptions, function(error, info) {
             console.log('sent Data for email!');
             if (error) {

@@ -191,25 +191,35 @@ angular.module('riot.controller.ui')
 			}
 		});
 	}
+
 	$scope.sendEmail = function(address) {
 		html2canvas($(".summoners")[0], {
 			onrendered: function(canvas) {
 				// canvas is the final rendered <canvas> element
-				console.log(canvas);
-				var myImage = canvas.toDataURL("image/png");
-				console.log(myImage);
-				window.open(myImage);
+				var myImage = canvas.toDataURL();
+				SharedProperties.sendCompareEmail(address, $scope.userData.summoner, myImage)
+				.then(
+					function(response) {
+						//popup: alles ok
+					},
+					function(respnse) {
+						//popup nochmla versuchen
+					}
+				);
 			}
 		});
-		SharedProperties.sendEmailTo(address)
-		.then(
-			function(response) {
-				//popup: alles ok
-			},
-			function(respnse) {
-				//popup nochmla versuchen
-			}
-		);
+	}
+
+	/**
+	 * use this to make a Base64 encoded string URL friendly,
+	 * i.e. '+' and '/' are replaced with '-' and '_' also any trailing '='
+	 * characters are removed
+	 *
+	 * @param {String} str the encoded string
+	 * @returns {String} the URL friendly encoded String
+	 */
+	function Base64EncodeUrl(str){
+	    return str.replace(/\:/g, '%3A').replace(/\//g, '%2F').replace(/\;/g, '%3B').replace(/\,/g, '%2C').replace(/\+/g, '%2B').replace(/\=/g,'%3D');
 	}
 
 

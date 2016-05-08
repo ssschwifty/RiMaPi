@@ -19,8 +19,8 @@ angular.module('riot.services')
 		getGeolocation: function(success) {
 			RequestService.getGeolocation(success);
 		},
-		sendEmailTo: function(address) {
-			return RequestService.sendEmailTo(address);
+		sendCompareEmail: function(mailTo, sender, base64Image) {
+			return RequestService.sendCompareEmail(mailTo, sender, base64Image);
 		},
 
 		getChampionNameIdById: function(id) {
