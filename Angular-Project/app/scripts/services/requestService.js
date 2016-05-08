@@ -63,6 +63,11 @@ angular.module('riot.services')
 			return $http.get(baseUrl + 'GetComparissonStatistic/p/' + region + '/u/' + summoner);
 		},
 
+		// returns a promise holding the webservice call to send an Email to a friend
+		// @param mailTomailTo: String, the Email-adress of the recipient of the Email
+		// @param sender: String, name of the summoner who has send the email
+		// @param recipient: String, name of the summoner who receives the email
+		// @param base64Image: Base64String, Image of the summoner comparisscion view as base 64 string
 		sendCompareEmail: function(mailTo, sender, recipient,  base64Image) {
 			return $http.post(baseUrl + 'sendComparison/r/' + mailTo + '/s/' + sender + "/rs/" + recipient, '{"data":"' + base64Image + '"}');
 		}

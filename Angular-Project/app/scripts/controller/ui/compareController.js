@@ -240,17 +240,22 @@ angular.module('riot.controller.ui')
 			}
 		});
 	}
+
+	/// Sends the email to the comparedSummoner
 	$scope.sendEmail = function(address) {
 		if (summonerAResponse != undefined && summonerBResponse != undefined) {
+			/// Render the summoner charts as image
 			html2canvas($(".summoners")[0], {
 				onrendered: function(canvas) {
-					// canvas is the final rendered <canvas> element
+					// convert the rendered Charts to a base64 String
 					var myImage = canvas.toDataURL();
+					// Send the email by calling the service method
 					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
 						.then(
 							function(response) {
 							},
 							function(respnse) {
+								// An error has occured!
 								$scope.openPopup($scope.unknownError);
 							}
 						);
