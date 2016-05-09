@@ -15,7 +15,7 @@
 			<div class="email">
 				<form name="emailForm">
 					<button ng-click="sendEmail(email)" ng-show="emailForm.input.$valid && !emailForm.input.$error.required"> Send an Email! </button>
-					<input type="email" name="input" ng-model="email" placeholder="Enter Email address" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+					<input type="email" id="emailInput" name="input" ng-model="email" placeholder="Enter Email address" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
 				</form>
 			</div>
 		<div class="summoners">

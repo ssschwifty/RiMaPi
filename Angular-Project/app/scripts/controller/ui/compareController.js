@@ -51,6 +51,7 @@ angular.module('riot.controller.ui')
 			$('html').trigger('compareSummoner:change');
 		}
 	});
+
 	// Helper function to determine if <data> is defined or an empty string
 	function isDefined(data) {
 		if(data != undefined && data != "" && data != null) {
@@ -245,6 +246,7 @@ angular.module('riot.controller.ui')
 
 	/// Sends the email to the comparedSummoner
 	$scope.sendEmail = function(address) {
+		$('#emailInput').blur();
 		if (summonerAResponse != undefined && summonerBResponse != undefined) {
 			/// Render the summoner charts as image
 			html2canvas($(".summoners")[0], {

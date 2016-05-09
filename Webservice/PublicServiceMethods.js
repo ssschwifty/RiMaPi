@@ -17,9 +17,12 @@ var helper = require('./helper.js');
 var subService = require('./subServiceMethods.js');
 var mailer = require('./MailingService.js')
 
-var privateKey  = fs.readFileSync('sslcert/privkey.pem', 'utf8');
+var privateKey = fs.readFileSync('sslcert/privkey.pem', 'utf8');
 var certificate = fs.readFileSync('sslcert/cert.pem', 'utf8');
-var credentials = {key: privateKey, cert: certificate};
+var credentials = {
+    key: privateKey,
+    cert: certificate
+};
 var httpsServer = https.createServer(credentials, app);
 
 var riotApiKey;
@@ -82,9 +85,9 @@ app.get('/GetSummonerContinent/la/:latitude/lo/:longitude', function(req, res) {
         }, function(error) {
             /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
             /// responds the error if so, responds no data otherwise
-            if(error.statusCode == "429"){
+            if (error.statusCode == "429") {
                 res.send("429");
-            } else{
+            } else {
                 res.send(noDataErrorResp);
             }
         });
@@ -118,24 +121,29 @@ function searchByKey(array, key) {
 //------------------------------------------------------
 app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(req, res) {
     try {
-        var platform = req.params.playerPlatform;
+        var localPlatform = req.params.playerPlatform;
         var summonerName = req.params.summonerName.toLowerCase();
         if (summonerName == 'undefined' || platform == 'undefined') {
             res.send(null);
         }
-        subService.GetSummonerData(summonerName, platform).then(function(summonerData) {
+        subService.GetSummonerData(summonerName, localPlatform).then(function(summonerData) {
             var id = summonerData.id;
-            var requestOptions = subService.createRiotApiHttpRequest('/championmastery/location/' + platform + '1/player/' + id + '/champions');
-            rp(requestOptions).then(function(response) {
-                res.send(response);
-            }, function(error) {
-                /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
-                /// responds the error if so, responds no data otherwise
-                if(error.statusCode == "429"){
-                    res.send("429");
-                } else{
-                    res.send(noDataErrorResp);
-                }
+            dbAccess.getLolApiContinentCodeOldFromDB(localPlatform, function(actualOldPlatform) {
+                dbAccess.getLolApiContinentCodeNewFromDB(localPlatform, function(actualNewPlatform) {
+                    var requestOptions = subService.createRiotApiHttpRequest('/championmastery/location/' + actualNewPlatform + '/player/' + id + '/champions', actualOldPlatform);
+                    //console.log(requestOptions);
+                    rp(requestOptions).then(function(response) {
+                        res.send(response);
+                    }, function(error) {
+                        /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
+                        /// responds the error if so, responds no data otherwise
+                        if (error.statusCode == "429") {
+                            res.send("429");
+                        } else {
+                            res.send(noDataErrorResp);
+                        }
+                    });
+                });
             });
         });
     } catch (e) {
@@ -168,30 +176,33 @@ app.get('/GetComparissonStatistic/p/:playerPlatform/u/:summonerName', function(r
             res.send(noDataErrorResp);
         }
         subService.GetSummonerData(summonerName, localPlatform).then(function(summonerData) {
-
-            summonerId = summonerData.id;
-            compareResponse.IconID = summonerData.profileIconId;
-            compareResponse.SummonerLevel = summonerData.summonerLevel;
-            var requestOptions = subService.createRiotApiHttpRequest('/championmastery/location/' + localPlatform + '1/player/' + summonerId + '/champions');
-            rp(requestOptions).then(function(summonerMasteryChampionsRepsonse) {
-                var customChampionStatistic = helper.getTotalMasteryScoreAndGradeStatistic(summonerMasteryChampionsRepsonse);
-                compareResponse.TotalScore = customChampionStatistic.totalMasteryScore;
-                compareResponse.highestGradeStatistic = customChampionStatistic.ChampionGradeStatistic;
-                subService.GetSummonerMasteryScore(localPlatform, summonerId, summonerName).then(function(summonerMasteryScoreResponse) {
-                    compareResponse.TotalLevels = summonerMasteryScoreResponse;
-                    subService.GetSummonerTopChampions(localPlatform, summonerId, summonerName).then(function(summonersTopChampions) {
-                        compareResponse.TopChamps = summonersTopChampions;
-                        res.send(compareResponse);
-                    })
+            dbAccess.getLolApiContinentCodeOldFromDB(localPlatform, function(actualOldPlatform) {
+                dbAccess.getLolApiContinentCodeNewFromDB(localPlatform, function(actualNewPlatform) {
+                    summonerId = summonerData.id;
+                    compareResponse.IconID = summonerData.profileIconId;
+                    compareResponse.SummonerLevel = summonerData.summonerLevel;
+                    var requestOptions = subService.createRiotApiHttpRequest('/championmastery/location/' + actualNewPlatform + '/player/' + summonerId + '/champions', actualOldPlatform);
+                    rp(requestOptions).then(function(summonerMasteryChampionsRepsonse) {
+                        var customChampionStatistic = helper.getTotalMasteryScoreAndGradeStatistic(summonerMasteryChampionsRepsonse);
+                        compareResponse.TotalScore = customChampionStatistic.totalMasteryScore;
+                        compareResponse.highestGradeStatistic = customChampionStatistic.ChampionGradeStatistic;
+                        subService.GetSummonerMasteryScore(localPlatform, summonerId, summonerName).then(function(summonerMasteryScoreResponse) {
+                            compareResponse.TotalLevels = summonerMasteryScoreResponse;
+                            subService.GetSummonerTopChampions(localPlatform, summonerId, summonerName).then(function(summonersTopChampions) {
+                                compareResponse.TopChamps = summonersTopChampions;
+                                res.send(compareResponse);
+                            })
+                        });
+                    }, function(error) {
+                        /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
+                        /// responds the error if so, responds no data otherwise
+                        if (error.statusCode == "429") {
+                            res.send("429");
+                        } else {
+                            res.send(noDataErrorResp);
+                        }
+                    });
                 });
-            }, function(error) {
-                /// Checks if the thrown error is of type 429, which means the api rates of the riot api key is exceeded
-                /// responds the error if so, responds no data otherwise
-                if(error.statusCode == "429"){
-                    res.send("429");
-                } else{
-                    res.send(noDataErrorResp);
-                }
             });
         });
     } catch (e) {
