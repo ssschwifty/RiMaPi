@@ -2,7 +2,7 @@
 * defines the main Controller that provides strings, pagetransition functions and other useful stuff
 */
 angular.module('riot.controller')
-.controller('MainController', function($scope, $uibModal, $location, $state) {
+.controller('MainController', function($scope, $uibModal, $location, $state, UserData) {
 
 	function initialize() {
 		$scope.btnDocu = "Documentation";
@@ -17,10 +17,21 @@ angular.module('riot.controller')
 		$scope.enterEmail = "Please enter a Email address";
 
 		var hash = $location.search();
+		var url = $location.path().replace(/\//g, '');
 		if(hash != undefined) {
-			$state.go('page.compare', {a: hash["a"], b: hash["b"]});
+			$state.go('page.'+url, {as: hash["as"], ar: hash["ar"], ba: hash["ba"], br: hash["br"]});
 		} else {
 			$state.go('splashScreen');
+		}
+
+		// get summoner names from url if they are undefined until now
+		if (UserData.summoner == undefined) {
+			UserData.summoner = $location.search()["as"];
+			UserData.regionId = $location.search()["ar"];
+		}
+		if (UserData.compareSummoner == undefined) {
+			UserData.compareSummoner = $location.search()["bs"];
+			UserData.compareRegionId = $location.search()["br"];
 		}
 	}
 	initialize();

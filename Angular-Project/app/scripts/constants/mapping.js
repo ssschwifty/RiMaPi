@@ -14,7 +14,7 @@ angular.module('riot')
 		"jp": "Japan",
 		"ru": "Russia",
 		"tr": "Turkey",
-		"oc": "Oceania",
+		"oce": "Oceania",
 		"kr": "Republic of Korea"
 	},
 

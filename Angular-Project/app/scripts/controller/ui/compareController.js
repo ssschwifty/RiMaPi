@@ -20,14 +20,6 @@ angular.module('riot.controller.ui')
 	var highestScore;
 	var highestLevel;
 
-	// get summoner names from url if they are undefined until now
-	if (UserData.summoner == undefined) {
-		UserData.summoner = $location.search()["a"];
-	}
-	if (UserData.compareSummoner == undefined) {
-		UserData.compareSummoner = $location.search()["b"];
-	}
-
 	// listen for changes regarding the region
 	$('html').on('region:change', function(region) {
 		setTimeout(function() {
