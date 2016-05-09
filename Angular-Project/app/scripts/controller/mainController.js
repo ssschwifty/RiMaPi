@@ -4,7 +4,7 @@
 angular.module('riot.controller')
 .controller('MainController', function($scope, $uibModal, $location, $state, UserData) {
 
-	
+
 
 	function initialize() {
 		$scope.btnDocu = "Documentation";
@@ -30,6 +30,7 @@ angular.module('riot.controller')
 
 	$scope.setActivePage = function(index) {
 		if(index != "entry") {
+			console.log('nicht entry');
 			for(var tab in $scope.headerButtonsArray) {
 				$scope.headerButtonsArray[tab].active = false;
 			}
@@ -38,8 +39,8 @@ angular.module('riot.controller')
 	}
 	var hash = $location.search();
 	var url = $location.path().replace(/\//g, '');
-	if(url == "entry") {
-		$state.go('splashScreen'); 
+	if(url == "entry" || url == "") {
+		$state.go('splashScreen');
 	} else {
 		$scope.setActivePage(url);
 		$state.go('page.'+url, {as: hash["as"], ar: hash["ar"], ba: hash["ba"], br: hash["br"]});
