@@ -163,7 +163,7 @@ Webservice<y:LabelModel>
               </y:NodeLabel>
               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" modelName="custom" textColor="#000000" visible="true" width="78.05078125" x="49.92420312499996" y="-7.191688537597656">Local Storage
 containing
-Api-Keys +
+API-Keys +
 Credentials<y:LabelModel>
                   <y:SmartNodeLabelModel distance="4.0"/>
                 </y:LabelModel>
