@@ -2,7 +2,7 @@ angular.module('riot.services')
 .factory('RequestService', function($http) {
 
 	var championMasteries;
-	var baseUrl = 'http://v22016053572334167.supersrv.de:3002/';
+	var baseUrl = 'https://www.narmor.com:3002/';
 
 
 	return {

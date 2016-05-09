@@ -10,7 +10,7 @@
     /// builds an object, that contains all necessary data for sending an email.
     /// and returns it to the calling function
     function prepareData(mailTo, sender, recipient, base64Image) {
-        var linkToWebsite = "<a href=\"http://v22016053572334167.supersrv.de/RiMaPi/app/#/compare/?a=" + sender + "&b=" + recipient + "\">";
+        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?a=" + sender + "&b=" + recipient + "\">";
         // setup e-mail data with unicode symbols
         console.log(mailTo);
         var mailOptions = {
@@ -55,16 +55,12 @@
     /// Sends the Email by calling prepare data and sending the email
     /// with the generated options.
     function sendEmail(mailTo, sender, recipient, base64Image) {
-        console.log('prepare Data for email!');
         mailOptions = prepareData(mailTo, sender, recipient, base64Image);
         // send mail with defined transport object
-        console.log('sending Data for email!');
         transporter.sendMail(mailOptions, function(error, info) {
-            console.log('sent Data for email!');
             if (error) {
                 return console.log(error);
             }
-            console.log('Message sent: ' + info.response);
         });
     }
 

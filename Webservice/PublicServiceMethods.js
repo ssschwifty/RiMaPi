@@ -4,7 +4,9 @@
 var express = require('express');
 var app = express();
 var Promise = require('bluebird');
+var fs = require('fs');
 var http = require('http');
+var https = require('https');
 var $ = require('./node_modules/jquery/dist/jquery.min.js')
 var bodyParser = require('body-parser');
 var rp = require('request-promise');
@@ -14,6 +16,11 @@ var dbAccess = require('./MariaDBService.js');
 var helper = require('./helper.js');
 var subService = require('./subServiceMethods.js');
 var mailer = require('./MailingService.js')
+
+var privateKey  = fs.readFileSync('sslcert/privkey.pem', 'utf8');
+var certificate = fs.readFileSync('sslcert/cert.pem', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
+var httpsServer = https.createServer(credentials, app);
 
 var riotApiKey;
 var googleApiKey;
@@ -27,8 +34,8 @@ app.use(cors());
 
 // starting a http listener on port 3000 (http://domain:3000).
 // load needed apiKeys from local jsonFiles
-app.listen(3002, function() {
-    console.log('Listening on port 3002!');
+httpsServer.listen(3002, function() {
+    console.log('Listening on port 443!');
     riotApiKey = require('./riotApiKey.json').key;
     googleApiKey = require('./googleApiKey.json').key;
 });
