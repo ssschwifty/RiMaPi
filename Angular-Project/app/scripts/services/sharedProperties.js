@@ -31,8 +31,8 @@ angular.module('riot.services')
 			RequestService.getGeolocation(success);
 		},
 		// @see requestService.js:sendCompareEmail
-		sendCompareEmail: function(mailTo, sender, recipient, base64Image) {
-			return RequestService.sendCompareEmail(mailTo, sender, recipient, base64Image);
+		sendCompareEmail: function(mailTo, sender, senderRegion, recipient, recipientRegion,  base64Image) {
+			return RequestService.sendCompareEmail(mailTo, sender, senderRegion, recipient, recipientRegion,  base64Image);
 		},
 
 		// uses the mapping service to determine names by id

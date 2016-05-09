@@ -9,8 +9,8 @@
     /// private method
     /// builds an object, that contains all necessary data for sending an email.
     /// and returns it to the calling function
-    function prepareData(mailTo, sender, recipient, base64Image) {
-        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?a=" + sender + "&b=" + recipient + "\" style=\"color:white\">";
+    function prepareData(mailTo, sender, senderRegion, recipient, recipientRegion, base64Image) {
+        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?as=" + sender + "&ar="+ senderRegion +"&bs=" + recipient + "&br" + recipientRegion + "\" style=\"color:white\">";
         // setup e-mail data with unicode symbols
         var mailOptions = {
             from: '"RiMaPi" <noreply@RiMaPi.com>', // sender address
@@ -53,8 +53,8 @@
 
     /// Sends the Email by calling prepare data and sending the email
     /// with the generated options.
-    function sendEmail(mailTo, sender, recipient, base64Image) {
-        mailOptions = prepareData(mailTo, sender, recipient, base64Image);
+    function sendEmail(mailTo, sender, senderRegion, recipient, recipientRegion, base64Image) {
+        mailOptions = prepareData(mailTo, sender, senderRegion, recipient, recipientRegion, base64Image);
         // send mail with defined transport object
         transporter.sendMail(mailOptions, function(error, info) {
             if (error) {
@@ -68,7 +68,7 @@
     //-----------Module Export of all "public" functions
 
 
-    module.exports.sendEmail = function(mailTo, sender, recipient, base64Image) {
-        sendEmail(mailTo, sender, recipient, base64Image);
+    module.exports.sendEmail = function(mailTo, sender, senderRegion, recipient, recipientRegion, base64Image) {
+        sendEmail(mailTo, sender, senderRegion, recipient, recipientRegion, base64Image);
     }
 }());

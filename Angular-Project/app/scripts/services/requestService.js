@@ -68,8 +68,9 @@ angular.module('riot.services')
 		// @param sender: String, name of the summoner who has send the email
 		// @param recipient: String, name of the summoner who receives the email
 		// @param base64Image: Base64String, Image of the summoner comparisscion view as base 64 string
-		sendCompareEmail: function(mailTo, sender, recipient,  base64Image) {
-			return $http.post(baseUrl + 'sendComparison/r/' + mailTo + '/s/' + sender + "/rs/" + recipient, '{"data":"' + base64Image + '"}');
+		sendCompareEmail: function(mailTo, sender, senderRegion, recipient, recipientRegion,  base64Image) {
+			// /sendComparison/r/:recipientMail/as/:senderSummonerName/ar/:senderSummonerRegion/bs/:recipientSummonerName/br/:recipientSummonerRegion
+			return $http.post(baseUrl + 'sendComparison/r/' + mailTo + '/as/' + sender + "/ar/" + senderRegion + "/bs/" + recipient + "/br/" + recipientRegion, '{"data":"' + base64Image + '"}');
 		}
 	}
 

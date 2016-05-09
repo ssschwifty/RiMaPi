@@ -59,7 +59,7 @@ angular.module('riot.controller.ui')
 		$('html').off('summoner:change');
 		$('html').off('compareSummonr:change');
 	});
-	
+
 	// Helper function to determine if <data> is defined or an empty string
 	function isDefined(data) {
 		if(data != undefined && data != "" && data != null) {
@@ -262,7 +262,7 @@ angular.module('riot.controller.ui')
 					// convert the rendered Charts to a base64 String
 					var myImage = canvas.toDataURL();
 					// Send the email by calling the service method
-					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
+					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.regionId, $scope.userData.compareSummoner, $scope.userData.compareRegionId , myImage)
 						.then(
 							function(response) {
 								$scope.openPopup({ message : $scope.mailSuccessfullySent, windowHeader : "It worked!", image : './sources/image/Tiles/Teemo_Splash_Tile_6.jpg'});
@@ -294,7 +294,7 @@ angular.module('riot.controller.ui')
 					resolve(response2.data);
 				});
 			});
-		}) 
+		})
 	}
 	// if the position of the user can be evaluated via geolocation, the active region is set to their position
 	// default is North America
