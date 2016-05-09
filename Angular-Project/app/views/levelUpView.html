@@ -1,17 +1,17 @@
 <div id="content">
 	<div class="commonDescription">
 		<h1> Earn levels! </h1>
-		Does your friend have a higher Mastery Level than you? 
-		Don't lose any time and play the champions that are close 
-		to the next level to overtake your friend. <a ng-click="setActivePage(4)" ui-sref="page.compare">Send him an Email 
+		Does your friend have a higher Mastery Level than you?
+		Don't lose any time and play the champions that are close
+		to the next level to overtake your friend. <a ng-click="setActivePage(4)" ui-sref="page.compare">Send him an Email
 		to brag about it!</a>
 	</div>
 
   	<div id="championsWrapper">
 	  	<div ng-repeat="champion in champions" class="inlineBlock">
-			<div class="championContainer">
+			<div class="championContainer" id="{{$index}}">
 				<div id="gradient"></div>
-				<img ng-src="./sources/image/champions/{{champion.nameId}}_0.jpg">
+				<img ng-src="{{champion.imageLink}}">
 				<div class="championText">
 					<div> {{champion.displayName}}</div>
 					<div> Currently on level {{champion.championLevel}} </div>
@@ -23,4 +23,3 @@
 		</div>
 	</div>
 </div>
-

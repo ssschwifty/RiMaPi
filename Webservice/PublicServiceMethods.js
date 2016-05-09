@@ -211,7 +211,6 @@ app.post('/sendComparison/r/:recipientMail/s/:senderSummonerName/rs/:recipientSu
         var img = req.body.data;
         // strip off the data: url prefix to get just the base64-encoded bytes
         var data = img.replace(/^data:image\/\w+;base64,/, "");
-        console.log( req.params.senderSummonerName + "   "+ req.params.recipientSummonerName);
         mailer.sendEmail(req.params.recipientMail, req.params.senderSummonerName, req.params.recipientSummonerName, data);
         res.send('Success')
     } catch (e) {

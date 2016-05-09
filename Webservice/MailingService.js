@@ -10,9 +10,8 @@
     /// builds an object, that contains all necessary data for sending an email.
     /// and returns it to the calling function
     function prepareData(mailTo, sender, recipient, base64Image) {
-        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?a=" + sender + "&b=" + recipient + "\">";
+        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?a=" + sender + "&b=" + recipient + "\" style=\"color:white\">";
         // setup e-mail data with unicode symbols
-        console.log(mailTo);
         var mailOptions = {
             from: '"RiMaPi" <noreply@RiMaPi.com>', // sender address
             to: mailTo, // list of receivers
@@ -32,7 +31,7 @@
             "        the diagrams and click the image to be forwarded to our website and check it out yourself!</h3>" +
             "        <br>" +
             "        <br>" +
-                    linkToWebsite  + "If the image isnt displayed correctly, please click this sentence to view a proper version online. </a>" +
+                    linkToWebsite  + "If the image isnt displayed correctly, please click this sentence or the image below to view a proper version online. </a>" +
             "    </div>" +
                     linkToWebsite +
             "         <img src=\"cid:embeddedImage1\"/>" +

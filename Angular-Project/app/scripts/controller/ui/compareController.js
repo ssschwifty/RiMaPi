@@ -45,7 +45,7 @@ angular.module('riot.controller.ui')
 	// trigger event, that compareSummoner changed when the enter key is hit
 	$('#compareSummonerInput').on('keypress', function(e) {
 		if (e.keyCode == 13) {
-			$('#summonerInput').blur();
+			$('#compareSummonerInput').blur();
 			$('html').trigger('compareSummoner:change');
 		}
 	});
@@ -67,11 +67,11 @@ angular.module('riot.controller.ui')
 			.then(function(response) {
 				try {
 					if (response.data == "429") {
-						$scope.openPopup($scope.requestsExceededMessage);
+						$scope.openPopup({ message : $scope.requestsExceededMessage});
 						return;
 					}
 					if (response.data == "NoDataFound") {
-						$scope.openPopup($scope.summonerNotFound);
+						$scope.openPopup({ message : $scope.summonerNotFound});
 						return;
 					}
 					$scope.comparable = false;
@@ -95,7 +95,7 @@ angular.module('riot.controller.ui')
 						populateLeftChart(response);
 					}
 				} catch (e) {
-					$scope.openPopup($scope.unknownError);
+					$scope.openPopup({ message : $scope.unknownError});
 				}
 			});
 		}
@@ -110,11 +110,11 @@ angular.module('riot.controller.ui')
 			.then(function(response) {
 				try {
 					if (response.data == "429") {
-						$scope.openPopup($scope.requestsExceededMessage);
+						$scope.openPopup({ message : $scope.requestsExceededMessage});
 						return;
 					}
 					if (response.data == "NoDataFound") {
-						$scope.openPopup($scope.summonerNotFound);
+						$scope.openPopup({ message : $scope.summonerNotFound});
 						return;
 					}
 					$scope.playerBName = response.data.Name;
@@ -137,7 +137,7 @@ angular.module('riot.controller.ui')
 						populateRightChart(response);
 					}
 				} catch (e) {
-					$scope.openPopup($scope.unknownError);
+					$scope.openPopup({ message : $scope.unknownError});
 				}
 			});
 		}
@@ -253,16 +253,17 @@ angular.module('riot.controller.ui')
 					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
 						.then(
 							function(response) {
+								$scope.openPopup({ message : $scope.mailSuccessfullySent, windowHeader : "It worked!", image : './sources/image/Tiles/Teemo_Splash_Tile_6.jpg'});
 							},
 							function(respnse) {
 								// An error has occured!
-								$scope.openPopup($scope.unknownError);
+								$scope.openPopup({ message : $scope.unknownError});
 							}
 						);
 				}
 			});
 		} else {
-			$scope.openPopup($scope.enterSummonerNames);
+			$scope.openPopup({ message : $scope.enterSummonerNames});
 		}
 	}
 
