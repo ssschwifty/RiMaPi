@@ -13,9 +13,9 @@
 	</button>
 	<button type="button" class="sortChampions order" ng-show="championsShown && !sorted" ng-click="descChampions()" ng-class="desc ? 'on' : 'off'"> Descending </button>
 	<div id="championsWrapper">
-		<div class="championContainer" ng-repeat="champion in champions">
+		<div class="championContainer" id="{{$index}}" ng-repeat="champion in champions">
 			<div id="gradient"></div>
-			<img ng-src ="./sources/image/champions/{{champion.nameId}}_0.jpg">
+			<img ng-src ="{{champion.imageLink}}">
 			<div class="championText">
 				<div> {{champion.displayName}}</div>
 				<div ng-hide="sorted"> Champion Points: {{champion.championPoints}} </div>

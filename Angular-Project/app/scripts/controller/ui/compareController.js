@@ -5,6 +5,8 @@
 
 angular.module('riot.controller.ui')
 .controller('CompareController', function($scope, SharedProperties, UserData, $location) {
+	$scope.playerAName = 'Please enter a \r\n summoner name in \r\n the upper right corner \r\n to view Data!';
+	$scope.playerBName = 'Please enter a \r\n summoner name in \r\n the upper left corner \r\n below the description \r\n text to view Data!';
 
 	// initially declare variables
 	$scope.userData = UserData;
@@ -39,7 +41,7 @@ angular.module('riot.controller.ui')
 	// trigger event, that compareSummoner changed when the enter key is hit
 	$('#compareSummonerInput').on('keypress', function(e) {
 		if (e.keyCode == 13) {
-			$('#summonerInput').blur();
+			$('#compareSummonerInput').blur();
 			$('html').trigger('compareSummoner:change');
 		}
 	});
@@ -68,11 +70,11 @@ angular.module('riot.controller.ui')
 			.then(function(response) {
 				try {
 					if (response.data == "429") {
-						$scope.openPopup($scope.requestsExceededMessage);
+						$scope.openPopup({ message : $scope.requestsExceededMessage});
 						return;
 					}
 					if (response.data == "NoDataFound") {
-						$scope.openPopup($scope.summonerNotFound);
+						$scope.openPopup({ message : $scope.summonerNotFound});
 						return;
 					}
 					$scope.comparable = false;
@@ -96,7 +98,7 @@ angular.module('riot.controller.ui')
 						populateLeftChart(response);
 					}
 				} catch (e) {
-					$scope.openPopup($scope.unknownError);
+					$scope.openPopup({ message : $scope.unknownError});
 				}
 			});
 		}
@@ -111,11 +113,11 @@ angular.module('riot.controller.ui')
 			.then(function(response) {
 				try {
 					if (response.data == "429") {
-						$scope.openPopup($scope.requestsExceededMessage);
+						$scope.openPopup({ message : $scope.requestsExceededMessage});
 						return;
 					}
 					if (response.data == "NoDataFound") {
-						$scope.openPopup($scope.summonerNotFound);
+						$scope.openPopup({ message : $scope.summonerNotFound});
 						return;
 					}
 					$scope.playerBName = response.data.Name;
@@ -138,7 +140,7 @@ angular.module('riot.controller.ui')
 						populateRightChart(response);
 					}
 				} catch (e) {
-					$scope.openPopup($scope.unknownError);
+					$scope.openPopup({ message : $scope.unknownError});
 				}
 			});
 		}
@@ -244,6 +246,7 @@ angular.module('riot.controller.ui')
 
 	/// Sends the email to the comparedSummoner
 	$scope.sendEmail = function(address) {
+		$('#emailInput').blur();
 		if (summonerAResponse != undefined && summonerBResponse != undefined) {
 			/// Render the summoner charts as image
 			html2canvas($(".summoners")[0], {
@@ -254,16 +257,17 @@ angular.module('riot.controller.ui')
 					SharedProperties.sendCompareEmail(address, $scope.userData.summoner, $scope.userData.compareSummoner, myImage)
 						.then(
 							function(response) {
+								$scope.openPopup({ message : $scope.mailSuccessfullySent, windowHeader : "It worked!", image : './sources/image/Tiles/Teemo_Splash_Tile_6.jpg'});
 							},
 							function(respnse) {
 								// An error has occured!
-								$scope.openPopup($scope.unknownError);
+								$scope.openPopup({ message : $scope.unknownError});
 							}
 						);
 				}
 			});
 		} else {
-			$scope.openPopup($scope.enterSummonerNames);
+			$scope.openPopup({ message : $scope.enterSummonerNames});
 		}
 	}
 
