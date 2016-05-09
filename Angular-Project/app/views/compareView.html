@@ -9,8 +9,17 @@
 			Then hit the "Send an Email!" button. (The button will only appear after you entered a valid e-mail adress)
 		</div>
 		<div class="input">
-				<input type="text" novalidate id="compareSummonerInput" placeholder="Compare with" ng-model="userData.compareSummoner">
-				<button ng-click="getBData()"> Compare! </button>
+				<input type="text" class="inlineBlock" novalidate id="compareSummonerInput" placeholder="Compare with" ng-model="userData.compareSummoner">
+				<div class="dropdown regionDropdown inlineBlock" uib-dropdown>
+					<button type="button" class="dropdown-toggle" id="regionDropdown" uib-dropdown-toggle>
+					<img class="regionBtnIcon" ng-src="./sources/icons/{{activeIcon.regionIconState}}.gif"/>
+					<div class="regionBtnText">{{regions[userData.compareRegionId]}}</div>
+					</button>
+					<ul class="dropdown-menu" aria-labelledby="regionDropdown">
+						<li ng-repeat="(id, region) in regions"><a ng-click="regionSelected(id)">{{region}}</a></li>
+					</ul>
+				</div>
+				<button class="inlineBlock" ng-click="getBData()"> Compare! </button>
 			</div>
 			<div class="email">
 				<form name="emailForm">

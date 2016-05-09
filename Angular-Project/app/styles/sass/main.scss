@@ -94,12 +94,16 @@ input:focus {
 	width: 180px;
 	height: 30px;
 }
-#header .regionDropdown .regionBtnIcon {
+#header .regionDropdown .regionBtnIcon,
+.compare .regionBtnIcon {
 	position: absolute;
 	left: 8px;
 	top: 6px;
+	width: 18px;
+	height: 18px;
 }
-#header .regionDropdown .regionBtnText {
+#header .regionDropdown .regionBtnText,
+.compare .regionBtnText {
 	position: absolute;
 	left: 35px;
 	top: 7px;
@@ -132,12 +136,6 @@ input:focus {
 	font-weight: bold;
 	cursor: pointer
 }
-#header .regionBtnIcon {
-	width: 18px;
-	height: 18px;
-	position: absolute;
-}
-
 #content {
 	box-sizing: border-box;
 	width: 100%;
@@ -230,6 +228,12 @@ input:focus {
 	border: 1px solid $transparentShadow;
 	height: 30px;
 	width: 100px;
+}
+#content .compare .regionDropdown {
+	vertical-align: top; /* WHAT. WHY? */
+}
+#content .compare .regionDropdown button {
+	width: 180px;
 }
 #content .compare .summoners {
 	min-width: 1030px;

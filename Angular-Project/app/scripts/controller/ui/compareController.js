@@ -8,6 +8,8 @@ angular.module('riot.controller.ui')
 
 	// initially declare variables
 	$scope.userData = UserData;
+	$scope.regions = SharedProperties.getRegions();
+	$scope.activeIcon = SharedProperties;
 	$scope.donutLegend;
 	$scope.comparable = false;
 	$scope.email;
@@ -112,8 +114,8 @@ angular.module('riot.controller.ui')
 	// if no error occurs the data is displayed in charts
 	// if summoner A's is already defined, update those charts, too
 	$scope.getBData = function() {
-		if (UserData.regionId != undefined && isDefined(UserData.compareSummoner)) {
-			SharedProperties.getComparisonStatistics(UserData.regionId, UserData.compareSummoner)
+		if (UserData.compareRegionId != undefined && isDefined(UserData.compareSummoner)) {
+			SharedProperties.getComparisonStatistics(UserData.compareRegionId, UserData.compareSummoner)
 			.then(function(response) {
 				try {
 					if (response.data == "429") {
@@ -273,5 +275,52 @@ angular.module('riot.controller.ui')
 		}
 	}
 
+	// very very very very very very dirty solution to give comparesummoner a region
+	// check for region on load
+	$('#regionDropdown').load(defineRegion());
+
+	function getGeolocationSuccess(response) {
+		return SharedProperties.getContinent(response.coords.latitude, response.coords.longitude);
+	}
+
+	function getContinent() {
+		return new Promise(function(resolve){
+			SharedProperties.getGeolocation(function(response){
+				getGeolocationSuccess(response).then(function(response2){
+					resolve(response2.data);
+				});
+			});
+		}) 
+	}
+	// if the position of the user can be evaluated via geolocation, the active region is set to their position
+	// default is North America
+	function defineRegion() {
+		if($scope.userData.compareRegionId == undefined || $scope.userData.compareRegionId == null) {
+			$scope.userData.compareRegionId = 'na';
+			getContinent().then(function(response){
+				var platform = angular.lowercase(response);
+				if(platform == null) {
+					$scope.userData.compareRegionId = 'na';
+					$scope.activeIcon.regionIconState = "earth";
+					$scope.$apply();
+					$('html').trigger('region:change');
+				} else {
+					$scope.userData.compareRegionId = platform;
+					$scope.activeIcon.regionIconState = "earth";
+					$scope.$apply();
+					$('html').trigger('region:change');
+				}
+			}, function() {
+				$scope.userData.compareRegionId = 'na';
+				$scope.activeIcon.regionIconState = "earth";
+				$scope.$apply();
+				$('html').trigger('region:change');
+			});
+		}
+	}
+
+	$scope.regionSelected = function(id) {
+		$scope.userData.compareRegionId = id;
+	}
 	$scope.getAData();
 });
