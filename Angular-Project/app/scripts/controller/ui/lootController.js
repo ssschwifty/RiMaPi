@@ -24,6 +24,10 @@ angular.module('riot.controller.ui')
 	$scope.$on('$stateChangeSuccess', function() {
 		getLootData();
 	});
+	$scope.$on('$destroy', function() {
+		$('html').off('region:change');
+		$('html').off('summoner:change');
+	});
 
 	function getLootData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {

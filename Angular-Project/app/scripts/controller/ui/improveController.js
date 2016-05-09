@@ -22,6 +22,10 @@ angular.module('riot.controller.ui')
 	$scope.$on('$stateChangeSuccess', function() {
 		getImproveData();
 	});
+	$scope.$on('$destroy', function() {
+		$('html').off('region:change');
+		$('html').off('summoner:change');
+	});
 
 	function getImproveData() {
 		if(UserData.regionId != undefined && UserData.summoner != undefined && UserData.summoner != "") {

@@ -49,6 +49,13 @@ angular.module('riot.controller.ui')
 			$('html').trigger('compareSummoner:change');
 		}
 	});
+
+	$scope.$on('$destroy', function() {
+		$('html').off('region:change');
+		$('html').off('summoner:change');
+		$('html').off('compareSummonr:change');
+	});
+	
 	// Helper function to determine if <data> is defined or an empty string
 	function isDefined(data) {
 		if(data != undefined && data != "" && data != null) {
