@@ -5,6 +5,8 @@
 
 angular.module('riot.controller.ui')
 .controller('CompareController', function($scope, SharedProperties, UserData, $location) {
+	$scope.playerAName = 'Please enter a \r\n summoner name in \r\n the upper right corner \r\n to view Data!';
+	$scope.playerBName = 'Please enter a \r\n summoner name in \r\n the upper left corner \r\n below the description \r\n text to view Data!';
 
 	// initially declare variables
 	$scope.userData = UserData;
