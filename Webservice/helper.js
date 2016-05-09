@@ -3,7 +3,7 @@
     // the real data below. So we cut out the SummonerName and return all child
     // elements of that summoner.
     function getRiotApiReponseBody(response, summonerName) {
-        return response[summonerName.toString().replace(" ", "")];
+        return response[summonerName.toString().replace(/ /g, "")];
     }
 
     // Adds up all champions championPoints, since this value doesnt get returned

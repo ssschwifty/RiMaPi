@@ -1,11 +1,11 @@
 <div id="content">
   <div class="commonDescription">
     <h1> Gotta collect them all! </h1>
-    You think its annoying that you have to hover over every single champion 
-    in the champion screen to find out with which champion you haven't earned a mystery chest yet? 
-    No problem: just have a look at the hazzle free champions list with champions 
+    You think its annoying that you have to hover over every single champion
+    in the champion screen to find out with which champion you haven't earned a mystery chest yet?
+    No problem: just have a look at the hazzle free champions list with champions
     whose chest you haven't earned yet.
-    
+
 		<div>
 			Chests granted: {{grantedChests}}
 		</div>
@@ -13,15 +13,15 @@
 			Chests still waiting to be granted: {{notGranted}}
 		</div>
 	</div>
-	<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'"> 
+	<button type="button" class="sortPotential" ng-show="championsShown" ng-click="sortChampions()" ng-class="sorted ? 'on' : 'off'">
 		<img src="./sources/icons/check.png" ng-show="sorted">
 		<img src="./sources/icons/cross.png" ng-hide="sorted">
 		<div class="sortBtnText">Sort by Grade</div>
 	</button>
 	<div id="championsWrapper">
-		<div class="championContainer" ng-repeat="champion in champions">
+		<div class="championContainer" id="{{$index}}" ng-repeat="champion in champions">
 			<div id="gradient"></div>
-			<img ng-src ="./sources/image/champions/{{champion.nameId}}_0.jpg">
+			<img ng-src ="{{champion.imageLink}}">
 			<div class="championText">
 				<div> {{champion.displayName}}</div>
 				<div> Highest Grade: {{champion.highestGrade}} </div>
