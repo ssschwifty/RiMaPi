@@ -123,7 +123,7 @@ app.get('/GetAllChampionMasteries/p/:playerPlatform/u/:summonerName', function(r
     try {
         var localPlatform = req.params.playerPlatform;
         var summonerName = req.params.summonerName.toLowerCase();
-        if (summonerName == 'undefined' || platform == 'undefined') {
+        if (summonerName == 'undefined' || localPlatform == 'undefined') {
             res.send(null);
         }
         subService.GetSummonerData(summonerName, localPlatform).then(function(summonerData) {

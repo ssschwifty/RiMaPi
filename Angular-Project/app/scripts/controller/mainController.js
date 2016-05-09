@@ -13,10 +13,10 @@ angular.module('riot.controller')
 		$scope.welcomeText = "Welcome, Summoner!";
 		$scope.requestsExceededMessage = "The Request Limit of our Riot api key has been reached. Please wait 5 secons and try again!";
 		$scope.unknownError = 'An error has occured. Please try again!';
-		$scope.mailSuccessfullySent = 'Yaaaaay! Heimerdinger has done his job well. The e-mail is on its way to your friend! Thanks for using RiMaPi!';
+		$scope.mailSuccessfullySent = 'Yaaaaay! Heimerdinger has done his job well. The Email is on its way to your friend! Thanks for using RiMaPi!';
 		$scope.summonerNotFound = "Oops! The name you entered could not be resolved to a summoner in the selected region. Please check if you have spelled your summonername correctly and if you have selected the correct region! Then try again!";
 		$scope.enterSummonerNames = "Whoa... slow down, my friend! You should enter the names of two summoners instead of sending empty Emails.";
-		$scope.enterEmail = "Please enter a Email address";
+		$scope.enterEmail = "Please enter an Email address";
 	}
 	initialize();
 
@@ -30,7 +30,6 @@ angular.module('riot.controller')
 
 	$scope.setActivePage = function(index) {
 		if(index != "entry") {
-			console.log('nicht entry');
 			for(var tab in $scope.headerButtonsArray) {
 				$scope.headerButtonsArray[tab].active = false;
 			}
