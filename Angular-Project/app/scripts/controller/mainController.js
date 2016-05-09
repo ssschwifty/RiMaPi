@@ -16,10 +16,23 @@ angular.module('riot.controller')
 		$scope.enterSummonerNames = "Whoa... slow down, my friend! You should enter the names of two summoners instead of sending empty Emails.";
 		$scope.enterEmail = "Please enter a Email address";
 
+		$scope.headerButtonsArray = {
+			home: {name: 'home', text: 'Home'},
+			improve: {name: 'improve', text: 'Improve yourself!'},
+			loot: {name: 'loot', text: 'Mystery Chests'},
+			level: {name: 'level', text: 'Level Up!'},
+			compare: {name: 'compare', text: 'Compare Yourself'}
+		};
+
 		var hash = $location.search();
 		var url = $location.path().replace(/\//g, '');
+
 		if(hash != undefined) {
-			$state.go('page.'+url, {as: hash["as"], ar: hash["ar"], ba: hash["ba"], br: hash["br"]});
+			if(url == "entry") {
+				$state.go('splashScreen'); 
+			} else {
+				$state.go('page.'+url, {as: hash["as"], ar: hash["ar"], ba: hash["ba"], br: hash["br"]});
+			}
 		} else {
 			$state.go('splashScreen');
 		}
@@ -36,13 +49,6 @@ angular.module('riot.controller')
 	}
 	initialize();
 
-	$scope.headerButtonsArray = [
-		{name: 'home', text: 'Home'},
-		{name: 'improve', text: 'Improve yourself!'},
-		{name: 'loot', text: 'Mystery Chests'},
-		{name: 'level', text: 'Level Up!'},
-		{name: 'compare', text: 'Compare Yourself'}
-	];
 	$scope.setActivePage = function(index) {
 		for (var i = 0; i < $scope.headerButtonsArray.length; i++) {
 			$scope.headerButtonsArray[i].active = false;

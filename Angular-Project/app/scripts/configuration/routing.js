@@ -6,7 +6,8 @@ angular.module('riot')
 	$stateProvider
 		.state('splashScreen', {
 			url: '/entry',
-			templateUrl: 'views/splashScreen.html'
+			templateUrl: 'views/splashScreen.html',
+			controller: 'SplashscreenController'
 		})
 		// page is abstract because it includes the elements that are the same on every page beneath
 		.state('page', {
