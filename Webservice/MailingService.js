@@ -10,7 +10,7 @@
     /// builds an object, that contains all necessary data for sending an email.
     /// and returns it to the calling function
     function prepareData(mailTo, sender, senderRegion, recipient, recipientRegion, base64Image) {
-        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?as=" + sender + "&ar="+ senderRegion +"&bs=" + recipient + "&br" + recipientRegion + "\" style=\"color:white\">";
+        var linkToWebsite = "<a href=\"https://www.narmor.com/#/compare/?as=" + sender + "&ar="+ senderRegion +"&bs=" + recipient + "&br=" + recipientRegion + "\" style=\"color:white\">";
         // setup e-mail data with unicode symbols
         var mailOptions = {
             from: '"RiMaPi" <noreply@RiMaPi.com>', // sender address
